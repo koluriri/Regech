@@ -1,7 +1,7 @@
 .gachadetail {
   display: flex;
   flex-flow: row wrap;
-  gap: 5px;
+  gap: 0 2px;
   align-items: center;
   font-weight: normal;
 }

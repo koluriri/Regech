@@ -1,4 +1,7 @@
 .card {
+  width: 560px;
+  max-width: 100%;
+  margin: 0 auto;
   color: var(--on-surface);
   text-align: center;
   background: var(--background);

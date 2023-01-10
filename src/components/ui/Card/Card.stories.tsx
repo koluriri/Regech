@@ -1,9 +1,16 @@
 import { Story, Meta } from '@storybook/react';
-import { IconPencil, IconPlay } from '../../Icon';
+import {
+  IconPencil,
+  IconPlay,
+  IconRankingOne,
+  IconRankingThree,
+  IconRankingTwo,
+} from '../../Icon';
 import BigText from '../BigText/BigText';
 import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
 import GachaDetail from '../GachaDetail/GachaDetail';
+import GachaItem from '../GachaItem/GachaItem';
 import Selector from '../Selector/Selector';
 import Textarea from '../Textarea/Textarea';
 import Card, { PropType } from './Card';
@@ -69,6 +76,96 @@ Post.args = {
         <IconPlay />
         ガチャを引く
       </Button>
+    </>
+  ),
+};
+
+export const Ranking = Template.bind({});
+Ranking.args = {
+  children: (
+    <>
+      ランキング
+      <GachaItem
+        detail={
+          <GachaDetail
+            created="2023/01/10 14:25:42"
+            name="@koluriri"
+            playCount={23}
+            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+          />
+        }
+        icon={<IconRankingOne />}
+        id={1}
+        preview=":D"
+        title="Emoticon Generator"
+      />
+      <GachaItem
+        detail={
+          <GachaDetail
+            created="2023/01/10 14:25:42"
+            name="@koluriri"
+            playCount={23}
+            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+          />
+        }
+        icon={<IconRankingTwo />}
+        id={1}
+        preview=":D"
+        title="Emoticon Generator"
+      />
+      <GachaItem
+        detail={
+          <GachaDetail
+            created="2023/01/10 14:25:42"
+            name="@koluriri"
+            playCount={23}
+            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+          />
+        }
+        icon={<IconRankingThree />}
+        id={1}
+        preview=":D"
+        title="Emoticon Generator"
+      />
+      <GachaItem
+        detail={
+          <GachaDetail
+            created="2023/01/10 14:25:42"
+            name="@koluriri"
+            playCount={23}
+            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+          />
+        }
+        id={1}
+        preview=":D"
+        title="Emoticon Generator"
+      />
+      <GachaItem
+        detail={
+          <GachaDetail
+            created="2023/01/10 14:25:42"
+            name="@koluriri"
+            playCount={23}
+            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+          />
+        }
+        id={1}
+        preview=":D"
+        title="Emoticon Generator"
+      />
+      <GachaItem
+        detail={
+          <GachaDetail
+            created="2023/01/10 14:25:42"
+            name="@koluriri"
+            playCount={23}
+            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+          />
+        }
+        id={1}
+        preview=":D"
+        title="Emoticon Generator"
+      />
     </>
   ),
 };
