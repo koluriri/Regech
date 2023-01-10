@@ -1,0 +1,19 @@
+.cardheader {
+  font-weight: bold;
+  text-align: center;
+}
+
+.cardheader svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+}
+
+.md {
+  font-size: var(--text-lg);
+}
+
+.lg {
+  font-size: var(--text-xl);
+}

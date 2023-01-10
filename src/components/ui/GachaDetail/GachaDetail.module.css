@@ -3,6 +3,7 @@
   flex-flow: row wrap;
   gap: 5px;
   align-items: center;
+  font-weight: normal;
 }
 
 .center {
@@ -14,5 +15,6 @@
   flex-direction: row;
   align-items: center;
   font-size: var(--text-sm);
+  font-weight: normal;
   color: var(--secondary);
 }
