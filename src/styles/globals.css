@@ -17,6 +17,7 @@
   --border: 2px solid #171926;
   --box-shadow: 4px 4px 0 #171926;
   --border-radius: 8px;
+  --border-radius-full: 625rem;
 
   /*  Text Styles */
   --text-sans-serif:
