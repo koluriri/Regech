@@ -19,43 +19,10 @@
   left: 0;
   width: var(--avatar-size);
   height: var(--avatar-size);
-  border: 2px solid var(--avatar-border-color);
+
+  /* border: 2px solid var(--avatar-border-color); */
   border-radius: var(--border-radius-full);
   object-fit: cover;
-}
-
-.online {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  display: block;
-  width: 12px;
-  height: 12px;
-  background: var(--success);
-  border: 2px solid var(--avatar-border-color);
-  border-radius: var(--border-radius-full);
-}
-
-.disabled {
-  pointer-events: none;
-  opacity: var(--opacity-50);
-}
-
-.number {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--avatar-size);
-  height: var(--avatar-size);
-  background: var(--secondary-50);
-  border-radius: var(--border-radius-full);
-}
-
-@media (prefers-color-scheme: dark) {
-  .number {
-    background: var(--secondary);
-  }
 }
 
 .avatardetail {

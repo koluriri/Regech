@@ -58,7 +58,7 @@ Post.args = {
         />
       </CardHeader>
       <BigText>
-        {`(:|;|8^|&-|:'-|8-|(:-|:,-|:-|=|X|:*)(D|)|P|e|<|c|0|O|}|o|||(|((|\)`}
+        {`(:|;|8^|&-|:'-|8-|(:-|:,-|:-|=|X|:*)(D|)|P|e|<|c|0|O|}|o|||(|((|\\\\)`}
       </BigText>
       <Selector
         handleChange={(val: string) => {

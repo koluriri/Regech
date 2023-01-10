@@ -1,0 +1,38 @@
+.gachaitem {
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  align-items: center;
+}
+
+.gachaitemincludesicon {
+  grid-template-columns: 40px 1fr 110px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 28px;
+}
+
+.btn button {
+  width: 100%;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  font-size: var(--text-md);
+  font-weight: bold;
+}
+
+.regex {
+  font-size: var(--text-sm);
+}
