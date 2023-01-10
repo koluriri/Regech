@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;900&family=Poppins:wght@500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&family=Poppins:wght@500;600&display=swap';
 
 :root {
   /* Colors */
@@ -12,10 +12,13 @@
   --toggle-btn-bg: #d8d8d8;
   --default-btn-color: #9a0000;
   --primary-btn-bg: linear-gradient(45deg, #b51409 0%, #efae2d 50%, #46b4ab 100%);
-  --secondary-btn-bg: linear-gradient(45deg, #efae2d 0%, #d9d9d9 100%);
-  --text-link: #9a0000;
-  --border: 2px solid #171926;
-  --box-shadow: 4px 4px 0 #171926;
+  --secondary-btn-bg: linear-gradient(90deg, #efae2d 0%, #d9d9d9 100%);
+  --text-link: var(--default-btn-color);
+  --border: 2px solid var(--on-surface);
+  --box-shadow-lg: 4px 4px 0 var(--on-surface);
+  --box-shadow-sm: 2px 2px 0 var(--on-surface);
+  --box-shadow-inset: inset 4px 4px 0 var(--on-surface);
+  --box-shadow-inset-sm: inset 2px 2px 0 var(--on-surface);
   --border-radius: 8px;
   --border-radius-full: 625rem;
 
@@ -68,13 +71,14 @@
   }
 
   :root {
-    --surface: #171926;
-    --background: #2e303a;
+    --surface: #0c0c0f;
+    --background: #171926;
     --secondary: #737373;
     --on-surface: #dae1ee;
     --text-on-color: #fff;
     --toggle-btn-color: #fff;
     --toggle-btn-bg: #3c3d42;
+    --default-btn-color: #ff7070;
   }
 }
 
