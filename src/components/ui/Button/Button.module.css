@@ -60,6 +60,12 @@
 
 .block {
   width: 100%;
+  font-size: var(--text-lg);
+}
+
+.block svg {
+  width: 25px;
+  height: 25px;
 }
 
 .caption {
