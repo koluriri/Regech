@@ -1,0 +1,5 @@
+.bigtext {
+  padding: 25px 5px;
+  font-size: var(--text-lg);
+  text-align: center;
+}

@@ -69,25 +69,6 @@
   --opacity-100: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-
-  :root {
-    --surface: #0c0c0f;
-    --background: #171926;
-    --secondary: #737373;
-    --on-surface: #dae1ee;
-    --text-on-color: #fff;
-    --toggle-btn-color: #fff;
-    --toggle-btn-bg: #3c3d42;
-    --default-btn-color: #ff7070;
-    --border-color: #494d62;
-    --secondary-btn-bg: linear-gradient(90deg, #efae2d 0%, #494d62 100%);
-  }
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -113,13 +94,17 @@ a:hover {
   text-decoration: underline;
 }
 
+svg {
+  fill: currentcolor;
+}
+
 .selector {
   position: relative;
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 40px;
-  background: #d8d8d8;
+  background: var(--toggle-btn-bg);
   border-radius: 8px;
 }
 
@@ -136,7 +121,7 @@ a:hover {
   width: 50%;
   height: 40px;
   font-weight: bold;
-  color: #000;
+  color: var(--toggle-btn-color);
   cursor: pointer;
   opacity: 0.8;
   transition: 0.2s;
@@ -178,8 +163,8 @@ a:hover {
   display: block;
   width: 50%;
   height: 40px;
-  background: #dfaf3e;
-  border: 2px solid #000;
+  background: var(--toggle-btn);
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   opacity: 0;
   transition: 0.4s cubic-bezier(0.63, -0.39, 0.41, 1.35);
@@ -193,4 +178,28 @@ a:hover {
 .selector input#option1:checked + .selectoroption + input + .selectoroption + .buttonbg {
   left: 0;
   opacity: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+  :root {
+    --surface: #0c0c0f;
+    --background: #171926;
+    --secondary: #737373;
+    --on-surface: #dae1ee;
+    --text-on-color: #fff;
+    --toggle-btn-color: #fff;
+    --toggle-btn-bg: var(--border-color);
+    --default-btn-color: #ff7070;
+    --border-color: #494d62;
+    --secondary-btn-bg: linear-gradient(90deg, #efae2d 0%, #494d62 100%);
+  }
+
+  .selector input#option2:checked + .selectoroption,
+  .selector input#option1:checked + .selectoroption {
+    color: var(--surface);
+  }
 }
