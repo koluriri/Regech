@@ -1,0 +1,25 @@
+.textarea {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px;
+  font-size: var(--text-lg);
+  line-height: 26px;
+  text-align: center;
+  resize: vertical;
+  background: var(--background);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-inset-sm);
+}
+
+.textarea:focus,
+.textarea:active:focus,
+.textarea.active:focus,
+.textarea.focus,
+.textarea:active.focus,
+.textarea.active.focus {
+  outline: 4px solid #0066ff46;
+  outline-offset: 2px;
+}
