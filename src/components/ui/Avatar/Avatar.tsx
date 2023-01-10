@@ -4,8 +4,8 @@ import styles from './Avatar.module.css';
 
 export type PropType = {
   src?: string;
-  username: string;
-  screenname: string;
+  username?: string;
+  screenname?: string;
   mini?: boolean;
 };
 
