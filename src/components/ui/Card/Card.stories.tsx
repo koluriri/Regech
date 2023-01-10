@@ -11,6 +11,7 @@ import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
 import GachaDetail from '../GachaDetail/GachaDetail';
 import GachaItem from '../GachaItem/GachaItem';
+import RegexGuide from '../RegexGuide/RegexGuide';
 import Selector from '../Selector/Selector';
 import Textarea from '../Textarea/Textarea';
 import Card, { PropType } from './Card';
@@ -27,9 +28,14 @@ Default.args = {
     <>
       <CardHeader>
         <IconPencil />
-        ガチャを作る
+        ガチャをつくる
       </CardHeader>
       <Textarea placeholder="正規表現を入力" />
+      <RegexGuide
+        insertTextarea={(text: string) => {
+          alert(text);
+        }}
+      />
       <Selector
         handleChange={(val: string) => {
           console.log(val);
@@ -37,15 +43,28 @@ Default.args = {
       />
       <Button block variant="primary">
         <IconPlay />
-        ガチャを引く
+        ガチャをまわす
       </Button>
     </>
   ),
   hint: (
     <>
-      正規表現にマッチする
-      <br />
-      ランダムな文字列が生成されます。
+      <p>
+        正規表現にマッチする
+        <br />
+        ランダムな文字列が生成されます。
+        <br />
+        <b>例</b> <code>(にゃん?)+</code>→
+        <code className="blue">にゃにゃんにゃんにゃ</code>
+      </p>
+      <p>
+        おもしろいガチャができたら
+        <br />
+        投稿してみんなであそぼう！
+        <br />
+        ※投稿するにはTwitterログインが必要です。
+      </p>
+      <p>正規表現の学習にもおすすめです。</p>
     </>
   ),
 };
@@ -55,7 +74,7 @@ Post.args = {
   children: (
     <>
       <CardHeader>
-        <span>Emoticon Generator</span>
+        <span>ねこ語ジェネレーター</span>
         <GachaDetail
           center
           created="2023/01/10 14:25:42"
@@ -74,7 +93,7 @@ Post.args = {
       />
       <Button block variant="primary">
         <IconPlay />
-        ガチャを引く
+        ガチャをまわす
       </Button>
     </>
   ),
@@ -96,8 +115,8 @@ Ranking.args = {
         }
         icon={<IconRankingOne />}
         id={1}
-        preview=":D"
-        title="Emoticon Generator"
+        preview="にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん"
+        title="ねこ語ジェネレーター"
       />
       <GachaItem
         detail={
@@ -110,8 +129,8 @@ Ranking.args = {
         }
         icon={<IconRankingTwo />}
         id={1}
-        preview=":D"
-        title="Emoticon Generator"
+        preview="にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん"
+        title="ねこ語ジェネレーター"
       />
       <GachaItem
         detail={
@@ -124,8 +143,8 @@ Ranking.args = {
         }
         icon={<IconRankingThree />}
         id={1}
-        preview=":D"
-        title="Emoticon Generator"
+        preview="にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん"
+        title="ねこ語ジェネレーター"
       />
       <GachaItem
         detail={
@@ -137,8 +156,8 @@ Ranking.args = {
           />
         }
         id={1}
-        preview=":D"
-        title="Emoticon Generator"
+        preview="にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん"
+        title="ねこ語ジェネレーター"
       />
       <GachaItem
         detail={
@@ -150,8 +169,8 @@ Ranking.args = {
           />
         }
         id={1}
-        preview=":D"
-        title="Emoticon Generator"
+        preview="にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん"
+        title="ねこ語ジェネレーター"
       />
       <GachaItem
         detail={
@@ -163,8 +182,8 @@ Ranking.args = {
           />
         }
         id={1}
-        preview=":D"
-        title="Emoticon Generator"
+        preview="にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん"
+        title="ねこ語ジェネレーター"
       />
     </>
   ),

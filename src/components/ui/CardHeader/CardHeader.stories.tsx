@@ -14,7 +14,7 @@ Default.args = {
   children: (
     <>
       <IconPencil />
-      ガチャを作る
+      ガチャをつくる
     </>
   ),
 };

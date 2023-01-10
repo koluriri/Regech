@@ -9,7 +9,7 @@
   --text-on-color: #fff;
   --toggle-btn-color: var(--on-surface);
   --toggle-btn: #dfaf3e;
-  --toggle-btn-bg: #d8d8d8;
+  --toggle-btn-bg: #e4e8f0;
   --default-btn-color: #9a0000;
   --primary-btn-bg: linear-gradient(45deg, #b51409 0%, #efae2d 50%, #46b4ab 100%);
   --secondary-btn-bg: linear-gradient(90deg, #efae2d 0%, #d9d9d9 100%);
@@ -88,10 +88,35 @@ html {
 a {
   color: var(--text-link);
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+code {
+  padding: 1px 4px;
+  color: var(--text-link);
+  background: #ffd3d2;
+  border-radius: 4px;
+}
+
+code.blue {
+  color: var(--blue);
+  background: #c8cdfe;
+}
+
+hr {
+  width: 130px;
+  max-width: 95%;
+  margin: 20px auto;
+  border: 0;
+  border-bottom: 2px solid #fff;
+}
+
+p + p {
+  margin-top: 18px;
 }
 
 svg {

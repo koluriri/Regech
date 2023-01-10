@@ -24,7 +24,7 @@ Primary.args = {
   children: (
     <>
       <IconPlay />
-      ガチャを引く
+      ガチャをまわす
     </>
   ),
 };
@@ -53,7 +53,7 @@ Block.args = {
   children: (
     <>
       <IconPlay />
-      ガチャを引く
+      ガチャをまわす
     </>
   ),
 };

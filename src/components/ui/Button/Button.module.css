@@ -71,6 +71,7 @@
 .caption {
   margin-left: 4px;
   font-size: var(--text-sm);
+  font-weight: normal;
   color: var(--secondary);
 }
 
