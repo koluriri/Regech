@@ -41,6 +41,16 @@
   --button-background: var(--surface);
 }
 
+.sky {
+  --button-text-color: #fff;
+  --button-background: var(--sky);
+}
+
+.blue {
+  --button-text-color: #fff;
+  --button-background: var(--blue);
+}
+
 @media (prefers-color-scheme: dark) {
   .primary,
   .secondary {

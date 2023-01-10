@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes, FC } from 'react';
 import styles from './Button.module.css';
 
 export type PropType = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'default';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'default' | 'sky' | 'blue';
   block?: boolean;
   caption?: string;
 };

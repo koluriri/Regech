@@ -63,3 +63,15 @@ Caption.args = {
   caption: 'aaかbb',
   children: <>(aa|bb)</>,
 };
+
+export const Sky = Template.bind({});
+Sky.args = {
+  variant: 'sky',
+  children: '結果をツイート',
+};
+
+export const Blue = Template.bind({});
+Blue.args = {
+  variant: 'blue',
+  children: '投稿する',
+};

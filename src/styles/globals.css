@@ -21,6 +21,8 @@
   --box-shadow-inset-sm: inset 2px 2px 0 var(--on-surface);
   --border-radius: 8px;
   --border-radius-full: 625rem;
+  --sky: #00a4fd;
+  --blue: #0d20fc;
 
   /*  Text Styles */
   --text-sans-serif:
