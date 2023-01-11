@@ -11,7 +11,7 @@
 .gachaitemincludesicon {
   grid-template-columns: 40px 1fr 110px;
   padding: 13px;
-  background: #f3eac6;
+  background: var(--ranking-top-bg);
   border-radius: var(--border-radius);
 }
 

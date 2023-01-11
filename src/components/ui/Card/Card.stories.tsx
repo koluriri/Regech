@@ -13,6 +13,7 @@ import GachaDetail from '../GachaDetail/GachaDetail';
 import GachaItem from '../GachaItem/GachaItem';
 import RegexGuide from '../RegexGuide/RegexGuide';
 import Selector from '../Selector/Selector';
+import TabHeader from '../TabHeader/TabHeader';
 import Textarea from '../Textarea/Textarea';
 import Card, { PropType } from './Card';
 
@@ -103,7 +104,11 @@ export const Ranking = Template.bind({});
 Ranking.args = {
   children: (
     <>
-      ランキング
+      <TabHeader
+        active={1}
+        items={['新着投稿', 'ランキング']}
+        links={['#latest', '#ranking']}
+      />
       <GachaItem
         detail={
           <GachaDetail

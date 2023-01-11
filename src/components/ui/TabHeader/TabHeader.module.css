@@ -1,0 +1,23 @@
+.tabheader {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.item a {
+  font-weight: bold;
+  color: var(--on-surface);
+  opacity: 0.5;
+}
+
+.active a {
+  pointer-events: none;
+  opacity: 1;
+}
+
+.item a:hover {
+  text-decoration: none;
+  opacity: 0.6;
+}

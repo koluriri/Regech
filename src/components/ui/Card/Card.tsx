@@ -5,7 +5,7 @@ import CardHeader from '../CardHeader/CardHeader';
 import styles from './Card.module.css';
 
 export type PropType = {
-  hint: ReactNode;
+  hint?: ReactNode;
   children: ReactNode;
 };
 

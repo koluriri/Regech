@@ -25,6 +25,7 @@
   --border-radius-full: 625rem;
   --sky: #00a4fd;
   --blue: #0d20fc;
+  --ranking-top-bg: #f3eac6;
 
   /*  Text Styles */
   --text-sans-serif:
@@ -213,7 +214,7 @@ svg {
   :root {
     --surface: #0c0c0f;
     --background: #171926;
-    --secondary: #737373;
+    --secondary: #737a8d;
     --on-surface: #dae1ee;
     --text-on-color: #fff;
     --toggle-btn-color: #fff;
@@ -221,6 +222,7 @@ svg {
     --default-btn-color: #ff7070;
     --border-color: #494d62;
     --secondary-btn-bg: linear-gradient(90deg, #efae2d 0%, #494d62 100%);
+    --ranking-top-bg: #3a2f06;
   }
 
   .selector input#option2:checked + .selectoroption,
