@@ -3,11 +3,12 @@ import { FC, ReactNode } from 'react';
 import { IconPlay } from '../../Icon';
 import Button from '../Button/Button';
 import styles from './GachaItem.module.css';
+import GachaPreview from './GachaPreview/GachaPreview';
 
 export type PropType = {
   icon?: ReactNode;
   title: string;
-  preview: string;
+  preview: string[];
   detail: ReactNode;
   id: number;
 };
@@ -21,7 +22,9 @@ const GachaItem: FC<PropType> = ({ icon, title, preview, detail, id }) => (
     {!!icon && <div className={styles.icon}>{icon}</div>}
     <div className={styles.body}>
       <div className={styles.title}>{title}</div>
-      <div className={styles.preview}>{preview}</div>
+      <div className={styles.preview}>
+        <GachaPreview preview={preview} />
+      </div>
       {detail}
     </div>
     <div className={styles.btn}>

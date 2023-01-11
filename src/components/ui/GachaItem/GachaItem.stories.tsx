@@ -12,7 +12,7 @@ const Template: Story<PropType> = (args) => <GachaItem {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   title: 'Emoticon Generator',
-  preview: ':D',
+  preview: [':D', 'XD', ':(', ';(', ';)', ';D'],
   id: 1,
   detail: (
     <GachaDetail
@@ -28,7 +28,7 @@ export const Icon = Template.bind({});
 Icon.args = {
   icon: <IconRankingOne />,
   title: 'Emoticon Generator',
-  preview: ':D',
+  preview: [':D', 'XD', ':(', ';(', ';)', ';D'],
   id: 1,
   detail: (
     <GachaDetail
@@ -44,7 +44,7 @@ export const Icon2 = Template.bind({});
 Icon2.args = {
   icon: <IconRankingTwo />,
   title: 'Emoticon Generator',
-  preview: ':D',
+  preview: [':D', 'XD', ':(', ';(', ';)', ';D'],
   id: 1,
   detail: (
     <GachaDetail

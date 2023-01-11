@@ -1,14 +1,28 @@
 .regexguide {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 18px;
   padding: 13px;
   font-size: var(--text-sm);
   font-weight: bold;
   color: var(--secondary);
   background: var(--toggle-btn-bg);
   border-radius: var(--border-radius);
+
+  /*
+  overflow: hidden;
+  animation: slide-in 0.4s ease-in-out 1; */
 }
+
+/* @keyframes slide-in {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: fit-content;
+  }
+} */
 
 .link {
   font-size: var(--text-sm);
@@ -25,4 +39,8 @@
 
 .caption {
   text-align: center;
+}
+
+.guide {
+  margin-top: 25px;
 }

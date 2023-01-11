@@ -21,17 +21,6 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 500px) {
-  .gachaitem,
-  .gachaitemincludesicon {
-    grid-template-columns: 1fr;
-  }
-
-  .icon {
-    /* grid-column: 1 / 3 */
-  }
-}
-
 .icon svg {
   width: 40px;
 }
@@ -49,9 +38,37 @@
 .title {
   font-size: var(--text-md);
   font-weight: bold;
-  text-align: left;
 }
 
 .preview {
   font-size: var(--text-sm);
+}
+
+.preview span {
+  display: block;
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 500px) {
+  .gachaitem,
+  .gachaitemincludesicon {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .icon {
+    /* grid-column: 1 / 3 */
+  }
+
+  .preview + div {
+    justify-content: center;
+  }
+
+  .preview span {
+    width: 50vw;
+    margin: 0 auto;
+  }
 }

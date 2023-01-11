@@ -13,6 +13,24 @@ export type PropType = {
 const RegexGuide: FC<PropType> = ({ insertTextarea }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const keys = [
+    { key: '', value: '(' },
+    { key: '', value: ')' },
+    { key: '', value: '[' },
+    { key: '', value: ']' },
+    { key: '', value: '{' },
+    { key: '', value: '}' },
+    { key: '', value: ',' },
+    { key: '', value: '.' },
+    { key: '', value: '+' },
+    { key: '', value: '?' },
+    { key: '', value: '*' },
+    { key: '', value: 'A-Z' },
+    { key: '', value: 'a-z' },
+    { key: '', value: '0-9' },
+    { key: '', value: 'あ-ん' },
+    { key: '', value: 'ア-ン' },
+  ];
   const buttons = [
     { key: '任意の一文字', value: '.' },
     { key: 'aaかbbかcc', value: '(aa|bb|cc)' },
@@ -29,18 +47,31 @@ const RegexGuide: FC<PropType> = ({ insertTextarea }) => {
   if (!isOpen)
     return (
       <div className={styles.link}>
-        <a onClick={() => setIsOpen(true)}>正規表現ガイドを開く</a>
+        <a onClick={() => setIsOpen(true)}>正規表現キーボード/ガイドを開く</a>
       </div>
     );
 
   return (
     <div className={`${styles.regexguide}`}>
       <div className={styles.link}>
-        <a onClick={() => setIsOpen(false)}>正規表現ガイドを閉じる</a>
+        <a onClick={() => setIsOpen(false)}>
+          正規表現キーボード/ガイドを閉じる
+        </a>
       </div>
       <div className={styles.body}>
+        {keys.map((guide) => (
+          <Button
+            onClick={() => insertTextarea(guide.value)}
+            caption={guide.key}
+          >
+            {guide.value}
+          </Button>
+        ))}
+      </div>
+      <div className={`${styles.body} ${styles.guide}`}>
         {buttons.map((guide) => (
           <Button
+            variant="simple"
             onClick={() => insertTextarea(guide.value)}
             caption={guide.key}
           >

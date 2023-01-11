@@ -29,9 +29,9 @@
   /*  Text Styles */
   --text-sans-serif:
     poppins,
+    'Noto Sans JP',
     -apple-system,
     'BlinkMacSystemFont',
-    'Noto Sans JP',
     'Segoe UI',
     sans-serif;
   --text-xxs: 0.65rem;

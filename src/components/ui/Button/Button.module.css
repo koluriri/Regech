@@ -51,6 +51,13 @@
   --button-background: var(--blue);
 }
 
+.simple {
+  pointer-events: none;
+  user-select: none;
+  border: 0;
+  box-shadow: none;
+}
+
 @media (prefers-color-scheme: dark) {
   .primary,
   .secondary {
