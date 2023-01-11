@@ -206,6 +206,62 @@ svg {
   opacity: 1;
 }
 
+/* text */
+#vertical {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95vw;
+  max-width: 460px;
+  height: 100vh;
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.displaytext-animation {
+  z-index: 200;
+  transform: rotateX(0deg) rotateY(0deg);
+  animation: 1.5s linear 0s infinite normal rotate-vertical;
+}
+
+@keyframes rotate-vertical {
+  0% {
+    transform: rotateX(-82deg) rotateY(0deg);
+  }
+
+  15% {
+    transform: rotateX(6deg) rotateY(0deg);
+  }
+
+  50% {
+    transform: rotateX(-3deg) rotateY(0deg);
+  }
+
+  90% {
+    transform: rotateX(-6deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateX(82deg) rotateY(0deg);
+  }
+}
+
+.displaytext-animation span:not(:first-child) {
+  color: #171926;
+}
+
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
