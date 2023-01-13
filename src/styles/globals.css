@@ -25,6 +25,7 @@
   --border-radius-full: 625rem;
   --sky: #00a4fd;
   --blue: #0d20fc;
+  --teal: #46b4ab;
   --ranking-top-bg: #f3eac6;
 
   /*  Text Styles */
@@ -122,6 +123,18 @@ p + p {
 
 svg {
   fill: currentcolor;
+}
+
+.text-red {
+  color: var(--default-btn-color);
+}
+
+.text-yellow {
+  color: var(--toggle-btn);
+}
+
+.text-teal {
+  color: var(--teal);
 }
 
 .selector {
