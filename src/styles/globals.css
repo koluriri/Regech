@@ -215,7 +215,7 @@ svg {
   width: 95vw;
   max-width: 460px;
   height: 100vh;
-  font-size: 30px;
+  font-size: 35px;
   font-weight: bold;
   color: #fff;
   text-align: center;
@@ -229,11 +229,11 @@ svg {
 
 @keyframes rotate-vertical {
   0% {
-    transform: rotateX(-82deg) rotateY(0deg);
+    transform: rotateX(-82deg) rotateY(0deg) scale(0);
   }
 
   15% {
-    transform: rotateX(6deg) rotateY(0deg);
+    transform: rotateX(6deg) rotateY(0deg) scale(1);
   }
 
   50% {
@@ -241,11 +241,11 @@ svg {
   }
 
   90% {
-    transform: rotateX(-6deg) rotateY(0deg);
+    transform: rotateX(-6deg) rotateY(0deg) scale(1);
   }
 
   100% {
-    transform: rotateX(82deg) rotateY(0deg);
+    transform: rotateX(82deg) rotateY(0deg) scale(1.5);
   }
 }
 
