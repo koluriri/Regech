@@ -3,11 +3,19 @@
   flex-direction: row;
   gap: 8px;
   justify-content: center;
+  width: fit-content;
+  margin: 0 auto 20px;
   font-size: 18px;
   font-weight: bold;
   color: var(--on-surface);
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .logo svg {
   height: 26px;
+}
+
+.logo:hover {
+  transform: scale(1.03);
 }

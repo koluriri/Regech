@@ -1,13 +1,32 @@
-/* eslint-disable react/require-default-props */
-import { FC, ReactNode } from 'react';
+import { useRouter } from 'next/router';
+import { FC } from 'react';
+import { IconPencil } from '../../Icon';
+import Button from '../Button/Button';
 import styles from './Hero.module.css';
 
-export type PropType = {
-  children: ReactNode;
-};
+const Hero: FC = () => {
+  const router = useRouter();
 
-const Hero: FC<PropType> = ({ children }) => (
-  <div className={`${styles.hero}`}>{children}</div>
-);
+  return (
+    <div className={`${styles.hero}`}>
+      <span>
+        正規表現を
+        <span className="text-red">書いて</span>
+      </span>
+      <span>
+        ガチャを
+        <span className="text-yellow">まわそう</span>
+      </span>
+      <span>
+        <span className="text-teal">投稿</span>
+        しよう
+      </span>
+      <Button variant="secondary" onClick={() => router.push('/create')}>
+        <IconPencil />
+        ガチャをつくる
+      </Button>
+    </div>
+  );
+};
 
 export default Hero;
