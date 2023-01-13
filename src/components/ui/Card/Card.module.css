@@ -1,0 +1,34 @@
+.card {
+  width: 560px;
+  max-width: 100%;
+  margin: 0 auto;
+  color: var(--on-surface);
+  text-align: center;
+  background: var(--background);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.body,
+.hint {
+  padding: 24px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.hint {
+  background: var(--secondary-btn-bg);
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hint {
+    color: var(--surface);
+  }
+}

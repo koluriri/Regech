@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;900&family=Poppins:wght@500;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&family=Poppins:wght@500;600&display=swap';
 
 :root {
   /* Colors */
@@ -9,21 +9,31 @@
   --text-on-color: #fff;
   --toggle-btn-color: var(--on-surface);
   --toggle-btn: #dfaf3e;
-  --toggle-btn-bg: #d8d8d8;
+  --toggle-btn-bg: #e4e8f0;
   --default-btn-color: #9a0000;
   --primary-btn-bg: linear-gradient(45deg, #b51409 0%, #efae2d 50%, #46b4ab 100%);
-  --secondary-btn-bg: linear-gradient(45deg, #efae2d 0%, #d9d9d9 100%);
-  --text-link: #9a0000;
-  --border: 2px solid #171926;
-  --box-shadow: 4px 4px 0 #171926;
+  --secondary-btn-bg: linear-gradient(90deg, #efae2d 0%, #d9d9d9 100%);
+  --hint-bg: var(--secondary-btn-bg);
+  --text-link: var(--default-btn-color);
+  --border-color: var(--on-surface);
+  --border: 2px solid var(--border-color);
+  --box-shadow-lg: 4px 4px 0 var(--border-color);
+  --box-shadow-sm: 2px 2px 0 var(--border-color);
+  --box-shadow-inset: inset 4px 4px 0 var(--border-color);
+  --box-shadow-inset-sm: inset 2px 2px 0 var(--border-color);
   --border-radius: 8px;
+  --border-radius-full: 625rem;
+  --sky: #00a4fd;
+  --blue: #0d20fc;
+  --teal: #46b4ab;
+  --ranking-top-bg: #f3eac6;
 
   /*  Text Styles */
   --text-sans-serif:
     poppins,
+    'Noto Sans JP',
     -apple-system,
     'BlinkMacSystemFont',
-    'Noto Sans JP',
     'Segoe UI',
     sans-serif;
   --text-xxs: 0.65rem;
@@ -61,22 +71,6 @@
   --opacity-100: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-
-  :root {
-    --surface: #171926;
-    --background: #2e303a;
-    --secondary: #737373;
-    --on-surface: #dae1ee;
-    --text-on-color: #fff;
-    --toggle-btn-color: #fff;
-    --toggle-btn-bg: #3c3d42;
-  }
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -96,8 +90,212 @@ html {
 a {
   color: var(--text-link);
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+code {
+  padding: 1px 4px;
+  color: var(--text-link);
+  background: #ffd3d2;
+  border-radius: 4px;
+}
+
+code.blue {
+  color: var(--blue);
+  background: #c8cdfe;
+}
+
+hr {
+  width: 130px;
+  max-width: 95%;
+  margin: 20px auto;
+  border: 0;
+  border-bottom: 2px solid #fff;
+}
+
+p + p {
+  margin-top: 18px;
+}
+
+svg {
+  fill: currentcolor;
+}
+
+.text-red {
+  color: var(--default-btn-color);
+}
+
+.text-yellow {
+  color: var(--toggle-btn);
+}
+
+.text-teal {
+  color: var(--teal);
+}
+
+.selector {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40px;
+  background: var(--toggle-btn-bg);
+  border-radius: 8px;
+}
+
+.selector input[type='radio'] {
+  display: none;
+}
+
+.selector input[type='radio'] + .selectoroption {
+  position: relative;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 40px;
+  font-weight: bold;
+  color: var(--toggle-btn-color);
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.2s;
+}
+
+.selector input[type='radio']:checked + .selectoroption {
+  opacity: 1;
+}
+
+.selector input[type='radio']:not(:checked) + .selectoroption:hover {
+  opacity: 1;
+  transform: scale(1.075);
+}
+
+.selector input[type='radio'] + .selectoroption svg {
+  height: 30px;
+}
+
+.selector input[type='radio']:checked + .selectoroption svg {
+  animation: wiggle 0.4s ease-in-out 2;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(-20deg) scale(1.05);
+  }
+}
+
+.buttonbg {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  box-sizing: border-box;
+  display: block;
+  width: 50%;
+  height: 40px;
+  background: var(--toggle-btn);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  opacity: 0;
+  transition: 0.4s cubic-bezier(0.63, -0.39, 0.41, 1.35);
+}
+
+.selector input#option2:checked + .selectoroption + .buttonbg {
+  left: 50%;
+  opacity: 1;
+}
+
+.selector input#option1:checked + .selectoroption + input + .selectoroption + .buttonbg {
+  left: 0;
+  opacity: 1;
+}
+
+/* text */
+#vertical {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95vw;
+  max-width: 460px;
+  height: 100vh;
+  font-size: 35px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.displaytext-animation {
+  z-index: 200;
+  transform: rotateX(0deg) rotateY(0deg);
+  animation: 1.5s linear 0s infinite normal rotate-vertical;
+}
+
+@keyframes rotate-vertical {
+  0% {
+    transform: rotateX(-82deg) rotateY(0deg) scale(0);
+  }
+
+  15% {
+    transform: rotateX(6deg) rotateY(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotateX(-3deg) rotateY(0deg);
+  }
+
+  90% {
+    transform: rotateX(-6deg) rotateY(0deg) scale(1);
+  }
+
+  100% {
+    transform: rotateX(82deg) rotateY(0deg) scale(1.5);
+  }
+}
+
+.displaytext-animation span:not(:first-child) {
+  color: #171926;
+}
+
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+  :root {
+    --surface: #0c0c0f;
+    --background: #171926;
+    --secondary: #737a8d;
+    --on-surface: #dae1ee;
+    --text-on-color: #fff;
+    --toggle-btn-color: #fff;
+    --toggle-btn-bg: var(--border-color);
+    --default-btn-color: #ff7070;
+    --border-color: #494d62;
+    --secondary-btn-bg: linear-gradient(90deg, #efae2d 0%, #494d62 100%);
+    --ranking-top-bg: #3a2f06;
+  }
+
+  .selector input#option2:checked + .selectoroption,
+  .selector input#option1:checked + .selectoroption {
+    color: var(--surface);
+  }
 }

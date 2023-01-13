@@ -1,0 +1,24 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  padding: 25px 5px;
+  font-size: var(--text-xl);
+  font-weight: bold;
+  text-align: center;
+}
+
+.hero > span {
+  display: block;
+  width: fit-content;
+  padding: 2px;
+  line-height: 1;
+  color: var(--on-surface);
+  letter-spacing: 1px;
+  background: var(--background);
+}
+
+.hero button {
+  margin-top: 10px;
+}

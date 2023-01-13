@@ -1,0 +1,22 @@
+.input {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  font-size: var(--text-lg);
+  line-height: 26px;
+  text-align: center;
+  background: var(--background);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-inset-sm);
+}
+
+.input:focus,
+.input:active:focus,
+.input.active:focus,
+.input.focus,
+.input:active.focus,
+.input.active.focus {
+  outline: 4px solid #0066ff46;
+  outline-offset: 2px;
+}

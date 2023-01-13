@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background:
+    repeating-conic-gradient(
+      #efae2d,
+      #efae2d 9deg,
+      #9a0000 9deg 18deg
+    );
+  transform-origin: center center;
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) scale(3);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(3);
+  }
+}

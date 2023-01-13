@@ -1,0 +1,20 @@
+.gachadetail {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0 2px;
+  align-items: center;
+  font-weight: normal;
+}
+
+.center {
+  justify-content: center;
+}
+
+.icondetail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: var(--text-sm);
+  font-weight: normal;
+  color: var(--secondary);
+}
