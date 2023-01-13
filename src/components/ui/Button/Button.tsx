@@ -1,5 +1,6 @@
 /* eslint-disable react/require-default-props */
 import { ButtonHTMLAttributes, FC } from 'react';
+import clsx from 'clsx';
 import styles from './Button.module.css';
 
 export type PropType = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -21,17 +22,15 @@ const Button: FC<PropType> = ({
   block = false,
   caption = '',
   ...props
-}) => (
-  <button
-    type="button"
-    className={`${styles.button} ${styles[variant]} ${
-      block ? styles.block : ''
-    }`}
-    {...props}
-  >
-    {children}
-    {caption !== '' && <span className={styles.caption}>{caption}</span>}
-  </button>
-);
+}) => {
+  const cls = clsx([styles.button, styles[variant], block && styles.block]);
+
+  return (
+    <button type="button" className={cls} {...props}>
+      {children}
+      {caption !== '' && <span className={styles.caption}>{caption}</span>}
+    </button>
+  );
+};
 
 export default Button;

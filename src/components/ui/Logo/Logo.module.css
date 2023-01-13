@@ -3,7 +3,6 @@
   flex-direction: row;
   gap: 8px;
   justify-content: center;
-  padding: 10px 0;
   font-size: 18px;
   font-weight: bold;
   color: var(--on-surface);

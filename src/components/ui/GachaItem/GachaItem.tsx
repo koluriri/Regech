@@ -1,5 +1,6 @@
 /* eslint-disable react/require-default-props */
 import { FC, ReactNode } from 'react';
+import clsx from 'clsx';
 import { IconPlay } from '../../Icon';
 import Button from '../Button/Button';
 import styles from './GachaItem.module.css';
@@ -13,27 +14,27 @@ export type PropType = {
   id: number;
 };
 
-const GachaItem: FC<PropType> = ({ icon, title, preview, detail, id }) => (
-  <div
-    className={`${styles.gachaitem} ${
-      icon ? styles.gachaitemincludesicon : ''
-    }`}
-  >
-    {!!icon && <div className={styles.icon}>{icon}</div>}
-    <div className={styles.body}>
-      <div className={styles.title}>{title}</div>
-      <div className={styles.preview}>
-        <GachaPreview preview={preview} />
+const GachaItem: FC<PropType> = ({ icon, title, preview, detail, id }) => {
+  const cls = clsx([styles.gachaitem, icon && styles.gachaitemincludesicon]);
+
+  return (
+    <div className={cls}>
+      {!!icon && <div className={styles.icon}>{icon}</div>}
+      <div className={styles.body}>
+        <div className={styles.title}>{title}</div>
+        <div className={styles.preview}>
+          <GachaPreview preview={preview} />
+        </div>
+        {detail}
       </div>
-      {detail}
+      <div className={styles.btn}>
+        <Button variant="default" onClick={() => alert(id)}>
+          <IconPlay />
+          あそぶ
+        </Button>
+      </div>
     </div>
-    <div className={styles.btn}>
-      <Button variant="default" onClick={() => alert(id)}>
-        <IconPlay />
-        あそぶ
-      </Button>
-    </div>
-  </div>
-);
+  );
+};
 
 export default GachaItem;

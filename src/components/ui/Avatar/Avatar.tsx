@@ -1,5 +1,6 @@
 /* eslint-disable react/require-default-props */
 import { FC } from 'react';
+import clsx from 'clsx';
 import styles from './Avatar.module.css';
 
 export type PropType = {
@@ -9,14 +10,18 @@ export type PropType = {
   mini?: boolean;
 };
 
-const Avatar: FC<PropType> = ({ src, username, screenname, mini = false }) => (
-  <div className={`${styles.avatar} ${mini ? styles.mini : ''}`}>
-    <div>{!!src && <img src={src} alt="" />}</div>
-    <div className={styles.avatardetail}>
-      {username && <span className={styles.username}>{username}</span>}
-      {screenname && <span className={styles.screenname}>{screenname}</span>}
+const Avatar: FC<PropType> = ({ src, username, screenname, mini = false }) => {
+  const cls = clsx([styles.avatar, mini && styles.mini]);
+
+  return (
+    <div className={cls}>
+      <div>{!!src && <img src={src} alt="" />}</div>
+      <div className={styles.avatardetail}>
+        {username && <span className={styles.username}>{username}</span>}
+        {screenname && <span className={styles.screenname}>{screenname}</span>}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Avatar;

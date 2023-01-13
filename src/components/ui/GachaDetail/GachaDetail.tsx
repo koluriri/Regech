@@ -1,6 +1,7 @@
 /* eslint-disable react/require-default-props */
-import moment from 'moment';
 import { FC } from 'react';
+import clsx from 'clsx';
+import useAgoText from '../../../hooks/useAgoText';
 import { IconPlay, IconTime } from '../../Icon';
 import Avatar from '../Avatar/Avatar';
 import styles from './GachaDetail.module.css';
@@ -13,25 +14,29 @@ export type PropType = {
   center?: boolean;
 };
 
-moment.locale('ja');
-
 const GachaDetail: FC<PropType> = ({
   src,
   name,
   playCount,
   created,
   center = false,
-}) => (
-  <div className={`${styles.gachadetail} ${center ? styles.center : ''}`}>
-    <Avatar src={src} screenname={name} mini />
-    <span className={styles.icondetail}>
-      <IconPlay fill="var(--secondary)" width={18} height={18} /> {playCount}
-    </span>
-    <span className={styles.icondetail}>
-      <IconTime fill="var(--secondary)" width={18} height={18} />{' '}
-      {moment(created).fromNow()}
-    </span>
-  </div>
-);
+}) => {
+  const agoText = useAgoText();
+
+  const cls = clsx([styles.gachadetail, center && styles.center]);
+
+  return (
+    <div className={cls}>
+      <Avatar src={src} screenname={name} mini />
+      <span className={styles.icondetail}>
+        <IconPlay fill="var(--secondary)" width={18} height={18} /> {playCount}
+      </span>
+      <span className={styles.icondetail}>
+        <IconTime fill="var(--secondary)" width={18} height={18} />{' '}
+        {agoText(created)}
+      </span>
+    </div>
+  );
+};
 
 export default GachaDetail;
