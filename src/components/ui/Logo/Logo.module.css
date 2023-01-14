@@ -8,6 +8,7 @@
   font-size: 18px;
   font-weight: bold;
   color: var(--on-surface);
+  white-space: nowrap;
   cursor: pointer;
   transition: 0.2s;
 }
