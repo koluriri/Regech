@@ -1,0 +1,15 @@
+.displayresult {
+  font-size: var(--text-xl);
+  font-weight: bold;
+}
+
+.displayresult span {
+  display: block;
+  padding: 5px 0;
+  line-height: 1.25;
+  text-shadow: 2px 2px 0 var(--toggle-btn);
+}
+
+.displayresult span:nth-child(even) {
+  text-shadow: 2px 2px 0 var(--teal);
+}

@@ -6,7 +6,7 @@ import LogoSvg from './LogoSvg';
 
 const Logo: FC = () => (
   <Link href="/">
-    <div className={`${styles.logo}`}>
+    <div className={`${styles.logo}`} id="logo">
       <LogoSvg />
       <span>正規表現ガチャ</span>
     </div>

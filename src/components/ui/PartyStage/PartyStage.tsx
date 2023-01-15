@@ -27,6 +27,16 @@ const PartyStage: FC<PropType> = ({ results }) => {
     return clearTimer;
   }, [results, clearTimer, currentIndex]);
 
+  useEffect(() => {
+    const html = document.getElementsByTagName('html');
+    if (html) html[0].classList.add('partytime');
+
+    return () => {
+      const html = document.getElementsByTagName('html');
+      if (html) html[0].classList.remove('partytime');
+    };
+  }, []);
+
   return (
     <>
       <PartyStageBg />

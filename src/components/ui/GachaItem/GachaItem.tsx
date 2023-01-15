@@ -5,6 +5,7 @@ import { IconPlay } from '../../Icon';
 import Button from '../Button/Button';
 import styles from './GachaItem.module.css';
 import GachaPreview from './GachaPreview/GachaPreview';
+import { useRouter } from 'next/router';
 
 export type PropType = {
   icon?: ReactNode;
@@ -15,10 +16,12 @@ export type PropType = {
 };
 
 const GachaItem: FC<PropType> = ({ icon, title, preview, detail, id }) => {
-  const cls = clsx([styles.gachaitem, icon && styles.gachaitemincludesicon]);
+  const router = useRouter();
 
   return (
-    <div className={cls}>
+    <div
+      className={clsx([styles.gachaitem, icon && styles.gachaitemincludesicon])}
+    >
       {!!icon && <div className={styles.icon}>{icon}</div>}
       <div className={styles.body}>
         <div className={styles.title}>{title}</div>
@@ -28,7 +31,7 @@ const GachaItem: FC<PropType> = ({ icon, title, preview, detail, id }) => {
         {detail}
       </div>
       <div className={styles.btn}>
-        <Button variant="default" onClick={() => alert(id)}>
+        <Button variant="default" onClick={() => router.push('/post')}>
           <IconPlay />
           あそぶ
         </Button>
