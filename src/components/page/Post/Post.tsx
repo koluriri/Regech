@@ -20,8 +20,6 @@ const Post: FC = () => {
         <title>ねこ語ジェネレーター | 正規表現ガチャ</title>
       </Head>
 
-      <Logo />
-
       <CardStack>
         <Card>
           <CardHeader>

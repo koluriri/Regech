@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import { FC, ReactNode } from 'react';
 import styles from './BigText.module.css';
 

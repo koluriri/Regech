@@ -20,8 +20,6 @@ const Result: FC<{ results: string[] }> = ({ results }) => {
         <title>ガチャ結果 | 正規表現ガチャ</title>
       </Head>
 
-      <Logo />
-
       <CardStack>
         <Card>
           <CardHeader>結果が出たよ！</CardHeader>

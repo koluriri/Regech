@@ -4,7 +4,7 @@
   gap: 8px;
   justify-content: center;
   width: fit-content;
-  margin: 0 auto 20px;
+  margin: 2rem auto 20px;
   font-size: 18px;
   font-weight: bold;
   color: var(--on-surface);

@@ -1,0 +1,9 @@
+.footer {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0 15px;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px 20px;
+  background-image: linear-gradient(0deg, var(--surface), transparent);
+}

@@ -18,7 +18,6 @@ const Home: FC = () => (
       <title>正規表現ガチャ | 正規表現でガチャをまわそう</title>
     </Head>
 
-    <Logo />
     <Hero />
 
     <Card>

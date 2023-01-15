@@ -29,8 +29,6 @@ const Party: FC<{
         <title>ガチャまわし中… | 正規表現ガチャ</title>
       </Head>
 
-      <Logo />
-
       <PartyStage results={results} />
 
       <Button

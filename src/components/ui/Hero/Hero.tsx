@@ -38,7 +38,7 @@ const Hero: FC = () => {
   }, []);
 
   return (
-    <div className={`${styles.hero}`}>
+    <h1 className={`${styles.hero}`}>
       <span>
         正規表現を
         <span className="text-red" id="kaite">
@@ -61,7 +61,7 @@ const Hero: FC = () => {
         <IconPencil />
         ガチャをつくる
       </Button>
-    </div>
+    </h1>
   );
 };
 

@@ -95,7 +95,6 @@ html {
 
 body {
   min-height: 100vh;
-  padding-bottom: 60px;
   background: url('/bg.svg');
   background-repeat: repeat;
   background-size: 1000px;
@@ -304,7 +303,7 @@ svg {
 }
 
 .container {
-  padding: 2rem;
+  padding: 0 2rem 2rem;
 }
 
 button#skip {
@@ -324,7 +323,7 @@ button#gotop {
   /* transform: translateX(-50%); */
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -348,4 +347,3 @@ button#gotop {
     color: var(--surface);
   }
 }
-*/

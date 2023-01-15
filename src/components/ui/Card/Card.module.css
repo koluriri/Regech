@@ -48,8 +48,8 @@
   border-bottom-left-radius: 6px;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   .hint {
     color: var(--surface);
   }
-} */
+}

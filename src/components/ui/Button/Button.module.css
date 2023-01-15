@@ -58,12 +58,12 @@
   box-shadow: none;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   .primary,
   .secondary {
     --button-text-color: var(--surface);
   }
-} */
+}
 
 .block {
   width: 100%;
