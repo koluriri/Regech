@@ -19,8 +19,6 @@ const CreateGacha: FC = () => {
         <title>ガチャをつくる | 正規表現ガチャ</title>
       </Head>
 
-      <Logo />
-
       <Card
         hint={
           <>

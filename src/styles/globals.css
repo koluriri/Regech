@@ -95,7 +95,7 @@ html {
 
 body {
   min-height: 100vh;
-  background: url('/bg.svg');
+  background-image: url('/bg.svg');
   background-repeat: repeat;
   background-size: 1000px;
 }
@@ -328,6 +328,10 @@ button#gotop {
     color-scheme: dark;
   }
 
+  body {
+    background-image: url('/bg-dark.svg');
+  }
+
   :root {
     --surface: #0c0c0f;
     --background: #171926;
@@ -345,5 +349,13 @@ button#gotop {
   .selector input#option2:checked + .selectoroption,
   .selector input#option1:checked + .selectoroption {
     color: var(--surface);
+  }
+
+  code {
+    background: #5b2c2a;
+  }
+
+  code.blue {
+    background: #a5a8c5;
   }
 }

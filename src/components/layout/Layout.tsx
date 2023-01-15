@@ -11,6 +11,14 @@ export type PropType = {
 const Layout: FC<PropType> = ({ children }) => (
   <>
     <Head>
+      <meta charSet="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover"
+      />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="mobile-web-app-capable" content="yes" />
+
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -32,6 +40,23 @@ const Layout: FC<PropType> = ({ children }) => (
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#9a0000" />
       <meta name="msapplication-TileColor" content="#dae1ee" />
       <meta name="theme-color" content="#dae1ee" />
+
+      <meta
+        name="description"
+        content="正規表現でガチャをまわそう / Draw lots with RegExp!"
+      />
+      <meta property="og:title" content="正規表現ガチャ: Regech" />
+      <meta
+        property="og:description"
+        content="正規表現でガチャをまわそう / Draw lots with RegExp!"
+      />
+      <meta property="og:url" content="https://regech.app" />
+      <meta property="og:locale" content="ja_JP" />
+      <meta property="og:image" content="https://regech.app/ogp.jpg" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="正規表現ガチャ: Regech" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@koluriri" />
     </Head>
 
     <Logo />
