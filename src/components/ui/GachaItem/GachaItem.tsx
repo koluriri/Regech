@@ -13,9 +13,17 @@ export type PropType = {
   preview: string[];
   detail: ReactNode;
   id: number;
+  animate?: boolean;
 };
 
-const GachaItem: FC<PropType> = ({ icon, title, preview, detail, id }) => {
+const GachaItem: FC<PropType> = ({
+  icon,
+  title,
+  preview,
+  detail,
+  id,
+  animate = true,
+}) => {
   const router = useRouter();
 
   return (
@@ -26,7 +34,11 @@ const GachaItem: FC<PropType> = ({ icon, title, preview, detail, id }) => {
       <div className={styles.body}>
         <div className={styles.title}>{title}</div>
         <div className={styles.preview}>
-          <GachaPreview preview={preview} />
+          {animate ? (
+            <GachaPreview preview={preview} />
+          ) : (
+            <span>{preview}</span>
+          )}
         </div>
         {detail}
       </div>

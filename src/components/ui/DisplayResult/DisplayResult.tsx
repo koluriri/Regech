@@ -1,6 +1,7 @@
 /* eslint-disable react/require-default-props */
 import { FC } from 'react';
 import styles from './DisplayResult.module.css';
+import DisplayResultLine from './DisplayResultLine';
 
 export type PropType = {
   results: string[];
@@ -9,7 +10,7 @@ export type PropType = {
 const DisplayResult: FC<PropType> = ({ results }) => (
   <div className={`${styles.displayresult}`}>
     {results.map((line) => (
-      <span>{line}</span>
+      <DisplayResultLine>{line}</DisplayResultLine>
     ))}
   </div>
 );

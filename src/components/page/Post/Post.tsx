@@ -9,6 +9,8 @@ import CardHeader from '~/components/ui/CardHeader/CardHeader';
 import GachaDetail from '~/components/ui/GachaDetail/GachaDetail';
 import BigText from '~/components/ui/BigText/BigText';
 import Selector from '~/components/ui/Selector/Selector';
+import GachaItem from '~/components/ui/GachaItem/GachaItem';
+import CardStack from '~/components/ui/CardStack/CardStack';
 
 const Post: FC = () => {
   const router = useRouter();
@@ -20,30 +22,99 @@ const Post: FC = () => {
 
       <Logo />
 
-      <Card>
-        <CardHeader>
-          <span>ねこ語ジェネレーター</span>
-          <GachaDetail
-            center
-            created="2023/01/10 14:25:42"
-            name="@koluriri"
-            playCount={23}
-            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+      <CardStack>
+        <Card>
+          <CardHeader>
+            <span>ねこ語ジェネレーター</span>
+            <GachaDetail
+              center
+              created="2023/01/10 14:25:42"
+              name="@koluriri"
+              playCount={23}
+              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+            />
+          </CardHeader>
+          <BigText>
+            {`(:|;|8^|&-|:'-|8-|(:-|:,-|:-|=|X|:*)(D|)|P|e|<|c|0|O|}|o|||(|((|\\\\)`}
+          </BigText>
+          <Selector
+            handleChange={(val: string) => {
+              console.log(val);
+            }}
           />
-        </CardHeader>
-        <BigText>
-          {`(:|;|8^|&-|:'-|8-|(:-|:,-|:-|=|X|:*)(D|)|P|e|<|c|0|O|}|o|||(|((|\\\\)`}
-        </BigText>
-        <Selector
-          handleChange={(val: string) => {
-            console.log(val);
-          }}
-        />
-        <Button block variant="primary" onClick={() => router.push('/party')}>
-          <IconPlay />
-          ガチャをまわす
-        </Button>
-      </Card>
+          <Button block variant="primary" onClick={() => router.push('/party')}>
+            <IconPlay />
+            ガチャをまわす
+          </Button>
+        </Card>
+
+        <Card transparent>
+          <CardHeader>おすすめ</CardHeader>
+          <GachaItem
+            animate={false}
+            detail={
+              <GachaDetail
+                created="2023/01/10 14:25:42"
+                name="@koluriri"
+                playCount={23}
+                src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+              />
+            }
+            id={1}
+            preview={[
+              'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+              'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+              'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+              'にゃにゃにゃん',
+              'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+              'にゃんにゃんにゃんにゃんにゃん',
+            ]}
+            title="ねこ語ジェネレーター"
+          />
+          <GachaItem
+            animate={false}
+            detail={
+              <GachaDetail
+                created="2023/01/10 14:25:42"
+                name="@koluriri"
+                playCount={23}
+                src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+              />
+            }
+            id={1}
+            preview={[
+              'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+              'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+              'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+              'にゃにゃにゃん',
+              'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+              'にゃんにゃんにゃんにゃんにゃん',
+            ]}
+            title="ねこ語ジェネレーター"
+          />
+          <GachaItem
+            animate={false}
+            detail={
+              <GachaDetail
+                created="2023/01/10 14:25:42"
+                name="@koluriri"
+                playCount={23}
+                src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+              />
+            }
+            id={1}
+            preview={[
+              'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+              'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+              'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+              'にゃにゃにゃん',
+              'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+              'にゃんにゃんにゃんにゃんにゃん',
+            ]}
+            title="ねこ語ジェネレーター"
+          />
+        </Card>
+      </CardStack>
 
       <Button variant="tertiary" onClick={() => router.push('/')} id="gotop">
         ← トップへ
