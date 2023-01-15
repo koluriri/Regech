@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/require-default-props */
 import { FC, useState } from 'react';
+import { useLocale } from '~/hooks/useLocale';
 import Button from '../Button/Button';
 import styles from './RegexGuide.module.css';
 
@@ -12,6 +13,7 @@ export type PropType = {
 
 const RegexGuide: FC<PropType> = ({ insertTextarea }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { t } = useLocale();
 
   const keys = [
     { key: '', value: '(' },
@@ -32,31 +34,30 @@ const RegexGuide: FC<PropType> = ({ insertTextarea }) => {
     { key: '', value: 'ア-ン' },
   ];
   const buttons = [
-    { key: '任意の一文字', value: '.' },
-    { key: 'aaかbbかcc', value: '(aa|bb|cc)' },
-    { key: 'abcのいずれか', value: '[abc]' },
-    { key: 'A〜Zのいずれか', value: '[A-Z]' },
-    { key: '0回か1回', value: '?' },
-    { key: '0回以上の繰り返し', value: '*' },
-    { key: '1回以上', value: '+' },
-    { key: 'n回', value: '{n}' },
-    { key: 'n回以上', value: '{n,}' },
-    { key: 'n回以上m回以下', value: '{n,m}' },
+    { key: t.AnySingleCharacter, value: '.' },
+    { key: t.aaOrBbOrCc, value: '(aa|bb|cc)' },
+    { key: t.aOrBOrC, value: '[abc]' },
+    { key: t.UpperCaseLetterFromAToZ, value: '[A-Z]' },
+    { key: t.GROUP, value: '(aaaa)' },
+    { key: t.zeroOrOne, value: '?' },
+    { key: t.zeroOrMore, value: '*' },
+    { key: t.oneOrMore, value: '+' },
+    { key: t.exactlyThree, value: '{3}' },
+    { key: t.ThreeOrMore, value: '{3,}' },
+    { key: t.ThreeToSix, value: '{3,6}' },
   ];
 
   if (!isOpen)
     return (
       <div className={styles.link}>
-        <a onClick={() => setIsOpen(true)}>正規表現キーボード/ガイドを開く</a>
+        <a onClick={() => setIsOpen(true)}>{t.OPEN_GUIDE}</a>
       </div>
     );
 
   return (
     <div className={`${styles.regexguide}`}>
       <div className={styles.link}>
-        <a onClick={() => setIsOpen(false)}>
-          正規表現キーボード/ガイドを閉じる
-        </a>
+        <a onClick={() => setIsOpen(false)}>{t.CLOSE_GUIDE}</a>
       </div>
       <div className={styles.body}>
         {keys.map((guide) => (
@@ -79,7 +80,7 @@ const RegexGuide: FC<PropType> = ({ insertTextarea }) => {
           </Button>
         ))}
       </div>
-      <p className={styles.caption}>その他、キャプチャ等も使用可能</p>
+      <p className={styles.caption}>{t.OTHER_CAPTURE}</p>
     </div>
   );
 };

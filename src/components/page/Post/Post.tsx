@@ -11,13 +11,15 @@ import BigText from '~/components/ui/BigText/BigText';
 import Selector from '~/components/ui/Selector/Selector';
 import GachaItem from '~/components/ui/GachaItem/GachaItem';
 import CardStack from '~/components/ui/CardStack/CardStack';
+import { useLocale } from '~/hooks/useLocale';
 
 const Post: FC = () => {
   const router = useRouter();
+  const { t } = useLocale();
   return (
     <div className="container">
       <Head>
-        <title>ねこ語ジェネレーター | 正規表現ガチャ</title>
+        <title>ねこ語ジェネレーター | {t.LOGO}</title>
       </Head>
 
       <CardStack>
@@ -42,12 +44,12 @@ const Post: FC = () => {
           />
           <Button block variant="primary" onClick={() => router.push('/party')}>
             <IconPlay />
-            ガチャをまわす
+            {t.PLAY_GACHA}
           </Button>
         </Card>
 
         <Card transparent>
-          <CardHeader>おすすめ</CardHeader>
+          <CardHeader>{t.RECOMMENDED}</CardHeader>
           <GachaItem
             animate={false}
             detail={
@@ -115,7 +117,7 @@ const Post: FC = () => {
       </CardStack>
 
       <Button variant="tertiary" onClick={() => router.push('/')} id="gotop">
-        ← トップへ
+        ← {t.GOTOP}
       </Button>
     </div>
   );

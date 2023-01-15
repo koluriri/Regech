@@ -11,146 +11,151 @@ import Card from '~/components/ui/Card/Card';
 import TabHeader from '~/components/ui/TabHeader/TabHeader';
 import GachaItem from '~/components/ui/GachaItem/GachaItem';
 import GachaDetail from '~/components/ui/GachaDetail/GachaDetail';
+import { useLocale } from '~/hooks/useLocale';
 
-const Home: FC = () => (
-  <div className="container">
-    <Head>
-      <title>正規表現ガチャ | 正規表現でガチャをまわそう</title>
-    </Head>
+const Home: FC = () => {
+  const { t } = useLocale();
 
-    <Hero />
+  return (
+    <div className="container">
+      <Head>
+        <title>{t.TITLE}</title>
+      </Head>
 
-    <Card>
-      <TabHeader
-        active={1}
-        items={['新着投稿', 'ランキング']}
-        links={['#latest', '#ranking']}
-      />
-      <GachaItem
-        detail={
-          <GachaDetail
-            created="2023/01/10 14:25:42"
-            name="@koluriri"
-            playCount={23}
-            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-          />
-        }
-        icon={<IconRankingOne />}
-        id={1}
-        preview={[
-          'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-          'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-          'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-          'にゃにゃにゃん',
-          'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-          'にゃんにゃんにゃんにゃんにゃん',
-        ]}
-        title="ねこ語ジェネレーター"
-      />
-      <GachaItem
-        detail={
-          <GachaDetail
-            created="2023/01/10 14:25:42"
-            name="@koluriri"
-            playCount={23}
-            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-          />
-        }
-        icon={<IconRankingTwo />}
-        id={1}
-        preview={[
-          'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-          'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-          'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-          'にゃにゃにゃん',
-          'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-          'にゃんにゃんにゃんにゃんにゃん',
-        ]}
-        title="ねこ語ジェネレーター"
-      />
-      <GachaItem
-        detail={
-          <GachaDetail
-            created="2023/01/10 14:25:42"
-            name="@koluriri"
-            playCount={23}
-            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-          />
-        }
-        icon={<IconRankingThree />}
-        id={1}
-        preview={[
-          'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-          'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-          'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-          'にゃにゃにゃん',
-          'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-          'にゃんにゃんにゃんにゃんにゃん',
-        ]}
-        title="ねこ語ジェネレーター"
-      />
-      <GachaItem
-        detail={
-          <GachaDetail
-            created="2023/01/10 14:25:42"
-            name="@koluriri"
-            playCount={23}
-            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-          />
-        }
-        id={1}
-        preview={[
-          'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-          'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-          'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-          'にゃにゃにゃん',
-          'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-          'にゃんにゃんにゃんにゃんにゃん',
-        ]}
-        title="ねこ語ジェネレーター"
-      />
-      <GachaItem
-        detail={
-          <GachaDetail
-            created="2023/01/10 14:25:42"
-            name="@koluriri"
-            playCount={23}
-            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-          />
-        }
-        id={1}
-        preview={[
-          'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-          'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-          'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-          'にゃにゃにゃん',
-          'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-          'にゃんにゃんにゃんにゃんにゃん',
-        ]}
-        title="ねこ語ジェネレーター"
-      />
-      <GachaItem
-        detail={
-          <GachaDetail
-            created="2023/01/10 14:25:42"
-            name="@koluriri"
-            playCount={23}
-            src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-          />
-        }
-        id={1}
-        preview={[
-          'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-          'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-          'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-          'にゃにゃにゃん',
-          'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-          'にゃんにゃんにゃんにゃんにゃん',
-        ]}
-        title="ねこ語ジェネレーター"
-      />
-    </Card>
-  </div>
-);
+      <Hero />
+
+      <Card>
+        <TabHeader
+          active={1}
+          items={[t.LATEST, t.RANKING]}
+          links={['#latest', '#ranking']}
+        />
+        <GachaItem
+          detail={
+            <GachaDetail
+              created="2023/01/10 14:25:42"
+              name="@koluriri"
+              playCount={23}
+              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+            />
+          }
+          icon={<IconRankingOne />}
+          id={1}
+          preview={[
+            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+            'にゃにゃにゃん',
+            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+            'にゃんにゃんにゃんにゃんにゃん',
+          ]}
+          title="ねこ語ジェネレーター"
+        />
+        <GachaItem
+          detail={
+            <GachaDetail
+              created="2023/01/10 14:25:42"
+              name="@koluriri"
+              playCount={23}
+              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+            />
+          }
+          icon={<IconRankingTwo />}
+          id={1}
+          preview={[
+            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+            'にゃにゃにゃん',
+            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+            'にゃんにゃんにゃんにゃんにゃん',
+          ]}
+          title="ねこ語ジェネレーター"
+        />
+        <GachaItem
+          detail={
+            <GachaDetail
+              created="2023/01/10 14:25:42"
+              name="@koluriri"
+              playCount={23}
+              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+            />
+          }
+          icon={<IconRankingThree />}
+          id={1}
+          preview={[
+            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+            'にゃにゃにゃん',
+            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+            'にゃんにゃんにゃんにゃんにゃん',
+          ]}
+          title="ねこ語ジェネレーター"
+        />
+        <GachaItem
+          detail={
+            <GachaDetail
+              created="2023/01/10 14:25:42"
+              name="@koluriri"
+              playCount={23}
+              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+            />
+          }
+          id={1}
+          preview={[
+            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+            'にゃにゃにゃん',
+            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+            'にゃんにゃんにゃんにゃんにゃん',
+          ]}
+          title="ねこ語ジェネレーター"
+        />
+        <GachaItem
+          detail={
+            <GachaDetail
+              created="2023/01/10 14:25:42"
+              name="@koluriri"
+              playCount={23}
+              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+            />
+          }
+          id={1}
+          preview={[
+            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+            'にゃにゃにゃん',
+            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+            'にゃんにゃんにゃんにゃんにゃん',
+          ]}
+          title="ねこ語ジェネレーター"
+        />
+        <GachaItem
+          detail={
+            <GachaDetail
+              created="2023/01/10 14:25:42"
+              name="@koluriri"
+              playCount={23}
+              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+            />
+          }
+          id={1}
+          preview={[
+            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+            'にゃにゃにゃん',
+            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+            'にゃんにゃんにゃんにゃんにゃん',
+          ]}
+          title="ねこ語ジェネレーター"
+        />
+      </Card>
+    </div>
+  );
+};
 
 export default Home;
