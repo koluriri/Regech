@@ -50,7 +50,7 @@ const CreateGacha: FC = () => {
                 A random string will be generated that matches the regular
                 expression you entered.
                 <br />
-                <b>For example,</b> <code>LOLOLOLOL</code>is generated from the
+                <b>For example,</b> <code>LOLOLOLOL</code>is generated from
                 <code className="blue">L(OL)+</code>.
               </p>
               <p>

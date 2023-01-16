@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FC, ReactNode } from 'react';
 import { useLocale } from '~/hooks/useLocale';
 import Logo from '../ui/Logo/Logo';
@@ -10,6 +11,7 @@ export type PropType = {
 };
 
 const Layout: FC<PropType> = ({ children }) => {
+  const router = useRouter();
   const { t } = useLocale();
 
   return (
@@ -22,6 +24,17 @@ const Layout: FC<PropType> = ({ children }) => {
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
+
+        <link
+          rel="alternate"
+          hrefLang="ja"
+          href={`https://regech.app${router.pathname}`}
+        />
+        <link
+          rel="alternate"
+          hrefLang="en"
+          href={`https://regech.app/en${router.pathname}`}
+        />
 
         <link
           rel="apple-touch-icon"
@@ -45,20 +58,17 @@ const Layout: FC<PropType> = ({ children }) => {
         <meta name="msapplication-TileColor" content="#dae1ee" />
         <meta name="theme-color" content="#dae1ee" />
 
+        <meta name="description" content={t.DESCRIPTION} />
+        <meta property="og:title" content={t.LOGO} />
+        <meta property="og:description" content={t.DESCRIPTION} />
         <meta
-          name="description"
-          content="正規表現でガチャをまわそう / Draw lots with RegExp!"
+          property="og:url"
+          content={`https://regech.app${router.pathname}`}
         />
-        <meta property="og:title" content="正規表現ガチャ: Regech" />
-        <meta
-          property="og:description"
-          content="正規表現でガチャをまわそう / Draw lots with RegExp!"
-        />
-        <meta property="og:url" content="https://regech.app" />
         <meta property="og:locale" content="ja_JP" />
         <meta property="og:image" content="https://regech.app/ogp.jpg" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="正規表現ガチャ: Regech" />
+        <meta property="og:site_name" content={t.LOGO} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@koluriri" />
       </Head>

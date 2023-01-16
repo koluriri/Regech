@@ -40,4 +40,5 @@ export default {
   GROUP: 'Group',
   GOTOP: 'Home',
   ENTER_REGEXP: 'Type RegExp',
+  DESCRIPTION: 'Draw lots with RegExp!',
 };
