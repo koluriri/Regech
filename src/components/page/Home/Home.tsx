@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Head from 'next/head';
 import Logo from '~/components/ui/Logo/Logo';
-import Hero from '~/components/ui/Hero/Hero';
+import Hero from '~/components/module/home/Hero/Hero';
 import {
   IconRankingOne,
   IconRankingThree,
@@ -9,8 +9,8 @@ import {
 } from '~/components/Icon';
 import Card from '~/components/ui/Card/Card';
 import TabHeader from '~/components/ui/TabHeader/TabHeader';
-import GachaItem from '~/components/ui/GachaItem/GachaItem';
-import GachaDetail from '~/components/ui/GachaDetail/GachaDetail';
+import GachaItem from '~/components/module/gacha/GachaItem/GachaItem';
+import GachaDetail from '~/components/module/gacha/GachaDetail/GachaDetail';
 import { useLocale } from '~/hooks/useLocale';
 
 const Home: FC = () => {

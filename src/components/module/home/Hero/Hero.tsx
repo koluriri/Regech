@@ -2,8 +2,8 @@ import { useRouter } from 'next/router';
 import { FC, useEffect } from 'react';
 import ShuffleText from 'shuffle-text';
 import { useLocale } from '~/hooks/useLocale';
-import { IconPencil } from '../../Icon';
-import Button from '../Button/Button';
+import { IconPencil } from '~/components/Icon';
+import Button from '~/components/ui/Button/Button';
 import styles from './Hero.module.css';
 
 const Hero: FC = () => {

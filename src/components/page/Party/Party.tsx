@@ -1,7 +1,7 @@
 import { FC, useCallback, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Logo from '~/components/ui/Logo/Logo';
-import PartyStage from '~/components/ui/PartyStage/PartyStage';
+import PartyStage from '~/components/module/gacha/PartyStage/PartyStage';
 import Button from '~/components/ui/Button/Button';
 import { useRouter } from 'next/router';
 import { IconSkip } from '~/components/Icon';

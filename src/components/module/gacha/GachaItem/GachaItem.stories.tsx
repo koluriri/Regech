@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { IconRankingOne, IconRankingTwo } from '../../Icon';
+import { IconRankingOne, IconRankingTwo } from '~/components/Icon';
 import GachaDetail from '../GachaDetail/GachaDetail';
 import GachaItem, { PropType } from './GachaItem';
 

@@ -4,7 +4,7 @@
 /* eslint-disable react/require-default-props */
 import { FC, useState } from 'react';
 import { useLocale } from '~/hooks/useLocale';
-import Button from '../Button/Button';
+import Button from '../../../ui/Button/Button';
 import styles from './RegexGuide.module.css';
 
 export type PropType = {

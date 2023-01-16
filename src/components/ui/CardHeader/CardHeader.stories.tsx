@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 import { IconBulb, IconPencil } from '../../Icon';
-import GachaDetail from '../GachaDetail/GachaDetail';
+import GachaDetail from '../../module/gacha/GachaDetail/GachaDetail';
 import CardHeader, { PropType } from './CardHeader';
 
 export default {
