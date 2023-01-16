@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/require-default-props */
 import { FC, useState } from 'react';
+import { useLocale } from '~/hooks/useLocale';
 import { IconGachaMultiple, IconGachaSingle } from '../../Icon';
 
 export type PropType = {
@@ -13,6 +14,8 @@ const Selector: FC<PropType> = ({ handleChange }) => {
     setValue(e.target.value);
     handleChange(e.target.value);
   };
+
+  const { t } = useLocale();
 
   return (
     <div className="selector">
@@ -27,7 +30,7 @@ const Selector: FC<PropType> = ({ handleChange }) => {
       />
       <label htmlFor="option1" className="selectoroption">
         <IconGachaMultiple />
-        10連
+        {t.MULTIPLE}
       </label>
       <input
         type="radio"
@@ -40,7 +43,7 @@ const Selector: FC<PropType> = ({ handleChange }) => {
       />
       <label htmlFor="option2" className="selectoroption">
         <IconGachaSingle />
-        単発
+        {t.SINGLE}
       </label>
       <div className="buttonbg" />
     </div>

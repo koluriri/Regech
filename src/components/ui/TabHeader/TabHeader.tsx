@@ -13,6 +13,7 @@ const TabHeader: FC<PropType> = ({ items, links, active }) => (
   <div className={`${styles.tabheader}`}>
     {items.map((item, index) => (
       <span
+        key={links[index]}
         className={`${styles.item} ${index === active ? styles.active : ''}`}
       >
         <Link href={links[index]}>{item}</Link>

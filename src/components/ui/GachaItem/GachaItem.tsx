@@ -6,6 +6,7 @@ import Button from '../Button/Button';
 import styles from './GachaItem.module.css';
 import GachaPreview from './GachaPreview/GachaPreview';
 import { useRouter } from 'next/router';
+import { useLocale } from '~/hooks/useLocale';
 
 export type PropType = {
   icon?: ReactNode;
@@ -25,6 +26,7 @@ const GachaItem: FC<PropType> = ({
   animate = true,
 }) => {
   const router = useRouter();
+  const { t } = useLocale();
 
   return (
     <div
@@ -45,7 +47,7 @@ const GachaItem: FC<PropType> = ({
       <div className={styles.btn}>
         <Button variant="default" onClick={() => router.push('/post')}>
           <IconPlay />
-          あそぶ
+          {t.PLAY}
         </Button>
       </div>
     </div>

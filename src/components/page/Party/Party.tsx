@@ -5,12 +5,14 @@ import PartyStage from '~/components/ui/PartyStage/PartyStage';
 import Button from '~/components/ui/Button/Button';
 import { useRouter } from 'next/router';
 import { IconSkip } from '~/components/Icon';
+import { useLocale } from '~/hooks/useLocale';
 
 const Party: FC<{
   timer: number;
   results: string[];
 }> = ({ timer, results }) => {
   const router = useRouter();
+  const { t } = useLocale();
 
   const timerId = useRef<NodeJS.Timeout>();
   const clearTimer = useCallback(() => clearInterval(timerId.current), []);
@@ -26,7 +28,7 @@ const Party: FC<{
   return (
     <div className="container">
       <Head>
-        <title>ガチャまわし中… | 正規表現ガチャ</title>
+        <title>{t.LOGO}</title>
       </Head>
 
       <PartyStage results={results} />
@@ -37,7 +39,7 @@ const Party: FC<{
         id="skip"
       >
         <IconSkip />
-        スキップ
+        {t.SKIP}
       </Button>
     </div>
   );

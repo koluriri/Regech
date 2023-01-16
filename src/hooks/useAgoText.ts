@@ -1,26 +1,30 @@
+import { useLocale } from './useLocale';
+
 const useAgoText = () => (datetime: string) => {
+  const { t } = useLocale();
+
   const from = new Date(datetime);
 
   const diff = new Date().getTime() - from.getTime();
   const elapsed = new Date(diff);
 
   if (elapsed.getUTCFullYear() - 1970) {
-    return `${elapsed.getUTCFullYear() - 1970}年前`;
+    return `${elapsed.getUTCFullYear() - 1970}${t.YEARS_AGO}`;
   }
   if (elapsed.getUTCMonth()) {
-    return `${elapsed.getUTCMonth()}ヶ月前`;
+    return `${elapsed.getUTCMonth()}${t.MONTHS_AGO}`;
   }
   if (elapsed.getUTCDate() - 1) {
-    return `${elapsed.getUTCDate() - 1}日前`;
+    return `${elapsed.getUTCDate() - 1}${t.DAYS_AGO}`;
   }
   if (elapsed.getUTCHours()) {
-    return `${elapsed.getUTCHours()}時間前`;
+    return `${elapsed.getUTCHours()}${t.HOURS_AGO}`;
   }
   if (elapsed.getUTCMinutes()) {
-    return `${elapsed.getUTCMinutes()}分前`;
+    return `${elapsed.getUTCMinutes()}${t.MINUTES_AGO}`;
   }
 
-  return `${elapsed.getUTCSeconds()}たった今`;
+  return `${elapsed.getUTCSeconds()}${t.NOW}`;
 };
 
 export default useAgoText;
