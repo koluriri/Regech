@@ -6,12 +6,13 @@ import { useRouter } from 'next/router';
 import { IconPlay } from '~/components/Icon';
 import Card from '~/components/ui/Card/Card';
 import CardHeader from '~/components/ui/CardHeader/CardHeader';
-import GachaDetail from '~/components/ui/GachaDetail/GachaDetail';
+import GachaDetail from '~/components/module/gacha/GachaDetail/GachaDetail';
 import BigText from '~/components/ui/BigText/BigText';
 import Selector from '~/components/ui/Selector/Selector';
-import GachaItem from '~/components/ui/GachaItem/GachaItem';
+import GachaItem from '~/components/module/gacha/GachaItem/GachaItem';
 import CardStack from '~/components/ui/CardStack/CardStack';
 import { useLocale } from '~/hooks/useLocale';
+import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 
 const Post: FC = () => {
   const router = useRouter();
@@ -116,9 +117,7 @@ const Post: FC = () => {
         </Card>
       </CardStack>
 
-      <Button variant="tertiary" onClick={() => router.push('/')} id="gotop">
-        ← {t.GOTOP}
-      </Button>
+      <GoTopButton />
     </div>
   );
 };

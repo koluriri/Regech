@@ -9,9 +9,9 @@ import {
 import BigText from '../BigText/BigText';
 import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
-import GachaDetail from '../GachaDetail/GachaDetail';
-import GachaItem from '../GachaItem/GachaItem';
-import RegexGuide from '../RegexGuide/RegexGuide';
+import GachaDetail from '../../module/gacha/GachaDetail/GachaDetail';
+import GachaItem from '../../module/gacha/GachaItem/GachaItem';
+import RegexGuide from '../../module/create/RegexGuide/RegexGuide';
 import Selector from '../Selector/Selector';
 import TabHeader from '../TabHeader/TabHeader';
 import Textarea from '../Textarea/Textarea';

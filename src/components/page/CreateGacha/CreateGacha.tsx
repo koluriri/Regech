@@ -5,11 +5,12 @@ import { IconPencil, IconPlay } from '~/components/Icon';
 import Card from '~/components/ui/Card/Card';
 import CardHeader from '~/components/ui/CardHeader/CardHeader';
 import Textarea from '~/components/ui/Textarea/Textarea';
-import RegexGuide from '~/components/ui/RegexGuide/RegexGuide';
+import RegexGuide from '~/components/module/create/RegexGuide/RegexGuide';
 import Selector from '~/components/ui/Selector/Selector';
 import Button from '~/components/ui/Button/Button';
 import { useRouter } from 'next/router';
 import { useLocale } from '~/hooks/useLocale';
+import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 
 const CreateGacha: FC = () => {
   const router = useRouter();
@@ -85,9 +86,7 @@ const CreateGacha: FC = () => {
         </Button>
       </Card>
 
-      <Button variant="tertiary" onClick={() => router.push('/')} id="gotop">
-        ← {t.GOTOP}
-      </Button>
+      <GoTopButton />
     </div>
   );
 };
