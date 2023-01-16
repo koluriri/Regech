@@ -26,9 +26,72 @@ const Home: FC = () => {
 
       <Card>
         <TabHeader
-          active={0}
+          active={1}
           items={[t.LATEST, t.RANKING]}
           links={['/', '/ranking']}
+        />
+        <GachaItem
+          detail={
+            <GachaDetail
+              created="2023/01/10 14:25:42"
+              name="@koluriri"
+              playCount={23}
+              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+            />
+          }
+          icon={<IconRankingOne />}
+          id={1}
+          preview={[
+            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+            'にゃにゃにゃん',
+            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+            'にゃんにゃんにゃんにゃんにゃん',
+          ]}
+          title="ねこ語ジェネレーター"
+        />
+        <GachaItem
+          detail={
+            <GachaDetail
+              created="2023/01/10 14:25:42"
+              name="@koluriri"
+              playCount={23}
+              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+            />
+          }
+          icon={<IconRankingTwo />}
+          id={1}
+          preview={[
+            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+            'にゃにゃにゃん',
+            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+            'にゃんにゃんにゃんにゃんにゃん',
+          ]}
+          title="ねこ語ジェネレーター"
+        />
+        <GachaItem
+          detail={
+            <GachaDetail
+              created="2023/01/10 14:25:42"
+              name="@koluriri"
+              playCount={23}
+              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+            />
+          }
+          icon={<IconRankingThree />}
+          id={1}
+          preview={[
+            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
+            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
+            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
+            'にゃにゃにゃん',
+            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
+            'にゃんにゃんにゃんにゃんにゃん',
+          ]}
+          title="ねこ語ジェネレーター"
         />
         <GachaItem
           detail={
