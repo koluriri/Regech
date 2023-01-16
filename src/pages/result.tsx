@@ -4,20 +4,7 @@ import Layout from '~/components/layout/Layout';
 
 const Result: NextPage = () => (
   <Layout>
-    <ResultComponent
-      results={[
-        'にゃにゃんにゃにゃにゃんにゃにゃにゃんにゃにゃにゃんにゃ',
-        'にゃにゃん',
-        'にゃんにゃんにゃ',
-        'にゃにゃにゃにゃにゃにゃにゃにゃ',
-        'にゃにゃんにゃにゃにゃんにゃにゃんにゃ',
-        'にゃにゃんにゃにゃにゃんにゃにゃにゃんにゃにゃにゃんにゃ',
-        'にゃにゃん',
-        'にゃんにゃんにゃ',
-        'にゃにゃにゃにゃにゃにゃにゃにゃ',
-        'さいご',
-      ]}
-    />
+    <ResultComponent />
   </Layout>
 );
 

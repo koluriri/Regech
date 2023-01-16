@@ -62,6 +62,7 @@ const RegexGuide: FC<PropType> = ({ insertTextarea }) => {
       <div className={styles.body}>
         {keys.map((guide) => (
           <Button
+            key={guide.value}
             onClick={() => insertTextarea(guide.value)}
             caption={guide.key}
           >
@@ -72,6 +73,7 @@ const RegexGuide: FC<PropType> = ({ insertTextarea }) => {
       <div className={`${styles.body} ${styles.guide}`}>
         {buttons.map((guide) => (
           <Button
+            key={guide.key}
             variant="simple"
             onClick={() => insertTextarea(guide.value)}
             caption={guide.key}

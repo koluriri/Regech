@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import Head from 'next/head';
 import Logo from '~/components/ui/Logo/Logo';
 import Button from '~/components/ui/Button/Button';
@@ -13,10 +13,19 @@ import DisplayResult from '~/components/module/result/DisplayResult/DisplayResul
 import CardStack from '~/components/ui/CardStack/CardStack';
 import { useLocale } from '~/hooks/useLocale';
 import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
+import { useAtom } from 'jotai';
+import { resultsAtom } from '~/atoms/atoms';
 
-const Result: FC<{ results: string[] }> = ({ results }) => {
+const Result: FC = () => {
   const router = useRouter();
   const { t } = useLocale();
+  const [results, setResults] = useAtom(resultsAtom);
+
+  useEffect(() => {
+    if (results.length === 0) router.push('/');
+    setResults((r) => []);
+  }, []);
+
   return (
     <div className="container">
       <Head>
