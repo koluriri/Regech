@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef } from 'react';
-import Script from 'next/script';
 import Ztext from 'react-ztext';
+import Zdog from 'zdog';
 import styles from './PartyStage.module.css';
 
 export type PropType = {
@@ -24,71 +24,65 @@ const PartyStageCapsule: FC<PropType> = ({ displayText }) => {
     }
   }, [displayText]);
 
-  const capsule = () => {
-    if (typeof Zdog !== 'undefined') {
-      const illo = new Zdog.Illustration({
-        // set canvas with selector
-        element: '#zdogCanvas',
-        rotate: { x: -0.3 },
-      });
+  useEffect(() => {
+    const illo = new Zdog.Illustration({
+      // set canvas with selector
+      element: '#zdogCanvas',
+      rotate: { x: -0.3 },
+    });
 
-      const dome = new Zdog.Hemisphere({
-        addTo: illo,
-        diameter: 300,
-        // fill enabled by default
-        // disable stroke for crisp edge
-        stroke: false,
-        color: '#46B4AB',
-        backface: 'url("#gachaGradient")',
-        rotate: { x: -Zdog.TAU / 4 },
-      });
+    const dome = new Zdog.Hemisphere({
+      addTo: illo,
+      diameter: 300,
+      // fill enabled by default
+      // disable stroke for crisp edge
+      stroke: false,
+      color: '#46B4AB',
+      backface: 'url("#gachaGradient")',
+      rotate: { x: -Zdog.TAU / 4 },
+    });
 
-      const dome2 = dome.copy({
-        // overwrite original options
-        translate: { y: 0, x: -30 },
-        rotate: { x: -Zdog.TAU / -4, y: 0 },
-        color: '#EFAE2D',
-      });
+    const dome2 = dome.copy({
+      // overwrite original options
+      translate: { y: 0, x: -30 },
+      rotate: { x: -Zdog.TAU / -4, y: 0 },
+      color: '#EFAE2D',
+    });
 
-      let ticker = 0;
-      const cycleCount = 150;
+    let ticker = 0;
+    const cycleCount = 150;
 
-      const animate = () => {
-        const progress = ticker / cycleCount;
-        // apply easing to rotation
-        const tween = Zdog.easeInOut(progress % 1, 3);
-        illo.rotate.y = tween * Zdog.TAU + -4.8;
-        ticker++;
+    const animate = () => {
+      const progress = ticker / cycleCount;
+      // apply easing to rotation
+      const tween = Zdog.easeInOut(progress % 1, 3);
+      illo.rotate.y = tween * Zdog.TAU + -4.8;
+      ticker++;
 
-        /* if (dome2.rotate.y >= 0.7) {
+      /* if (dome2.rotate.y >= 0.7) {
         dome2.rotate.y = 0;
       }
       if (dome2.translate.y <= -100) {
         dome2.translate.y = 0;
       } */
 
-        if (dome2.rotate.y <= 0.7) {
-          dome2.rotate.y += 0.03;
-        }
-        if (dome2.translate.y >= -100) {
-          dome2.translate.y -= 4;
-        }
+      if (dome2.rotate.y <= 0.7) {
+        dome2.rotate.y += 0.03;
+      }
+      if (dome2.translate.y >= -100) {
+        dome2.translate.y -= 4;
+      }
 
-        illo.updateRenderGraph();
-        // animate next frame
-        requestAnimationFrame(animate);
-      };
-      // start animation
-      animate();
-    }
-  };
+      illo.updateRenderGraph();
+      // animate next frame
+      requestAnimationFrame(animate);
+    };
+    // start animation
+    animate();
+  }, []);
 
   return (
     <>
-      <Script
-        src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"
-        onReady={capsule}
-      />
       <div className={styles.container}>
         <svg id="zdogCanvas" width="600" height="600" />
 
