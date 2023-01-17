@@ -41,4 +41,5 @@ export default {
   GOTOP: 'トップへ',
   ENTER_REGEXP: '正規表現を入力',
   DESCRIPTION: '正規表現でガチャをまわそう',
+  ONEMORETIME: 'もう一度まわす',
 };

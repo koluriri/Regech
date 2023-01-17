@@ -1,6 +1,6 @@
-const path = require('path');
+import path from 'path';
 
-function defaultIndexTemplate(filePaths) {
+function defaultIndexTemplate(filePaths: string[]) {
   // named exportの定義
   const exportEntries = filePaths.map((filePath) => {
     const basename = path.basename(filePath, path.extname(filePath));

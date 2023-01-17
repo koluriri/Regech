@@ -6,13 +6,16 @@ import Button from '~/components/ui/Button/Button';
 import { useRouter } from 'next/router';
 import { IconSkip } from '~/components/Icon';
 import { useLocale } from '~/hooks/useLocale';
+import { useAtom } from 'jotai';
+import { resultsAtom } from '~/atoms/atoms';
 
-const Party: FC<{
-  timer: number;
-  results: string[];
-}> = ({ timer, results }) => {
+const Party: FC = () => {
   const router = useRouter();
   const { t } = useLocale();
+
+  const [results] = useAtom(resultsAtom);
+  const timer = results.length;
+  console.log(timer);
 
   const timerId = useRef<NodeJS.Timeout>();
   const clearTimer = useCallback(() => clearInterval(timerId.current), []);

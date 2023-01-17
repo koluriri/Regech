@@ -1,20 +1,21 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import Head from 'next/head';
-import Logo from '~/components/ui/Logo/Logo';
 import Hero from '~/components/module/home/Hero/Hero';
-import {
-  IconRankingOne,
-  IconRankingThree,
-  IconRankingTwo,
-} from '~/components/Icon';
 import Card from '~/components/ui/Card/Card';
 import TabHeader from '~/components/ui/TabHeader/TabHeader';
 import GachaItem from '~/components/module/gacha/GachaItem/GachaItem';
 import GachaDetail from '~/components/module/gacha/GachaDetail/GachaDetail';
 import { useLocale } from '~/hooks/useLocale';
+import { useAtom } from 'jotai';
+import { resultsAtom } from '~/atoms/atoms';
 
 const Home: FC = () => {
   const { t } = useLocale();
+
+  const [, setResults] = useAtom(resultsAtom);
+  useEffect(() => {
+    setResults([]);
+  }, []);
 
   return (
     <div className="container">

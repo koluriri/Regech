@@ -1,4 +1,4 @@
-import { FC, FormEvent, useRef, useState } from 'react';
+import { FC, FormEvent, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import RandExp from 'randexp';
@@ -12,8 +12,8 @@ import Button from '~/components/ui/Button/Button';
 import { useLocale } from '~/hooks/useLocale';
 import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 import CreateGachaHint from './CreateGachaHint';
-import { useAtom } from 'jotai';
 import { regexAtom, resultsAtom } from '~/atoms/atoms';
+import { useAtom } from 'jotai';
 
 const CreateGacha: FC = () => {
   const router = useRouter();
@@ -22,13 +22,14 @@ const CreateGacha: FC = () => {
   const [results, setResults] = useAtom(resultsAtom);
 
   const [regex, setRegex] = useAtom(regexAtom);
-  const [mode, setMode] = useState('single');
+  const [mode, setMode] = useState('multiple');
   const regexRef = useRef<HTMLTextAreaElement>(null);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const rand = new RandExp(regex);
+    const rand = new RandExp(new RegExp(regex));
+    rand.defaultRange.add(0, 65535);
     rand.max = 7;
 
     const times = mode === 'multiple' ? 10 : 1;
@@ -36,11 +37,16 @@ const CreateGacha: FC = () => {
     for (let i = 0; i < times; i++) {
       resultsTemporary.push(rand.gen());
     }
-    setResults((r) => resultsTemporary);
-    console.log(results);
-
-    router.push('/party');
+    setResults(resultsTemporary);
   };
+
+  useEffect(() => {
+    if (results.length !== 0) {
+      console.log(regex);
+      console.log(results);
+      router.push('/party');
+    }
+  }, [results]);
 
   return (
     <div className="container">

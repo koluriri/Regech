@@ -9,7 +9,7 @@ export type PropType = {
 };
 
 const Selector: FC<PropType> = ({ handleChange }) => {
-  const [value, setValue] = useState('single');
+  const [value, setValue] = useState('multiple');
   const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
     handleChange(e.target.value);

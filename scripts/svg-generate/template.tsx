@@ -1,4 +1,4 @@
-const template = (variables, { tpl }) => {
+export const template = (variables, { tpl }) => {
   return tpl`
   ${variables.imports};
   ${variables.interfaces};

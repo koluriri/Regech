@@ -41,4 +41,5 @@ export default {
   GOTOP: 'Home',
   ENTER_REGEXP: 'Type RegExp',
   DESCRIPTION: 'Draw lots with RegExp!',
+  ONEMORETIME: 'Again',
 };
