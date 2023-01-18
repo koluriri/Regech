@@ -25,9 +25,7 @@ const Result: FC = () => {
   return (
     <div className="container">
       <Head>
-        <title>
-          {t.RESULTS} | {t.LOGO}
-        </title>
+        <title>{t.RESULTS}</title>
       </Head>
 
       <CardStack>

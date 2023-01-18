@@ -51,11 +51,7 @@ const CreateGacha: FC = () => {
   return (
     <div className="container">
       <Head>
-        <title>
-          <>
-            {t.CREATE_GACHA_HEADER} | {t.LOGO}
-          </>
-        </title>
+        <title>{t.CREATE_GACHA_HEADER}</title>
       </Head>
 
       <Card hint={<CreateGachaHint />}>

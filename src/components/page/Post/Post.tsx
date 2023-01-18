@@ -20,7 +20,7 @@ const Post: FC = () => {
   return (
     <div className="container">
       <Head>
-        <title>ねこ語ジェネレーター | {t.LOGO}</title>
+        <title>ねこ語ジェネレーター</title>
       </Head>
 
       <CardStack>
