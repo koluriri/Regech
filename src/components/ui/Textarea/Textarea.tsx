@@ -6,8 +6,7 @@ import React, {
 } from 'react';
 import styles from './Textarea.module.css';
 
-export type PropType = TextareaHTMLAttributes<HTMLTextAreaElement> &
-  ClassAttributes<HTMLTextAreaElement>;
+export type PropType = TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, PropType>(
   ({ ...props }, ref) => {

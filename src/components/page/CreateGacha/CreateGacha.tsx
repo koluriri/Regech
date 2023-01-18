@@ -52,7 +52,9 @@ const CreateGacha: FC = () => {
     <div className="container">
       <Head>
         <title>
-          {t.CREATE_GACHA_HEADER} | {t.LOGO}
+          <>
+            {t.CREATE_GACHA_HEADER} | {t.LOGO}
+          </>
         </title>
       </Head>
 
