@@ -23,7 +23,7 @@ const Party: FC = () => {
   useEffect(() => {
     timerId.current = setTimeout(() => {
       router.replace('/result');
-    }, timer * 1450);
+    }, timer * 1500);
 
     return clearTimer;
   }, [clearTimer]);

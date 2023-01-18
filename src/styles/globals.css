@@ -94,7 +94,7 @@ html {
 }
 
 body {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   background-image: url('/bg.svg');
   background-repeat: repeat;
   background-size: 1000px;
