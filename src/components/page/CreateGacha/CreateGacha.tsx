@@ -1,7 +1,6 @@
 import { FC, FormEvent, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import RandExp from 'randexp';
 import { IconPencil, IconPlay } from '~/components/Icon';
 import Card from '~/components/ui/Card/Card';
 import CardHeader from '~/components/ui/CardHeader/CardHeader';
@@ -11,9 +10,10 @@ import Selector from '~/components/ui/Selector/Selector';
 import Button from '~/components/ui/Button/Button';
 import { useLocale } from '~/hooks/useLocale';
 import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
-import CreateGachaHint from './CreateGachaHint';
 import { regexAtom, resultsAtom } from '~/atoms/atoms';
 import { useAtom } from 'jotai';
+import useGetResults from '~/hooks/useGetResults';
+import CreateGachaHint from './CreateGachaHint';
 
 const CreateGacha: FC = () => {
   const router = useRouter();
@@ -25,28 +25,19 @@ const CreateGacha: FC = () => {
   const [mode, setMode] = useState('multiple');
   const regexRef = useRef<HTMLTextAreaElement>(null);
 
+  const getResults = useGetResults();
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const rand = new RandExp(new RegExp(regex));
-    rand.defaultRange.add(0, 65535);
-    rand.max = 7;
-
-    const times = mode === 'multiple' ? 10 : 1;
-    const resultsTemporary: string[] = [];
-    for (let i = 0; i < times; i++) {
-      resultsTemporary.push(rand.gen());
-    }
+    const resultsTemporary = getResults(regex, mode === 'multiple' ? 10 : 1);
     setResults(resultsTemporary);
   };
 
   useEffect(() => {
     if (results.length !== 0) {
-      console.log(regex);
-      console.log(results);
-      router.push('/party');
+      router.push('/party').catch(() => alert('Error!'));
     }
-  }, [results]);
+  }, [results, router]);
 
   return (
     <div className="container">

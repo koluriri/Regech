@@ -21,7 +21,7 @@ const GachaPreview: FC<PropType> = ({ preview }) => {
     };
   }, []);
 
-  return <span>{currentPreview}</span>;
+  return <span suppressHydrationWarning>{currentPreview}</span>;
 };
 
 export default GachaPreview;

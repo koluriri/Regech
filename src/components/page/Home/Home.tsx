@@ -8,14 +8,22 @@ import GachaDetail from '~/components/module/gacha/GachaDetail/GachaDetail';
 import { useLocale } from '~/hooks/useLocale';
 import { useAtom } from 'jotai';
 import { resultsAtom } from '~/atoms/atoms';
+import { Post, User } from '@prisma/client';
+import useGetResults from '~/hooks/useGetResults';
 
-const Home: FC = () => {
+const Home: FC<{
+  posts: (Post & { author: User })[];
+}> = ({ posts }) => {
   const { t } = useLocale();
 
   const [, setResults] = useAtom(resultsAtom);
   useEffect(() => {
     setResults([]);
-  }, []);
+  }, [setResults]);
+
+  const getResults = useGetResults();
+
+  console.log(posts);
 
   return (
     <div className="container">
@@ -31,66 +39,22 @@ const Home: FC = () => {
           items={[t.LATEST, t.RANKING]}
           links={['/', '/ranking']}
         />
-        <GachaItem
-          detail={
-            <GachaDetail
-              created="2023/01/10 14:25:42"
-              name="@koluriri"
-              playCount={23}
-              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-            />
-          }
-          id={1}
-          preview={[
-            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-            'にゃにゃにゃん',
-            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-            'にゃんにゃんにゃんにゃんにゃん',
-          ]}
-          title="ねこ語ジェネレーター"
-        />
-        <GachaItem
-          detail={
-            <GachaDetail
-              created="2023/01/10 14:25:42"
-              name="@koluriri"
-              playCount={23}
-              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-            />
-          }
-          id={1}
-          preview={[
-            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-            'にゃにゃにゃん',
-            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-            'にゃんにゃんにゃんにゃんにゃん',
-          ]}
-          title="ねこ語ジェネレーター"
-        />
-        <GachaItem
-          detail={
-            <GachaDetail
-              created="2023/01/10 14:25:42"
-              name="@koluriri"
-              playCount={23}
-              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-            />
-          }
-          id={1}
-          preview={[
-            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-            'にゃにゃにゃん',
-            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-            'にゃんにゃんにゃんにゃんにゃん',
-          ]}
-          title="ねこ語ジェネレーター"
-        />
+        {posts?.map((post) => (
+          <GachaItem
+            key={post.id}
+            detail={
+              <GachaDetail
+                created={post.created.toString()}
+                name={`@${post.author.userName}`}
+                playCount={post.play_count}
+                src={post.author.icon}
+              />
+            }
+            id={post.id}
+            preview={getResults(post.regex, 5)}
+            title={post.title}
+          />
+        ))}
       </Card>
     </div>
   );

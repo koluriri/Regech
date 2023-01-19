@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { FC, useEffect } from 'react';
 import Head from 'next/head';
 import Button from '~/components/ui/Button/Button';
@@ -19,8 +20,8 @@ const Result: FC = () => {
   const [results, setResults] = useAtom(resultsAtom);
 
   useEffect(() => {
-    if (results.length === 0) router.push('/');
-  }, []);
+    if (results.length === 0) router.push('/').catch(() => alert('Error!'));
+  }, [router, results]);
 
   return (
     <div className="container">
@@ -48,9 +49,9 @@ const Result: FC = () => {
           <Button
             variant="primary"
             block
-            onClick={() => {
+            onClick={async () => {
               setResults([]);
-              router.push('/create');
+              await router.push('/create');
             }}
           >
             <IconGachaSingle />

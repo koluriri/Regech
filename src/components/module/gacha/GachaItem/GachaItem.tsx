@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable react/require-default-props */
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { IconPlay } from '~/components/Icon';
 import Button from '~/components/ui/Button/Button';
-import styles from './GachaItem.module.css';
-import GachaPreview from './GachaPreview/GachaPreview';
 import { useRouter } from 'next/router';
 import { useLocale } from '~/hooks/useLocale';
+import styles from './GachaItem.module.css';
+import GachaPreview from './GachaPreview/GachaPreview';
 
 export type PropType = {
   icon?: ReactNode;
@@ -45,7 +46,7 @@ const GachaItem: FC<PropType> = ({
         {detail}
       </div>
       <div className={styles.btn}>
-        <Button variant="default" onClick={() => router.push('/post')}>
+        <Button variant="default" onClick={() => router.push(`/post/${id}`)}>
           <IconPlay />
           {t.PLAY}
         </Button>

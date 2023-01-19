@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import Head from 'next/head';
-import Logo from '~/components/ui/Logo/Logo';
 import Hero from '~/components/module/home/Hero/Hero';
 import {
   IconRankingOne,

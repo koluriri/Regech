@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { FC } from 'react';
 import Head from 'next/head';
-import Logo from '~/components/ui/Logo/Logo';
 import Button from '~/components/ui/Button/Button';
 import { useRouter } from 'next/router';
 import { IconPlay } from '~/components/Icon';
@@ -17,6 +17,7 @@ import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 const Post: FC = () => {
   const router = useRouter();
   const { t } = useLocale();
+
   return (
     <div className="container">
       <Head>
