@@ -3,17 +3,15 @@ import { APIResponse, NextApiRequestWithBody } from '~/types/APIResponse';
 
 import methodHandler from '~/utils/methodHandler';
 import fetchResponse from '~/utils/fetchResponse';
-import updatePlayed from '~/utils/module/post/updatePlayed';
+import createPost from '~/utils/module/post/createPost';
 
 const handler = (
   req: NextApiRequestWithBody,
   res: NextApiResponse<APIResponse>,
 ) => {
-  const { id } = req.query;
-
   methodHandler(
     {
-      PUT: () => fetchResponse(updatePlayed(Number(id)), res),
+      POST: () => fetchResponse(createPost(req.body), res),
     },
     req.method,
     res,
