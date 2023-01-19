@@ -2,7 +2,6 @@ import type { GetServerSideProps, NextPage } from 'next';
 import PostComponent from 'components/page/Post/Post';
 import Layout from '~/components/layout/Layout';
 import { Post, PrismaClient, User } from '@prisma/client';
-import { useRouter } from 'next/router';
 
 type Props = {
   post: (Post & { author: User }) | null;
@@ -14,8 +13,11 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
   const prisma = new PrismaClient({ log: ['error'] });
 
+  let postId = Number(id);
+  if (Number.isNaN(postId)) postId = 0;
+
   const post = await prisma.post.findFirst({
-    where: { id: Number(id) },
+    where: { id: postId },
     include: {
       author: true,
     },
@@ -40,8 +42,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 };
 
 const PostPage: NextPage<Props> = ({ post, recommendeds }) => {
-  const router = useRouter();
-
   if (post !== null)
     return (
       <Layout>
@@ -49,9 +49,11 @@ const PostPage: NextPage<Props> = ({ post, recommendeds }) => {
       </Layout>
     );
 
-  router.push('/').catch(() => alert('Error!'));
-
-  return null;
+  return (
+    <Layout>
+      <h1 style={{ textAlign: 'center' }}>404 Not Found</h1>
+    </Layout>
+  );
 };
 
 export default PostPage;

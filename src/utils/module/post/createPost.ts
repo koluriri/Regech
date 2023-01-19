@@ -7,9 +7,8 @@ const updatePlayed = async (body: unknown) => {
   const parsedBody = RequiredBodySchema.safeParse(body);
   if (!parsedBody.success) throw Error(zodErrorToString(parsedBody.error));
 
-  /* {999999} {99,999999} {,99999} でerror */
-  const matched = parsedBody.data.regex.match(/\{([0-9]+)\}/);
-  /* ここまでまだできてない */
+  const matched = /(\{[0-9]{3,},|[0-9]{3,}\})/g.test(parsedBody.data.regex);
+  if (matched) throw Error('結果が長すぎます。Results are too long.');
 
   let rgx = /^$/;
   try {
@@ -23,13 +22,13 @@ const updatePlayed = async (body: unknown) => {
   rand.defaultRange.add(0, 65535);
   rand.max = 7;
 
-  for (let i = 0; i < 10; i += 1) {
+  for (let i = 0; i < 30; i += 1) {
     const result = rand.gen();
     if (result === '')
       throw Error(
         '結果が空になる正規表現は使用できません。You cannot use a regular expression that yields an empty result.',
       );
-    if (result.length > 500)
+    if (result.length > 400)
       throw Error('結果が長すぎます。Results are too long.');
   }
 
