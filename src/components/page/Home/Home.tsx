@@ -23,8 +23,6 @@ const Home: FC<{
 
   const getResults = useGetResults();
 
-  console.log(posts);
-
   return (
     <div className="container">
       <Head>

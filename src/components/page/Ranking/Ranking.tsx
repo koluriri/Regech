@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { FC } from 'react';
 import Head from 'next/head';
 import Hero from '~/components/module/home/Hero/Hero';
@@ -11,9 +12,14 @@ import TabHeader from '~/components/ui/TabHeader/TabHeader';
 import GachaItem from '~/components/module/gacha/GachaItem/GachaItem';
 import GachaDetail from '~/components/module/gacha/GachaDetail/GachaDetail';
 import useLocale from '~/hooks/useLocale';
+import { Post, User } from '@prisma/client';
+import useGetResults from '~/hooks/useGetResults';
 
-const Home: FC = () => {
+const Ranking: FC<{
+  posts: (Post & { author: User })[];
+}> = ({ posts }) => {
   const { t } = useLocale();
+  const getResults = useGetResults();
 
   return (
     <div className="container">
@@ -29,132 +35,34 @@ const Home: FC = () => {
           items={[t.LATEST, t.RANKING]}
           links={['/', '/ranking']}
         />
-        <GachaItem
-          detail={
-            <GachaDetail
-              created="2023/01/10 14:25:42"
-              name="@koluriri"
-              playCount={23}
-              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-            />
-          }
-          icon={<IconRankingOne />}
-          id={1}
-          preview={[
-            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-            'にゃにゃにゃん',
-            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-            'にゃんにゃんにゃんにゃんにゃん',
-          ]}
-          title="ねこ語ジェネレーター"
-        />
-        <GachaItem
-          detail={
-            <GachaDetail
-              created="2023/01/10 14:25:42"
-              name="@koluriri"
-              playCount={23}
-              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-            />
-          }
-          icon={<IconRankingTwo />}
-          id={1}
-          preview={[
-            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-            'にゃにゃにゃん',
-            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-            'にゃんにゃんにゃんにゃんにゃん',
-          ]}
-          title="ねこ語ジェネレーター"
-        />
-        <GachaItem
-          detail={
-            <GachaDetail
-              created="2023/01/10 14:25:42"
-              name="@koluriri"
-              playCount={23}
-              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-            />
-          }
-          icon={<IconRankingThree />}
-          id={1}
-          preview={[
-            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-            'にゃにゃにゃん',
-            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-            'にゃんにゃんにゃんにゃんにゃん',
-          ]}
-          title="ねこ語ジェネレーター"
-        />
-        <GachaItem
-          detail={
-            <GachaDetail
-              created="2023/01/10 14:25:42"
-              name="@koluriri"
-              playCount={23}
-              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-            />
-          }
-          id={1}
-          preview={[
-            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-            'にゃにゃにゃん',
-            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-            'にゃんにゃんにゃんにゃんにゃん',
-          ]}
-          title="ねこ語ジェネレーター"
-        />
-        <GachaItem
-          detail={
-            <GachaDetail
-              created="2023/01/10 14:25:42"
-              name="@koluriri"
-              playCount={23}
-              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-            />
-          }
-          id={1}
-          preview={[
-            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-            'にゃにゃにゃん',
-            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-            'にゃんにゃんにゃんにゃんにゃん',
-          ]}
-          title="ねこ語ジェネレーター"
-        />
-        <GachaItem
-          detail={
-            <GachaDetail
-              created="2023/01/10 14:25:42"
-              name="@koluriri"
-              playCount={23}
-              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-            />
-          }
-          id={1}
-          preview={[
-            'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-            'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-            'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-            'にゃにゃにゃん',
-            'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-            'にゃんにゃんにゃんにゃんにゃん',
-          ]}
-          title="ねこ語ジェネレーター"
-        />
+        {posts?.map((post, index) => (
+          <GachaItem
+            key={post.id}
+            detail={
+              <GachaDetail
+                created={post.created.toString()}
+                name={`@${post.author.userName}`}
+                playCount={post.play_count}
+                src={post.author.icon}
+              />
+            }
+            icon={
+              index === 0 ? (
+                <IconRankingOne />
+              ) : index === 1 ? (
+                <IconRankingTwo />
+              ) : index === 2 ? (
+                <IconRankingThree />
+              ) : undefined
+            }
+            id={post.id}
+            preview={getResults(post.regex, 5)}
+            title={post.title}
+          />
+        ))}
       </Card>
     </div>
   );
 };
 
-export default Home;
+export default Ranking;

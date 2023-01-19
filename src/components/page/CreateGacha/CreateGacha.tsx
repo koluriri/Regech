@@ -1,6 +1,5 @@
-import { FC, FormEvent, useEffect, useRef, useState } from 'react';
+import { FC, FormEvent, useRef, useState } from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { IconPencil, IconPlay } from '~/components/Icon';
 import Card from '~/components/ui/Card/Card';
 import CardHeader from '~/components/ui/CardHeader/CardHeader';
@@ -13,13 +12,13 @@ import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 import { regexAtom, resultsAtom } from '~/atoms/atoms';
 import { useAtom } from 'jotai';
 import useGetResults from '~/hooks/useGetResults';
+import useListenResults from '~/hooks/useListenResults';
 import CreateGachaHint from './CreateGachaHint';
 
 const CreateGacha: FC = () => {
-  const router = useRouter();
   const { t } = useLocale();
 
-  const [results, setResults] = useAtom(resultsAtom);
+  const [, setResults] = useAtom(resultsAtom);
 
   const [regex, setRegex] = useAtom(regexAtom);
   const [mode, setMode] = useState('multiple');
@@ -33,11 +32,7 @@ const CreateGacha: FC = () => {
     setResults(resultsTemporary);
   };
 
-  useEffect(() => {
-    if (results.length !== 0) {
-      router.push('/party').catch(() => alert('Error!'));
-    }
-  }, [results, router]);
+  useListenResults();
 
   return (
     <div className="container">

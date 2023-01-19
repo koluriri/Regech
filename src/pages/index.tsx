@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
     include: {
       author: true,
     },
-    take: 10,
+    take: 30,
   });
 
   return {
