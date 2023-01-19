@@ -1,11 +1,11 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { FC, useCallback, useEffect, useRef } from 'react';
 import Head from 'next/head';
-import Logo from '~/components/ui/Logo/Logo';
 import PartyStage from '~/components/module/gacha/PartyStage/PartyStage';
 import Button from '~/components/ui/Button/Button';
 import { useRouter } from 'next/router';
 import { IconSkip } from '~/components/Icon';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import { useAtom } from 'jotai';
 import { resultsAtom } from '~/atoms/atoms';
 
@@ -22,11 +22,11 @@ const Party: FC = () => {
 
   useEffect(() => {
     timerId.current = setTimeout(() => {
-      router.replace('/result');
+      router.replace('/result').catch(() => alert('error'));
     }, timer * 1500);
 
     return clearTimer;
-  }, [clearTimer]);
+  }, [clearTimer, router, timer]);
 
   return (
     <div className="container">

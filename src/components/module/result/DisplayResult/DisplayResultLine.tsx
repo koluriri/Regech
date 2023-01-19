@@ -19,7 +19,7 @@ const DisplayResultLine: FC<PropType> = ({ children }) => {
       text.setText(children);
       text.start();
     }
-  }, []);
+  }, [children, id]);
 
   return <span id={id}>{children}</span>;
 };

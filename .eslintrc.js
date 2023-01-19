@@ -111,7 +111,6 @@ module.exports = {
         peerDependencies: true,
       },
     ],
-    '@typescript-eslint/no-misused-promises': [false],
   },
   overrides: [
     {

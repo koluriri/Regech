@@ -1,8 +1,7 @@
-import { FC } from 'react';
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import { FC, useState } from 'react';
 import Head from 'next/head';
-import Logo from '~/components/ui/Logo/Logo';
 import Button from '~/components/ui/Button/Button';
-import { useRouter } from 'next/router';
 import { IconPlay } from '~/components/Icon';
 import Card from '~/components/ui/Card/Card';
 import CardHeader from '~/components/ui/CardHeader/CardHeader';
@@ -11,39 +10,62 @@ import BigText from '~/components/ui/BigText/BigText';
 import Selector from '~/components/ui/Selector/Selector';
 import GachaItem from '~/components/module/gacha/GachaItem/GachaItem';
 import CardStack from '~/components/ui/CardStack/CardStack';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
+import { Post, User } from '@prisma/client';
+import useGetResults from '~/hooks/useGetResults';
+import { useAtom } from 'jotai';
+import { postAtom, resultsAtom } from '~/atoms/atoms';
+import useListenResults from '~/hooks/useListenResults';
+import { useREST } from '~/hooks/RESThandler';
 
-const Post: FC = () => {
-  const router = useRouter();
+const PostComponent: FC<{
+  post: Post & { author: User };
+  recommendeds: (Post & { author: User })[];
+}> = ({ post, recommendeds }) => {
   const { t } = useLocale();
+  const getResults = useGetResults();
+  const { put } = useREST();
+
+  const [, setResults] = useAtom(resultsAtom);
+  const [, setPost] = useAtom(postAtom);
+
+  const [mode, setMode] = useState('multiple');
+
+  const handleSubmit = async () => {
+    await put(`played/${post.id}`, {}, () => {
+      const resultsTemporary = getResults(
+        post.regex,
+        mode === 'multiple' ? 10 : 1,
+      );
+      setPost(post);
+      setResults(resultsTemporary);
+    });
+  };
+
+  useListenResults();
+
   return (
     <div className="container">
       <Head>
-        <title>ねこ語ジェネレーター</title>
+        <title>{post.title}</title>
       </Head>
 
       <CardStack>
         <Card>
           <CardHeader>
-            <span>ねこ語ジェネレーター</span>
+            <span>{post.title}</span>
             <GachaDetail
               center
-              created="2023/01/10 14:25:42"
-              name="@koluriri"
-              playCount={23}
-              src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+              created={post.created.toString()}
+              name={`@${post.author.userName}`}
+              playCount={post.play_count}
+              src={post.author.icon}
             />
           </CardHeader>
-          <BigText>
-            {`(:|;|8^|&-|:'-|8-|(:-|:,-|:-|=|X|:*)(D|)|P|e|<|c|0|O|}|o|||(|((|\\\\)`}
-          </BigText>
-          <Selector
-            handleChange={(val: string) => {
-              console.log(val);
-            }}
-          />
-          <Button block variant="primary" onClick={() => router.push('/party')}>
+          <BigText>{post.regex}</BigText>
+          <Selector handleChange={(val: string) => setMode(val)} />
+          <Button block variant="primary" onClick={handleSubmit}>
             <IconPlay />
             {t.PLAY_GACHA}
           </Button>
@@ -51,69 +73,23 @@ const Post: FC = () => {
 
         <Card transparent>
           <CardHeader>{t.RECOMMENDED}</CardHeader>
-          <GachaItem
-            animate={false}
-            detail={
-              <GachaDetail
-                created="2023/01/10 14:25:42"
-                name="@koluriri"
-                playCount={23}
-                src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-              />
-            }
-            id={1}
-            preview={[
-              'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-              'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-              'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-              'にゃにゃにゃん',
-              'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-              'にゃんにゃんにゃんにゃんにゃん',
-            ]}
-            title="ねこ語ジェネレーター"
-          />
-          <GachaItem
-            animate={false}
-            detail={
-              <GachaDetail
-                created="2023/01/10 14:25:42"
-                name="@koluriri"
-                playCount={23}
-                src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-              />
-            }
-            id={1}
-            preview={[
-              'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-              'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-              'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-              'にゃにゃにゃん',
-              'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-              'にゃんにゃんにゃんにゃんにゃん',
-            ]}
-            title="ねこ語ジェネレーター"
-          />
-          <GachaItem
-            animate={false}
-            detail={
-              <GachaDetail
-                created="2023/01/10 14:25:42"
-                name="@koluriri"
-                playCount={23}
-                src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-              />
-            }
-            id={1}
-            preview={[
-              'にゃんにゃにゃにゃんにゃにゃにゃんにゃにゃん',
-              'にゃにゃんにゃんにゃんにゃにゃんにゃん',
-              'にゃんにゃんにゃにゃんにゃんにゃにゃん',
-              'にゃにゃにゃん',
-              'にゃんにゃにゃんにゃにゃんにゃにゃんにゃ',
-              'にゃんにゃんにゃんにゃんにゃん',
-            ]}
-            title="ねこ語ジェネレーター"
-          />
+          {recommendeds?.map((recommended) => (
+            <GachaItem
+              key={recommended.id}
+              animate={false}
+              detail={
+                <GachaDetail
+                  created={recommended.created.toString()}
+                  name={`@${recommended.author.userName}`}
+                  playCount={recommended.play_count}
+                  src={recommended.author.icon}
+                />
+              }
+              id={recommended.id}
+              preview={getResults(recommended.regex, 5)}
+              title={recommended.title}
+            />
+          ))}
         </Card>
       </CardStack>
 
@@ -122,4 +98,4 @@ const Post: FC = () => {
   );
 };
 
-export default Post;
+export default PostComponent;

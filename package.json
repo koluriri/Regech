@@ -21,7 +21,14 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
-    "@prisma/client": "^4.5.0",
+    "@prisma/client": "^4.9.0",
+    "@tanstack/react-query": "^4.22.0",
+    "@trpc/client": "^10.9.0",
+    "@trpc/next": "^10.9.0",
+    "@trpc/react": "^10.0.0-proxy-beta.20",
+    "@trpc/react-query": "^10.9.0",
+    "@trpc/server": "^10.9.0",
+    "@types/react-query": "^1.2.9",
     "@types/zdog": "^1.1.2",
     "axios": "^1.1.3",
     "clsx": "^1.2.1",
@@ -31,7 +38,7 @@
     "moment": "^2.29.4",
     "nanoid": "^4.0.0",
     "next": "12.3.1",
-    "prisma": "^4.5.0",
+    "prisma": "^4.9.0",
     "randexp": "^0.5.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -40,10 +47,11 @@
     "react-tsparticles": "^2.7.1",
     "react-ztext": "^1.0.3",
     "shuffle-text": "^0.3.6",
-    "swr": "^1.3.0",
+    "superjson": "^1.12.2",
+    "swr": "^2.0.0",
     "tsparticles": "^2.7.1",
     "zdog": "^1.1.3",
-    "zod": "^3.19.1"
+    "zod": "^3.20.2"
   },
   "eslintConfig": {
     "extends": [
@@ -99,6 +107,7 @@
     "@typescript-eslint/parser": "^5.39.0",
     "babel-loader": "^8.2.5",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "babel-plugin-superjson-next": "^0.4.5",
     "eslint": "8.25.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "12.3.1",

@@ -1,5 +1,5 @@
 import Particles from 'react-tsparticles';
-import type { Container, Engine } from 'tsparticles-engine';
+import type { Engine } from 'tsparticles-engine';
 import { loadFull } from 'tsparticles';
 import { FC, useCallback } from 'react';
 import styles from './PartyStage.module.css';
@@ -13,13 +13,6 @@ const PartyStageBg: FC = () => {
     // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(engine);
   }, []);
-
-  const particlesLoaded = useCallback(
-    async (container: Container | undefined) => {
-      await console.log(container);
-    },
-    [],
-  );
 
   const particlesParams = {
     particles: {
@@ -110,7 +103,6 @@ const PartyStageBg: FC = () => {
         id="particles"
         options={particlesParams}
         init={particlesInit}
-        loaded={particlesLoaded}
       />
       <div className={`${styles.bg}`} />
     </>

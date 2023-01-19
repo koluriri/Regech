@@ -15,7 +15,7 @@ export default {
   DAYS_AGO: '日前',
   HOURS_AGO: '時間前',
   MINUTES_AGO: '分前',
-  NOW: 'たった今',
+  NOW: '秒前',
   SKIP: 'スキップ',
   RESULTS: '結果発表！',
   TWEET_RESULT: '結果をツイート',

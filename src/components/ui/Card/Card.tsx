@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 import clsx from 'clsx';
 import { FC, ReactNode } from 'react';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import { IconBulb } from '../../Icon';
 import CardHeader from '../CardHeader/CardHeader';
 import styles from './Card.module.css';

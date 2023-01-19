@@ -15,7 +15,7 @@ export default {
   DAYS_AGO: ' days ago',
   HOURS_AGO: ' hours ago',
   MINUTES_AGO: ' minutes ago',
-  NOW: ' now',
+  NOW: ' seconds ago',
   SKIP: 'Skip',
   RESULTS: 'Result!!',
   TWEET_RESULT: 'Tweet the result',

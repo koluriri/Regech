@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC, ReactNode } from 'react';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import Logo from '../ui/Logo/Logo';
 import styles from './Layout.module.css';
 
@@ -80,7 +80,7 @@ const Layout: FC<PropType> = ({ children }) => {
       <footer className={styles.footer}>
         <span>
           © 2023{' '}
-          <a href="//twitter.com/koluriri" target="_blank">
+          <a href="//twitter.com/koluriri" target="_blank" rel="noreferrer">
             @koluriri
           </a>
           .

@@ -57,7 +57,7 @@ const PartyStageCapsule: FC<PropType> = ({ displayText }) => {
       // apply easing to rotation
       const tween = Zdog.easeInOut(progress % 1, 3);
       illo.rotate.y = tween * Zdog.TAU + -4.8;
-      ticker++;
+      ticker += 1;
 
       /* if (dome2.rotate.y >= 0.7) {
         dome2.rotate.y = 0;
@@ -82,36 +82,34 @@ const PartyStageCapsule: FC<PropType> = ({ displayText }) => {
   }, []);
 
   return (
-    <>
-      <div className={styles.container}>
-        <svg id="zdogCanvas" width="600" height="600" />
+    <div className={styles.container}>
+      <svg id="zdogCanvas" width="600" height="600" />
 
-        <svg id="gradientContainer" width="0" height="0">
-          <defs>
-            <linearGradient id="gachaGradient" gradientTransform="rotate(90)">
-              <stop offset="0%" stopColor="#B51409" />
-              <stop offset="50%" stopColor="#DEAF0A" />
-              <stop offset="100%" stopColor="#46B4AB" />
-            </linearGradient>
-          </defs>
-        </svg>
+      <svg id="gradientContainer" width="0" height="0">
+        <defs>
+          <linearGradient id="gachaGradient" gradientTransform="rotate(90)">
+            <stop offset="0%" stopColor="#B51409" />
+            <stop offset="50%" stopColor="#DEAF0A" />
+            <stop offset="100%" stopColor="#46B4AB" />
+          </linearGradient>
+        </defs>
+      </svg>
 
-        <span id="vertical" ref={spanDom}>
-          <Ztext
-            depth="25px"
-            direction="both"
-            event="none"
-            eventRotation="30deg"
-            eventDirection="default"
-            fade={false}
-            layers={20}
-            perspective="100px"
-          >
-            {displayText}
-          </Ztext>
-        </span>
-      </div>
-    </>
+      <span id="vertical" ref={spanDom}>
+        <Ztext
+          depth="25px"
+          direction="both"
+          event="none"
+          eventRotation="30deg"
+          eventDirection="default"
+          fade={false}
+          layers={20}
+          perspective="100px"
+        >
+          {displayText}
+        </Ztext>
+      </span>
+    </div>
   );
 };
 
