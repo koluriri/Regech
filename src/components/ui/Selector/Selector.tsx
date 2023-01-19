@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/require-default-props */
 import { FC, useState } from 'react';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import { IconGachaMultiple, IconGachaSingle } from '../../Icon';
 
 export type PropType = {

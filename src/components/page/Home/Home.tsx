@@ -5,7 +5,7 @@ import Card from '~/components/ui/Card/Card';
 import TabHeader from '~/components/ui/TabHeader/TabHeader';
 import GachaItem from '~/components/module/gacha/GachaItem/GachaItem';
 import GachaDetail from '~/components/module/gacha/GachaDetail/GachaDetail';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import { useAtom } from 'jotai';
 import { resultsAtom } from '~/atoms/atoms';
 import { Post, User } from '@prisma/client';

@@ -5,7 +5,7 @@ import PartyStage from '~/components/module/gacha/PartyStage/PartyStage';
 import Button from '~/components/ui/Button/Button';
 import { useRouter } from 'next/router';
 import { IconSkip } from '~/components/Icon';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import { useAtom } from 'jotai';
 import { resultsAtom } from '~/atoms/atoms';
 

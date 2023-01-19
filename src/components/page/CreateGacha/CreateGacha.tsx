@@ -8,7 +8,7 @@ import Textarea from '~/components/ui/Textarea/Textarea';
 import RegexGuide from '~/components/module/create/RegexGuide/RegexGuide';
 import Selector from '~/components/ui/Selector/Selector';
 import Button from '~/components/ui/Button/Button';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 import { regexAtom, resultsAtom } from '~/atoms/atoms';
 import { useAtom } from 'jotai';

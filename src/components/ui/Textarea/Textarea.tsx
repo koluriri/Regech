@@ -1,9 +1,5 @@
 /* eslint-disable react/require-default-props */
-import React, {
-  TextareaHTMLAttributes,
-  useState,
-  ClassAttributes,
-} from 'react';
+import React, { TextareaHTMLAttributes, useState } from 'react';
 import styles from './Textarea.module.css';
 
 export type PropType = TextareaHTMLAttributes<HTMLTextAreaElement>;
@@ -25,7 +21,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, PropType>(
         rows={calcTextAreaHeight(val)}
         onChange={(e) => setVal(e.target.value)}
         {...props}
-      ></textarea>
+      />
     );
   },
 );

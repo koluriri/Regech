@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { useRouter } from 'next/router';
-import { FC, useState } from 'react';
-import { useLocale } from '~/hooks/useLocale';
+import { FC } from 'react';
+import useLocale from '~/hooks/useLocale';
 import Button from '../../../ui/Button/Button';
 
 const GoTopButton: FC = () => {

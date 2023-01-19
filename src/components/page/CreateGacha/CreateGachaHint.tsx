@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 
 const CreateGachaHint: FC = () => {
   const { locale } = useLocale();
@@ -33,7 +33,7 @@ const CreateGachaHint: FC = () => {
         <code className="blue">L(OL)+</code>.
       </p>
       <p>
-        If you make an interesting gacha, post it and let's play together!
+        If you make an interesting gacha, post it and let&apos;s play together!
         <br />
         (You must be logged in to Twitter to post.)
       </p>

@@ -1,4 +1,4 @@
-import { useLocale } from './useLocale';
+import useLocale from './useLocale';
 
 const useAgoText = () => {
   const { t } = useLocale();

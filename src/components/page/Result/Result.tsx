@@ -9,7 +9,7 @@ import CardHeader from '~/components/ui/CardHeader/CardHeader';
 import GachaDetail from '~/components/module/gacha/GachaDetail/GachaDetail';
 import DisplayResult from '~/components/module/result/DisplayResult/DisplayResult';
 import CardStack from '~/components/ui/CardStack/CardStack';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 import { resultsAtom } from '~/atoms/atoms';
 import { useAtom } from 'jotai';

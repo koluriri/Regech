@@ -11,7 +11,7 @@ import BigText from '~/components/ui/BigText/BigText';
 import Selector from '~/components/ui/Selector/Selector';
 import GachaItem from '~/components/module/gacha/GachaItem/GachaItem';
 import CardStack from '~/components/ui/CardStack/CardStack';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 
 const Post: FC = () => {

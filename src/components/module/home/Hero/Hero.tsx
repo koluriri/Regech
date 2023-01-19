@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { useRouter } from 'next/router';
 import { FC, useEffect } from 'react';
 import ShuffleText from 'shuffle-text';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import { IconPencil } from '~/components/Icon';
 import Button from '~/components/ui/Button/Button';
 import styles from './Hero.module.css';
@@ -37,7 +38,7 @@ const Hero: FC = () => {
       toukouText.setText(locale === 'ja' ? '投稿' : 'Post');
       toukouText.start();
     }
-  }, []);
+  }, [locale]);
 
   return (
     <h1 className={`${styles.hero}`}>

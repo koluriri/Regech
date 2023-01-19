@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 import Link from 'next/link';
 import { FC } from 'react';
-import { useLocale } from '~/hooks/useLocale';
+import useLocale from '~/hooks/useLocale';
 import styles from './Logo.module.css';
 import LogoSvg from './LogoSvg';
 
