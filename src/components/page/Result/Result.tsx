@@ -13,12 +13,15 @@ import useLocale from '~/hooks/useLocale';
 import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 import { postAtom, resultsAtom } from '~/atoms/atoms';
 import { useAtom } from 'jotai';
+import useGenerateTweet from '~/hooks/useGenerateTweet';
 
 const Result: FC = () => {
   const router = useRouter();
   const { t } = useLocale();
   const [results, setResults] = useAtom(resultsAtom);
   const [post] = useAtom(postAtom);
+
+  const generateTweet = useGenerateTweet();
 
   useEffect(() => {
     if (results.length === 0) router.push('/').catch(() => alert('Error!'));
@@ -46,7 +49,17 @@ const Result: FC = () => {
           )}
           <CardHeader>{t.RESULTS}</CardHeader>
           <DisplayResult results={results} />
-          <Button variant="sky" block>
+          <Button
+            variant="sky"
+            block
+            onClick={() =>
+              window.open(
+                `http://twitter.com/share?text=${encodeURIComponent(
+                  generateTweet(results, post),
+                )}&related=${encodeURIComponent('@koluriri')}`,
+              )
+            }
+          >
             {t.TWEET_RESULT}
           </Button>
           <Button
