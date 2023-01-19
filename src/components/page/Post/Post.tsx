@@ -17,6 +17,7 @@ import useGetResults from '~/hooks/useGetResults';
 import { useAtom } from 'jotai';
 import { resultsAtom } from '~/atoms/atoms';
 import useListenResults from '~/hooks/useListenResults';
+import { useREST } from '~/hooks/RESThandler';
 
 const PostComponent: FC<{
   post: Post & { author: User };
@@ -24,17 +25,20 @@ const PostComponent: FC<{
 }> = ({ post, recommendeds }) => {
   const { t } = useLocale();
   const getResults = useGetResults();
+  const { put } = useREST();
 
   const [, setResults] = useAtom(resultsAtom);
 
   const [mode, setMode] = useState('multiple');
 
-  const handleSubmit = () => {
-    const resultsTemporary = getResults(
-      post.regex,
-      mode === 'multiple' ? 10 : 1,
-    );
-    setResults(resultsTemporary);
+  const handleSubmit = async () => {
+    await put(`played/${post.id}`, {}, () => {
+      const resultsTemporary = getResults(
+        post.regex,
+        mode === 'multiple' ? 10 : 1,
+      );
+      setResults(resultsTemporary);
+    });
   };
 
   useListenResults();

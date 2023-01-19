@@ -40,7 +40,7 @@ const GachaItem: FC<PropType> = ({
           {animate ? (
             <GachaPreview preview={preview} />
           ) : (
-            <span suppressHydrationWarning>{preview}</span>
+            <span suppressHydrationWarning>{preview[0]}</span>
           )}
         </div>
         {detail}
