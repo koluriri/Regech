@@ -15,7 +15,7 @@ import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 import { Post, User } from '@prisma/client';
 import useGetResults from '~/hooks/useGetResults';
 import { useAtom } from 'jotai';
-import { resultsAtom } from '~/atoms/atoms';
+import { postAtom, resultsAtom } from '~/atoms/atoms';
 import useListenResults from '~/hooks/useListenResults';
 import { useREST } from '~/hooks/RESThandler';
 
@@ -28,6 +28,7 @@ const PostComponent: FC<{
   const { put } = useREST();
 
   const [, setResults] = useAtom(resultsAtom);
+  const [, setPost] = useAtom(postAtom);
 
   const [mode, setMode] = useState('multiple');
 
@@ -37,6 +38,7 @@ const PostComponent: FC<{
         post.regex,
         mode === 'multiple' ? 10 : 1,
       );
+      setPost(post);
       setResults(resultsTemporary);
     });
   };

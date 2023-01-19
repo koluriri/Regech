@@ -7,7 +7,7 @@ import GachaItem from '~/components/module/gacha/GachaItem/GachaItem';
 import GachaDetail from '~/components/module/gacha/GachaDetail/GachaDetail';
 import useLocale from '~/hooks/useLocale';
 import { useAtom } from 'jotai';
-import { resultsAtom } from '~/atoms/atoms';
+import { postAtom, resultsAtom } from '~/atoms/atoms';
 import { Post, User } from '@prisma/client';
 import useGetResults from '~/hooks/useGetResults';
 
@@ -17,9 +17,11 @@ const Home: FC<{
   const { t } = useLocale();
 
   const [, setResults] = useAtom(resultsAtom);
+  const [, setPost] = useAtom(postAtom);
   useEffect(() => {
+    setPost(null);
     setResults([]);
-  }, [setResults]);
+  }, [setResults, setPost]);
 
   const getResults = useGetResults();
 
