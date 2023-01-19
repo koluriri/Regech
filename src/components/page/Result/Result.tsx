@@ -56,7 +56,11 @@ const Result: FC = () => {
               window.open(
                 `http://twitter.com/share?text=${encodeURIComponent(
                   generateTweet(results, post),
-                )}&related=${encodeURIComponent('@koluriri')}`,
+                )}&url=${
+                  post
+                    ? `https://regech.app/post/${post.id}`
+                    : 'https://regech.app'
+                }&related=${encodeURIComponent('@koluriri')}`,
               )
             }
           >
