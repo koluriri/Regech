@@ -46,6 +46,15 @@
   --button-background: var(--sky);
 }
 
+.sky-simple {
+  --button-text-color: var(--sky);
+  --button-background: transparent;
+
+  font-size: var(--text-sm);
+  border: 0;
+  box-shadow: none;
+}
+
 .blue {
   --button-text-color: #fff;
   --button-background: var(--blue);
