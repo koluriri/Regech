@@ -134,3 +134,7 @@ a.button.disabled,
 fieldset[disabled] a.button {
   pointer-events: none;
 }
+
+.mini {
+  font-size: 1em;
+}

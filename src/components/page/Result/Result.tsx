@@ -3,7 +3,7 @@ import { FC, useEffect } from 'react';
 import Head from 'next/head';
 import Button from '~/components/ui/Button/Button';
 import { useRouter } from 'next/router';
-import { IconGachaSingle } from '~/components/Icon';
+import { IconGachaSingle, IconLogin } from '~/components/Icon';
 import Card from '~/components/ui/Card/Card';
 import CardHeader from '~/components/ui/CardHeader/CardHeader';
 import GachaDetail from '~/components/module/gacha/GachaDetail/GachaDetail';
@@ -16,6 +16,7 @@ import { useAtom } from 'jotai';
 import useGenerateTweet from '~/hooks/useGenerateTweet';
 import {
   getAuth,
+  signInWithPopup,
   signInWithRedirect,
   TwitterAuthProvider,
 } from 'firebase/auth';
@@ -23,6 +24,7 @@ import app from '~/utils/firebase/firebase';
 import CreatePost from '~/components/module/result/CreatePost/CreatePost';
 import useIsLoggedIn from '~/hooks/useIsLoggedIn';
 import Spinner from '~/components/ui/Spinner/Spinner';
+import { FirebaseError } from 'firebase/app';
 
 const Result: FC = () => {
   const router = useRouter();
@@ -49,6 +51,39 @@ const Result: FC = () => {
     const provider = new TwitterAuthProvider();
     const auth = getAuth(app);
     await signInWithRedirect(auth, provider);
+  };
+
+  const handleLoginWithPopup = () => {
+    const provider = new TwitterAuthProvider();
+    const auth = getAuth(app);
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+        // You can use these server side with your app's credentials to access the Twitter API.
+        const credential = TwitterAuthProvider.credentialFromResult(result);
+        if (credential) {
+          const token = credential.accessToken;
+          const { secret } = credential;
+
+          // The signed-in user info.
+          const { user } = result;
+          console.log(token);
+          console.log(secret);
+          console.log(user);
+          alert(`logged in! ${user.displayName ?? ''}`);
+        } else {
+          alert('credential is falsy');
+        }
+        // ...
+      })
+      .catch((error: FirebaseError) => {
+        // Handle Errors here.
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        // The AuthCredential type that was used.
+        alert(`error: ${errorMessage}`);
+        // ...
+      });
   };
 
   return (
@@ -113,9 +148,21 @@ const Result: FC = () => {
             {isLoading && <Spinner />}
             {isLoggedIn && <CreatePost />}
             {!isLoggedIn && isLoggedIn !== null && (
-              <Button variant="sky" block onClick={handleLogin}>
-                {t.GACHA_POST_LOGIN}
-              </Button>
+              <>
+                <Button variant="sky" block onClick={handleLogin}>
+                  {t.GACHA_POST_LOGIN}
+                  <IconLogin />
+                </Button>
+                <Button
+                  variant="sky-simple"
+                  block
+                  mini
+                  onClick={handleLoginWithPopup}
+                >
+                  {t.CANT_LOGIN}
+                  <IconLogin />
+                </Button>
+              </>
             )}
           </Card>
         )}

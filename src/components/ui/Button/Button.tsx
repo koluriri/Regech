@@ -15,6 +15,7 @@ export type PropType = ButtonHTMLAttributes<HTMLButtonElement> & {
     | 'sky-simple';
   block?: boolean;
   caption?: string;
+  mini?: boolean;
 };
 
 const Button: FC<PropType> = ({
@@ -22,9 +23,15 @@ const Button: FC<PropType> = ({
   variant = 'default',
   block = false,
   caption = '',
+  mini = false,
   ...props
 }) => {
-  const cls = clsx([styles.button, styles[variant], block && styles.block]);
+  const cls = clsx([
+    styles.button,
+    styles[variant],
+    block && styles.block,
+    mini && styles.mini,
+  ]);
 
   return (
     <button type="button" className={cls} {...props}>

@@ -46,4 +46,6 @@ export default {
   ENTER_TITLE: 'Type Title',
   LOGOUT: 'Logout',
   POST_AS: 'Post as ',
+  CANT_LOGIN: "Click here if you can't log in",
+  SHARE_ON_TWITTER: 'Share on Twitter',
 };

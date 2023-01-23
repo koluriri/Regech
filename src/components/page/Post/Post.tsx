@@ -82,7 +82,7 @@ const PostComponent: FC<{
               )
             }
           >
-            このガチャをTwitterでシェア
+            {t.SHARE_ON_TWITTER}
           </Button>
         </Card>
 

@@ -46,4 +46,6 @@ export default {
   ENTER_TITLE: 'タイトルを入力',
   LOGOUT: 'ログアウト(トップへ)',
   POST_AS: '投稿するアカウント：',
+  CANT_LOGIN: 'ログインできない場合はこちらをクリック',
+  SHARE_ON_TWITTER: 'このガチャをTwitterでシェア',
 };
