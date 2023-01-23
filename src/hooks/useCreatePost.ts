@@ -12,6 +12,7 @@ const useCreatePost = () => {
     title: string,
     regex: string,
     onSuccess: (path: string) => Promise<void>,
+    onError: () => void,
   ) => {
     const auth = getAuth(app);
     if (auth.currentUser)
@@ -36,13 +37,11 @@ const useCreatePost = () => {
                 throw Error(zodErrorToString(parsedData.error));
               await onSuccess(`/post/${parsedData.data.id}`);
             },
-            () => {
-              alert('不明なエラー');
-            },
           );
         })
         .catch((error: Error) => {
           console.error(error);
+          onError();
           alert(error.message);
         });
   };

@@ -12,6 +12,13 @@ const createPost = async (body: unknown) => {
   const matched = /(\{[0-9]{3,},|[0-9]{3,}\})/g.test(parsedBody.data.regex);
   if (matched) throw Error('結果が長すぎます。Results are too long.');
 
+  if (
+    parsedBody.data.regex === '.+' ||
+    parsedBody.data.regex === '.' ||
+    parsedBody.data.regex === '.*'
+  )
+    throw Error('正規表現が簡単すぎます。Regular expressions is too simple.');
+
   let rgx = /^$/;
   try {
     rgx = new RegExp(parsedBody.data.regex);
@@ -33,6 +40,24 @@ const createPost = async (body: unknown) => {
     if (result.length > 400)
       throw Error('結果が長すぎます。Results are too long.');
   }
+
+  const existsRegex = await prisma.post.findFirst({
+    where: { regex: parsedBody.data.regex },
+    select: { id: true },
+  });
+  if (existsRegex !== null)
+    throw Error(
+      '既に同じ正規表現が投稿されています。The same regex has already been posted.',
+    );
+
+  const existsTitle = await prisma.post.findFirst({
+    where: { title: parsedBody.data.title },
+    select: { id: true },
+  });
+  if (existsTitle !== null)
+    throw Error(
+      '既に同じタイトルが投稿されています。The same title has already been posted.',
+    );
 
   return admin
     .auth()

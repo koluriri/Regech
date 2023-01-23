@@ -44,11 +44,18 @@ const CreatePost: FC = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    createPost(title, regex, async (path: string) => {
-      setResults([]);
-      setLoading(false);
-      await router.push(path);
-    });
+    createPost(
+      title,
+      regex,
+      async (path: string) => {
+        setResults([]);
+        setLoading(false);
+        await router.push(path);
+      },
+      () => {
+        setLoading(false);
+      },
+    );
   };
 
   if (userInfo === null) return null;
@@ -72,6 +79,7 @@ const CreatePost: FC = () => {
           value={title}
           placeholder={t.ENTER_TITLE}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
         <Button type="submit" variant="blue" block disabled={loading}>
           {t.POST}
