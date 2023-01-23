@@ -51,7 +51,7 @@ const PostComponent: FC<{
         <title>{post.title}</title>
         <meta
           property="og:image"
-          content={`https://regech.app/api/og?title=${post.title}`}
+          content={`https://www.regech.app/api/og?title=${post.title}`}
         />
       </Head>
 
@@ -80,7 +80,7 @@ const PostComponent: FC<{
               window.open(
                 `http://twitter.com/share?text=${encodeURIComponent(
                   `${post.title} from @${post.author.userName}`,
-                )}&url=${`https://regech.app/post/${post.id}`}&related=${encodeURIComponent(
+                )}&url=${`https://www.regech.app/post/${post.id}`}&related=${encodeURIComponent(
                   '@koluriri',
                 )}`,
               )

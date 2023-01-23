@@ -30,7 +30,7 @@ const Home: FC<{
     <div className="container">
       <Head>
         <title>{t.TITLE}</title>
-        <meta property="og:image" content="https://regech.app/ogp.jpg" />
+        <meta property="og:image" content="https://www.regech.app/ogp.jpg" />
       </Head>
 
       <Hero />

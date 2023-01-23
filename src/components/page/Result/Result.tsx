@@ -56,7 +56,7 @@ const Result: FC = () => {
     <div className="container">
       <Head>
         <title>{t.RESULTS}</title>
-        <meta property="og:image" content="https://regech.app/ogp.jpg" />
+        <meta property="og:image" content="https://www.regech.app/ogp.jpg" />
       </Head>
 
       <CardStack>
@@ -87,8 +87,8 @@ const Result: FC = () => {
                   generateTweet(results, post),
                 )}&url=${
                   post
-                    ? `https://regech.app/post/${post.id}`
-                    : 'https://regech.app'
+                    ? `https://www.regech.app/post/${post.id}`
+                    : 'https://www.regech.app'
                 }&related=${encodeURIComponent('@koluriri')}`,
               )
             }

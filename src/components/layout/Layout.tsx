@@ -28,12 +28,12 @@ const Layout: FC<PropType> = ({ children }) => {
         <link
           rel="alternate"
           hrefLang="ja"
-          href={`https://regech.app${router.pathname}`}
+          href={`https://www.regech.app${router.pathname}`}
         />
         <link
           rel="alternate"
           hrefLang="en"
-          href={`https://regech.app/en${router.pathname}`}
+          href={`https://www.regech.app/en${router.pathname}`}
         />
 
         <link
