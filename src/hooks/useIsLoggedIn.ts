@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import { userAtom } from '~/atoms/atoms';
 import app from '~/utils/firebase/firebase';
 
-const useIsLoggedIn = () => {
+const useIsLoggedIn = (): [isLoggedIn: boolean | null, isLoading: boolean] => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
   const [, setUserInfo] = useAtom(userAtom);
 
@@ -19,13 +19,13 @@ const useIsLoggedIn = () => {
 
     getRedirectResult(auth)
       .then((result) => {
-        if (!result) {
+        if (result === null) {
           setIsLoggedIn(false);
 
           return false;
         }
         const credential = TwitterAuthProvider.credentialFromResult(result);
-        if (credential) {
+        if (credential !== null) {
           const { user } = result;
           const userInfo = getAdditionalUserInfo(result);
           setUserInfo({ ...user, username: userInfo?.username ?? '' });
