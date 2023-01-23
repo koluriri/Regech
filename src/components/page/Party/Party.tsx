@@ -15,8 +15,10 @@ const Party: FC = () => {
 
   const [results] = useAtom(resultsAtom);
   const [regex] = useAtom(regexAtom);
-  localStorage.setItem('regech_last_results', JSON.stringify(results));
-  localStorage.setItem('regech_last_regex', regex);
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('regech_last_results', JSON.stringify(results));
+    localStorage.setItem('regech_last_regex', regex);
+  }
 
   const timer = results.length;
 

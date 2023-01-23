@@ -18,7 +18,9 @@ const CreatePost: FC<{ src: string; username: string }> = ({
   const router = useRouter();
   const { t } = useLocale();
 
-  const regex = localStorage.getItem('regech_last_regex') ?? '';
+  const [regex, setRegex] = useState('');
+  if (typeof window !== 'undefined')
+    setRegex(localStorage.getItem('regech_last_regex') ?? '');
 
   const [title, setTitle] = useState('');
   const handleLogout = () => {
