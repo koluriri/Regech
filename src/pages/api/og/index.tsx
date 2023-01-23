@@ -15,7 +15,7 @@ const handler = async (req: NextRequest) => {
     const title = hasTitle ? searchParams.get('title')?.slice(0, 100) : '';
 
     const fontData = await fetch(
-      new URL('../../../assets/NotoSansJP-Black.otf', import.meta.url),
+      new URL('../../../assets/NotoSansJP.woff', import.meta.url),
     ).then((res) => res.arrayBuffer());
 
     return new ImageResponse(
