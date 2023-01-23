@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { getAuth, signOut } from 'firebase/auth';
 import { useRouter } from 'next/router';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Avatar from '~/components/ui/Avatar/Avatar';
 import BigText from '~/components/ui/BigText/BigText';
 import Button from '~/components/ui/Button/Button';
@@ -19,8 +19,10 @@ const CreatePost: FC<{ src: string; username: string }> = ({
   const { t } = useLocale();
 
   const [regex, setRegex] = useState('');
-  if (typeof window !== 'undefined')
+
+  useEffect(() => {
     setRegex(localStorage.getItem('regech_last_regex') ?? '');
+  }, []);
 
   const [title, setTitle] = useState('');
   const handleLogout = () => {
