@@ -92,6 +92,7 @@ html {
   font-feature-settings: 'palt';
   color: var(--on-surface);
   background: var(--surface);
+  scroll-behavior: smooth;
 }
 
 body {

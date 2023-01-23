@@ -32,7 +32,8 @@ const Result: FC = () => {
 
   const generateTweet = useGenerateTweet();
 
-  const [isLoggedIn, isLoading, handleLoginWithPopup] = useIsLoggedIn();
+  const [isLoggedIn, isLoading, handleLoginWithPopup, scrollBottomRef] =
+    useIsLoggedIn();
 
   useEffect(() => {
     const lastResults = localStorage.getItem('regech_last_results');
@@ -111,30 +112,32 @@ const Result: FC = () => {
         </Card>
 
         {!post && (
-          <Card>
-            <CardHeader>
-              <IconPencil />
-              {t.GACHA_POST_HEADER}
-            </CardHeader>
-            {isLoading && <Spinner />}
-            {isLoggedIn && <CreatePost />}
-            {!isLoggedIn && isLoggedIn !== null && (
-              <>
-                <Button variant="sky" block onClick={handleLogin}>
-                  {t.GACHA_POST_LOGIN}
-                  <IconLogin />
-                </Button>
-                <Button
-                  variant="sky-simple"
-                  block
-                  onClick={handleLoginWithPopup}
-                >
-                  {t.CANT_LOGIN}
-                  <IconLogin />
-                </Button>
-              </>
-            )}
-          </Card>
+          <div ref={scrollBottomRef}>
+            <Card>
+              <CardHeader>
+                <IconPencil />
+                {t.GACHA_POST_HEADER}
+              </CardHeader>
+              {isLoading && <Spinner />}
+              {isLoggedIn && <CreatePost />}
+              {!isLoggedIn && isLoggedIn !== null && (
+                <>
+                  <Button variant="sky" block onClick={handleLogin}>
+                    {t.GACHA_POST_LOGIN}
+                    <IconLogin />
+                  </Button>
+                  <Button
+                    variant="sky-simple"
+                    block
+                    onClick={handleLoginWithPopup}
+                  >
+                    {t.CANT_LOGIN}
+                    <IconLogin />
+                  </Button>
+                </>
+              )}
+            </Card>
+          </div>
         )}
       </CardStack>
 

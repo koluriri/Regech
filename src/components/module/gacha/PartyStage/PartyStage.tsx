@@ -1,5 +1,6 @@
 /* eslint-disable react/require-default-props */
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
+import useEscapeHtml from '~/hooks/useEscapeHtml';
 import PartyStageCapsule from './PartyStageCapsule';
 import PartyStageBg from './PartyStageBg';
 
@@ -10,6 +11,8 @@ export type PropType = {
 const PartyStage: FC<PropType> = ({ results }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [displayText, setDisplayText] = useState(results[currentIndex]);
+
+  const escapeHtml = useEscapeHtml();
 
   const timerId = useRef<NodeJS.Timeout>();
   const clearTimer = useCallback(() => clearInterval(timerId.current), []);
@@ -39,7 +42,7 @@ const PartyStage: FC<PropType> = ({ results }) => {
   return (
     <>
       <PartyStageBg />
-      <PartyStageCapsule displayText={displayText} />
+      <PartyStageCapsule displayText={escapeHtml(displayText)} />
     </>
   );
 };
