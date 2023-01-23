@@ -14,6 +14,15 @@ import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 import { postAtom, resultsAtom } from '~/atoms/atoms';
 import { useAtom } from 'jotai';
 import useGenerateTweet from '~/hooks/useGenerateTweet';
+import {
+  getAuth,
+  signInWithRedirect,
+  TwitterAuthProvider,
+} from 'firebase/auth';
+import app from '~/utils/firebase/firebase';
+import CreatePost from '~/components/module/result/CreatePost/CreatePost';
+import useIsLoggedIn from '~/hooks/useIsLoggedIn';
+import Spinner from '~/components/ui/Spinner/Spinner';
 
 const Result: FC = () => {
   const router = useRouter();
@@ -23,9 +32,17 @@ const Result: FC = () => {
 
   const generateTweet = useGenerateTweet();
 
+  const [isLoggedIn, isLoading] = useIsLoggedIn();
+
   useEffect(() => {
-    if (results.length === 0) router.push('/').catch(() => alert('Error!'));
+    // if (results.length === 0) router.push('/').catch(() => alert('Error!'));
   }, [router, results]);
+
+  const handleLogin = async () => {
+    const provider = new TwitterAuthProvider();
+    const auth = getAuth(app);
+    await signInWithRedirect(auth, provider);
+  };
 
   return (
     <div className="container">
@@ -79,12 +96,23 @@ const Result: FC = () => {
           </Button>
         </Card>
 
-        <Card>
-          <CardHeader>{t.GACHA_POST_HEADER}</CardHeader>
-          <Button variant="sky" block>
-            {t.GACHA_POST_LOGIN}
-          </Button>
-        </Card>
+        {!post && (
+          <Card>
+            <CardHeader>{t.GACHA_POST_HEADER}</CardHeader>
+            {isLoading && <Spinner />}
+            {isLoggedIn && (
+              <CreatePost
+                src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
+                username="@koluriri"
+              />
+            )}
+            {!isLoggedIn && isLoggedIn !== null && (
+              <Button variant="sky" block onClick={handleLogin}>
+                {t.GACHA_POST_LOGIN}
+              </Button>
+            )}
+          </Card>
+        )}
       </CardStack>
 
       <GoTopButton />

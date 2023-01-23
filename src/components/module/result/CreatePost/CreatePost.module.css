@@ -1,0 +1,10 @@
+.author {
+  margin-bottom: 5px;
+  font-size: var(--text-sm);
+  color: var(--secondary);
+  text-align: center;
+}
+
+.author > div {
+  display: inline-block;
+}
