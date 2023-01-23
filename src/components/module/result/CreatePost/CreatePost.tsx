@@ -3,12 +3,13 @@
 import { getAuth, signOut } from 'firebase/auth';
 import { useAtom } from 'jotai';
 import { useRouter } from 'next/router';
-import { FC, useEffect, useState } from 'react';
-import { userAtom } from '~/atoms/atoms';
+import { FC, FormEvent, useEffect, useState } from 'react';
+import { resultsAtom, userAtom } from '~/atoms/atoms';
 import Avatar from '~/components/ui/Avatar/Avatar';
 import BigText from '~/components/ui/BigText/BigText';
 import Button from '~/components/ui/Button/Button';
 import Input from '~/components/ui/Input/Input';
+import useCreatePost from '~/hooks/useCreatePost';
 import useLocale from '~/hooks/useLocale';
 import app from '~/utils/firebase/firebase';
 import styles from './CreatePost.module.css';
@@ -19,6 +20,7 @@ const CreatePost: FC = () => {
 
   const [regex, setRegex] = useState('');
   const [userInfo] = useAtom(userAtom);
+  const [, setResults] = useAtom(resultsAtom);
 
   useEffect(() => {
     setRegex(localStorage.getItem('regech_last_regex') ?? '');
@@ -34,6 +36,19 @@ const CreatePost: FC = () => {
       .catch(() => {
         alert('ログアウトできませんでした。');
       });
+  };
+
+  const [loading, setLoading] = useState(false);
+
+  const createPost = useCreatePost();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    createPost(title, regex, async (path: string) => {
+      setResults([]);
+      setLoading(false);
+      await router.push(path);
+    });
   };
 
   if (userInfo === null) return null;
@@ -52,14 +67,16 @@ const CreatePost: FC = () => {
         </a>
       </div>
       <BigText p0>{regex}</BigText>
-      <Input
-        value={title}
-        placeholder={t.ENTER_TITLE}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <Button variant="blue" block>
-        {t.POST}
-      </Button>
+      <form onSubmit={handleSubmit}>
+        <Input
+          value={title}
+          placeholder={t.ENTER_TITLE}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <Button type="submit" variant="blue" block disabled={loading}>
+          {t.POST}
+        </Button>
+      </form>
     </>
   );
 };

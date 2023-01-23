@@ -1,9 +1,11 @@
+import { FirebaseError } from 'firebase-admin';
 import RandExp from 'randexp';
+import admin from '~/utils/firebase/firebase-admin';
 import prisma from '~/utils/prisma';
 import zodErrorToString from '~/utils/zodErrorToString';
 import { RequiredBodySchema } from './createPost.schema';
 
-const updatePlayed = async (body: unknown) => {
+const createPost = async (body: unknown) => {
   const parsedBody = RequiredBodySchema.safeParse(body);
   if (!parsedBody.success) throw Error(zodErrorToString(parsedBody.error));
 
@@ -32,14 +34,52 @@ const updatePlayed = async (body: unknown) => {
       throw Error('結果が長すぎます。Results are too long.');
   }
 
-  return prisma.post
-    .create({
-      data: parsedBody.data,
+  return admin
+    .auth()
+    .verifyIdToken(parsedBody.data.token)
+    .then(async (decodedToken) => {
+      const { uid } = decodedToken;
+
+      const user = await prisma.user.findFirst({
+        where: {
+          uid,
+        },
+        select: {
+          id: true,
+        },
+      });
+
+      if (!user) throw Error('User Not Found');
+
+      return prisma.post
+        .create({
+          data: {
+            authorId: user.id,
+            title: parsedBody.data.title,
+            regex: parsedBody.data.regex,
+          },
+        })
+        .then(async () => {
+          const lastPost = await prisma.post.findFirst({
+            where: {
+              title: parsedBody.data.title,
+              authorId: user.id,
+            },
+            select: { id: true },
+            orderBy: { id: 'desc' },
+          });
+          if (lastPost?.id !== undefined) {
+            return { id: lastPost.id };
+          }
+          throw Error('投稿IDが見つかりません');
+        })
+        .catch((error: Error) => {
+          throw Error(error.message);
+        });
     })
-    .then(() => true)
-    .catch((error: Error) => {
-      throw Error(error.message);
+    .catch((error: FirebaseError) => {
+      throw Error(error.message ?? 'Error: could not decode token');
     });
 };
 
-export default updatePlayed;
+export default createPost;

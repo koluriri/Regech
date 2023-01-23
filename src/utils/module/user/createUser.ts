@@ -8,10 +8,7 @@ const updatePlayed = async (body: unknown) => {
 
   const user = await prisma.user.findFirst({
     where: {
-      OR: {
-        uid: parsedBody.data.uid,
-        userName: parsedBody.data.userName,
-      },
+      userName: parsedBody.data.userName,
     },
     select: {
       id: true,

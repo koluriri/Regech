@@ -80,7 +80,7 @@ export const useREST = () => ({
   post: (
     endpoint: string,
     data: JSON,
-    onSuccess: () => any,
+    onSuccess: (result: any) => any,
     onError = (): any => true,
   ) =>
     axios
@@ -91,9 +91,10 @@ export const useREST = () => ({
         const parsedBody = APIResponseSchema.safeParse(response.data);
         if (!parsedBody.success) {
           onError();
+          console.log(response);
           throw Error(`APIからのレスポンスが異常です`);
         } else {
-          onSuccess();
+          onSuccess(response.data);
 
           return parsedBody.data;
         }

@@ -3,42 +3,73 @@ import {
   getAdditionalUserInfo,
   getAuth,
   getRedirectResult,
+  signInWithPopup,
   TwitterAuthProvider,
+  UserCredential,
 } from 'firebase/auth';
 import { useAtom } from 'jotai';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { userAtom } from '~/atoms/atoms';
 import app from '~/utils/firebase/firebase';
+import { useREST } from './RESThandler';
 
-const useIsLoggedIn = (): [isLoggedIn: boolean | null, isLoading: boolean] => {
+const useIsLoggedIn = (): [
+  isLoggedIn: boolean | null,
+  isLoading: boolean,
+  handleLoginWithPopup: () => void,
+] => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
   const [, setUserInfo] = useAtom(userAtom);
+
+  const { post } = useREST();
+
+  const onThen = useCallback(
+    (result: UserCredential | null) => {
+      if (result === null) {
+        setIsLoggedIn(false);
+
+        return false;
+      }
+      const credential = TwitterAuthProvider.credentialFromResult(result);
+      if (credential !== null) {
+        const { user } = result;
+        const userInfo = getAdditionalUserInfo(result);
+        setUserInfo({ ...user, username: userInfo?.username ?? '' });
+
+        post(
+          `user`,
+          {
+            uid: user.uid,
+            displayName: user.displayName,
+            userName: userInfo?.username ?? '',
+            icon: user.photoURL,
+          },
+          () => {
+            setIsLoggedIn(true);
+          },
+        ).catch((error: Error) => {
+          alert(`error: ${error.message}`);
+          setIsLoggedIn(false);
+        });
+
+        return true;
+      }
+      alert('Error!');
+
+      setIsLoggedIn(false);
+
+      return false;
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [setUserInfo],
+  );
 
   useEffect(() => {
     const auth = getAuth(app);
 
     getRedirectResult(auth)
       .then((result) => {
-        if (result === null) {
-          setIsLoggedIn(false);
-
-          return false;
-        }
-        const credential = TwitterAuthProvider.credentialFromResult(result);
-        if (credential !== null) {
-          const { user } = result;
-          const userInfo = getAdditionalUserInfo(result);
-          setUserInfo({ ...user, username: userInfo?.username ?? '' });
-
-          setIsLoggedIn(true);
-
-          return true;
-        }
-        alert('Error!');
-
-        setIsLoggedIn(false);
-
-        return false;
+        onThen(result);
       })
       .catch((error) => {
         const err = error as FirebaseError;
@@ -51,10 +82,25 @@ const useIsLoggedIn = (): [isLoggedIn: boolean | null, isLoading: boolean] => {
 
         return false;
       });
-  }, [setUserInfo]);
+  }, [onThen]);
 
   const isLoading = isLoggedIn === null;
 
-  return [isLoggedIn, isLoading];
+  const handleLoginWithPopup = () => {
+    setIsLoggedIn(null);
+    const provider = new TwitterAuthProvider();
+    const auth = getAuth(app);
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        onThen(result);
+      })
+      .catch((error: FirebaseError) => {
+        const errorMessage = error.message;
+        alert(`error: ${errorMessage}`);
+        console.log(error);
+      });
+  };
+
+  return [isLoggedIn, isLoading, handleLoginWithPopup];
 };
 export default useIsLoggedIn;

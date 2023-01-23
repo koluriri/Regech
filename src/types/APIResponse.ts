@@ -36,7 +36,7 @@ export const generateAPIResponseSuccess = (data: JSON): APIResponseSuccess => ({
 
 export const APIResponseSuccessSchema = z.object({
   success: z.boolean(),
-  data: JSONSchema,
+  data: z.optional(JSONSchema),
 });
 export const APIResponseErrorSchema = z.object({
   success: z.boolean(),
