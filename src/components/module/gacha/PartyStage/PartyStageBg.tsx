@@ -41,7 +41,7 @@ const PartyStageBg: FC = () => {
           width: 0,
         },
         polygon: {
-          nb_sides: 4,
+          nb_sides: 3,
         },
       },
       opacity: {

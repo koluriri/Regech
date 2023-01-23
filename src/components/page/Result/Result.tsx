@@ -127,7 +127,6 @@ const Result: FC = () => {
                 <Button
                   variant="sky-simple"
                   block
-                  mini
                   onClick={handleLoginWithPopup}
                 >
                   {t.CANT_LOGIN}
