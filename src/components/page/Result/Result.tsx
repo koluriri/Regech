@@ -56,6 +56,7 @@ const Result: FC = () => {
     <div className="container">
       <Head>
         <title>{t.RESULTS}</title>
+        <meta property="og:image" content="https://regech.app/ogp.jpg" />
       </Head>
 
       <CardStack>

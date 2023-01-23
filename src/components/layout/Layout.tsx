@@ -66,7 +66,6 @@ const Layout: FC<PropType> = ({ children }) => {
           content={`https://regech.app${router.pathname}`}
         />
         <meta property="og:locale" content="ja_JP" />
-        <meta property="og:image" content="https://regech.app/ogp.jpg" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={t.LOGO} />
         <meta name="twitter:card" content="summary_large_image" />
