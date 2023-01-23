@@ -69,6 +69,21 @@ const PostComponent: FC<{
             <IconPlay />
             {t.PLAY_GACHA}
           </Button>
+          <Button
+            variant="sky-simple"
+            block
+            onClick={() =>
+              window.open(
+                `http://twitter.com/share?text=${encodeURIComponent(
+                  `${post.title} from @${post.author.userName}`,
+                )}&url=${`https://regech.app/post/${post.id}`}&related=${encodeURIComponent(
+                  '@koluriri',
+                )}`,
+              )
+            }
+          >
+            {t.SHARE_ON_TWITTER}
+          </Button>
         </Card>
 
         <Card transparent>

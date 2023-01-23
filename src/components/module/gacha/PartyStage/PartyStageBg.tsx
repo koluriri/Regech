@@ -25,14 +25,14 @@ const PartyStageBg: FC = () => {
       },
       color: {
         value: [
-          '#EA5532',
-          '#F6AD3C',
-          '#FFF33F',
-          '#00A95F',
-          '#00ADA9',
-          '#00AFEC',
-          '#4D4398',
-          '#E85298',
+          '#673AB7',
+          '#3F51B5',
+          '#2196F3',
+          '#03A9F4',
+          '#009688',
+          '#4CAF50',
+          '#FFEB3B',
+          '#9C27B0',
         ],
       },
       shape: {
@@ -55,7 +55,7 @@ const PartyStageBg: FC = () => {
         },
       },
       size: {
-        value: 5,
+        value: 10,
         random: true,
         anim: {
           enable: true,

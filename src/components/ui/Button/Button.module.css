@@ -7,6 +7,7 @@
   font-weight: bold;
   color: var(--button-text-color);
   white-space: nowrap;
+  white-space: pre-wrap;
   cursor: pointer;
   user-select: none;
   background: var(--button-background);
@@ -44,6 +45,15 @@
 .sky {
   --button-text-color: #fff;
   --button-background: var(--sky);
+}
+
+.sky-simple {
+  --button-text-color: var(--sky);
+  --button-background: transparent;
+
+  font-size: var(--text-sm);
+  border: 0;
+  box-shadow: none;
 }
 
 .blue {
@@ -123,4 +133,8 @@
 a.button.disabled,
 fieldset[disabled] a.button {
   pointer-events: none;
+}
+
+.mini {
+  font-size: 1em;
 }

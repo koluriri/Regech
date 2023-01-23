@@ -21,6 +21,7 @@ const Home: FC<{
   useEffect(() => {
     setPost(null);
     setResults([]);
+    localStorage.setItem('regech_last_results', '[]');
   }, [setResults, setPost]);
 
   const getResults = useGetResults();

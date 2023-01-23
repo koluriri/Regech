@@ -3,3 +3,7 @@
   font-size: var(--text-lg);
   text-align: center;
 }
+
+.p0 {
+  padding: 0;
+}

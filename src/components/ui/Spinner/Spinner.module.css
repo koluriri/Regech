@@ -1,0 +1,30 @@
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 15px 0;
+  transform: translateX(-15px);
+}
+
+.spinner::before {
+  display: block;
+  width: 12px;
+  height: 12px;
+  content: '';
+  background: var(--default-btn-color);
+  border-radius: 10px;
+  transform: rotate(0deg);
+  transform-origin: 15px;
+  animation: 1s ease 0s infinite normal regech-spinner;
+}
+
+@keyframes regech-spinner {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(450deg);
+  }
+}

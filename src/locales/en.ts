@@ -42,4 +42,10 @@ export default {
   ENTER_REGEXP: 'Type RegExp',
   DESCRIPTION: 'Draw lots with RegExp!',
   ONEMORETIME: 'Again',
+  POST: 'Post',
+  ENTER_TITLE: 'Type Title',
+  LOGOUT: 'Logout',
+  POST_AS: 'Post as ',
+  CANT_LOGIN: "Click here if you can't log in",
+  SHARE_ON_TWITTER: 'Share on Twitter',
 };

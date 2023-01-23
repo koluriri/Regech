@@ -3,7 +3,7 @@ import { FC, useEffect } from 'react';
 import Head from 'next/head';
 import Button from '~/components/ui/Button/Button';
 import { useRouter } from 'next/router';
-import { IconGachaSingle } from '~/components/Icon';
+import { IconGachaSingle, IconLogin, IconPencil } from '~/components/Icon';
 import Card from '~/components/ui/Card/Card';
 import CardHeader from '~/components/ui/CardHeader/CardHeader';
 import GachaDetail from '~/components/module/gacha/GachaDetail/GachaDetail';
@@ -14,6 +14,15 @@ import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 import { postAtom, resultsAtom } from '~/atoms/atoms';
 import { useAtom } from 'jotai';
 import useGenerateTweet from '~/hooks/useGenerateTweet';
+import {
+  getAuth,
+  signInWithRedirect,
+  TwitterAuthProvider,
+} from 'firebase/auth';
+import app from '~/utils/firebase/firebase';
+import CreatePost from '~/components/module/result/CreatePost/CreatePost';
+import useIsLoggedIn from '~/hooks/useIsLoggedIn';
+import Spinner from '~/components/ui/Spinner/Spinner';
 
 const Result: FC = () => {
   const router = useRouter();
@@ -23,9 +32,24 @@ const Result: FC = () => {
 
   const generateTweet = useGenerateTweet();
 
+  const [isLoggedIn, isLoading, handleLoginWithPopup] = useIsLoggedIn();
+
   useEffect(() => {
-    if (results.length === 0) router.push('/').catch(() => alert('Error!'));
-  }, [router, results]);
+    const lastResults = localStorage.getItem('regech_last_results');
+    if (lastResults && lastResults !== '[]') {
+      setResults(JSON.parse(lastResults) as string[]);
+    } else {
+      router.push('/').catch(() => alert('Error!'));
+    }
+
+    // if (results.length === 0) router.push('/').catch(() => alert('Error!'));
+  }, [setResults, router]);
+
+  const handleLogin = async () => {
+    const provider = new TwitterAuthProvider();
+    const auth = getAuth(app);
+    await signInWithRedirect(auth, provider);
+  };
 
   return (
     <div className="container">
@@ -47,7 +71,10 @@ const Result: FC = () => {
               />
             </CardHeader>
           )}
-          <CardHeader>{t.RESULTS}</CardHeader>
+          <CardHeader>
+            <IconGachaSingle />
+            {t.RESULTS}
+          </CardHeader>
           <DisplayResult results={results} />
           <Button
             variant="sky"
@@ -71,7 +98,11 @@ const Result: FC = () => {
             block
             onClick={async () => {
               setResults([]);
-              await router.push('/create');
+              if (!post) {
+                await router.push('/create');
+              } else {
+                await router.push(`/post/${post.id}`);
+              }
             }}
           >
             <IconGachaSingle />
@@ -79,12 +110,32 @@ const Result: FC = () => {
           </Button>
         </Card>
 
-        <Card>
-          <CardHeader>{t.GACHA_POST_HEADER}</CardHeader>
-          <Button variant="sky" block>
-            {t.GACHA_POST_LOGIN}
-          </Button>
-        </Card>
+        {!post && (
+          <Card>
+            <CardHeader>
+              <IconPencil />
+              {t.GACHA_POST_HEADER}
+            </CardHeader>
+            {isLoading && <Spinner />}
+            {isLoggedIn && <CreatePost />}
+            {!isLoggedIn && isLoggedIn !== null && (
+              <>
+                <Button variant="sky" block onClick={handleLogin}>
+                  {t.GACHA_POST_LOGIN}
+                  <IconLogin />
+                </Button>
+                <Button
+                  variant="sky-simple"
+                  block
+                  onClick={handleLoginWithPopup}
+                >
+                  {t.CANT_LOGIN}
+                  <IconLogin />
+                </Button>
+              </>
+            )}
+          </Card>
+        )}
       </CardStack>
 
       <GoTopButton />

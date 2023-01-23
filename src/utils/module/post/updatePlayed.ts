@@ -1,14 +1,6 @@
 import prisma from '~/utils/prisma';
-import zodErrorToString from '~/utils/zodErrorToString';
-import { RequiredBodySchema } from './updatePlayed.schema';
 
-const updatePlayed = async (id: number, body: unknown) => {
-  const parsedBody = RequiredBodySchema.safeParse(body);
-  if (!parsedBody.success) throw Error(zodErrorToString(parsedBody.error));
-
-  /* const userId = await getUserIdByUid(uid);
-  if (!userId) throw Error('ユーザーが見つかりません'); */
-
+const updatePlayed = async (id: number) => {
   const post = await prisma.post.findFirst({
     where: {
       id,
