@@ -8,7 +8,7 @@ import {
   UserCredential,
 } from 'firebase/auth';
 import { useAtom } from 'jotai';
-import { useCallback, useEffect, useState } from 'react';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { userAtom } from '~/atoms/atoms';
 import app from '~/utils/firebase/firebase';
 import { useREST } from './RESThandler';
@@ -17,11 +17,14 @@ const useIsLoggedIn = (): [
   isLoggedIn: boolean | null,
   isLoading: boolean,
   handleLoginWithPopup: () => void,
+  scrollBottomRef: RefObject<HTMLDivElement>,
 ] => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
   const [, setUserInfo] = useAtom(userAtom);
 
   const { post } = useREST();
+
+  const scrollBottomRef = useRef<HTMLDivElement>(null);
 
   const onThen = useCallback(
     (result: UserCredential | null) => {
@@ -46,6 +49,7 @@ const useIsLoggedIn = (): [
           },
           () => {
             setIsLoggedIn(true);
+            scrollBottomRef?.current?.scrollIntoView();
           },
         ).catch((error: Error) => {
           alert(`error: ${error.message}`);
@@ -101,6 +105,6 @@ const useIsLoggedIn = (): [
       });
   };
 
-  return [isLoggedIn, isLoading, handleLoginWithPopup];
+  return [isLoggedIn, isLoading, handleLoginWithPopup, scrollBottomRef];
 };
 export default useIsLoggedIn;
