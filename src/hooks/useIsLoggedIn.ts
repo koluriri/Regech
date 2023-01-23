@@ -1,10 +1,18 @@
 import { FirebaseError } from 'firebase/app';
-import { getAuth, getRedirectResult, TwitterAuthProvider } from 'firebase/auth';
+import {
+  getAdditionalUserInfo,
+  getAuth,
+  getRedirectResult,
+  TwitterAuthProvider,
+} from 'firebase/auth';
+import { useAtom } from 'jotai';
 import { useEffect, useState } from 'react';
+import { userAtom } from '~/atoms/atoms';
 import app from '~/utils/firebase/firebase';
 
 const useIsLoggedIn = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
+  const [, setUserInfo] = useAtom(userAtom);
 
   useEffect(() => {
     const auth = getAuth(app);
@@ -18,11 +26,9 @@ const useIsLoggedIn = () => {
         }
         const credential = TwitterAuthProvider.credentialFromResult(result);
         if (credential) {
-          const token = credential.accessToken;
-          const { secret } = credential;
-
           const { user } = result;
-          console.log(token, secret, user);
+          const userInfo = getAdditionalUserInfo(result);
+          setUserInfo({ ...user, username: userInfo?.username ?? '' });
 
           setIsLoggedIn(true);
 
@@ -45,7 +51,7 @@ const useIsLoggedIn = () => {
 
         return false;
       });
-  }, []);
+  }, [setUserInfo]);
 
   const isLoading = isLoggedIn === null;
 

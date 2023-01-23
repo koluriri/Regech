@@ -111,12 +111,7 @@ const Result: FC = () => {
           <Card>
             <CardHeader>{t.GACHA_POST_HEADER}</CardHeader>
             {isLoading && <Spinner />}
-            {isLoggedIn && (
-              <CreatePost
-                src="https://pbs.twimg.com/profile_images/1558029533047300096/TGTuFAw0_400x400.jpg"
-                username="@koluriri"
-              />
-            )}
+            {isLoggedIn && <CreatePost />}
             {!isLoggedIn && isLoggedIn !== null && (
               <Button variant="sky" block onClick={handleLogin}>
                 {t.GACHA_POST_LOGIN}
