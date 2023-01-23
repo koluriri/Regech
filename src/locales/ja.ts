@@ -42,4 +42,8 @@ export default {
   ENTER_REGEXP: '正規表現を入力',
   DESCRIPTION: '正規表現でガチャをまわそう',
   ONEMORETIME: 'もう一度まわす',
+  POST: '投稿する',
+  ENTER_TITLE: 'タイトルを入力',
+  LOGOUT: 'ログアウト(トップへ)',
+  POST_AS: '投稿するアカウント：',
 };

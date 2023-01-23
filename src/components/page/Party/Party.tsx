@@ -7,15 +7,18 @@ import { useRouter } from 'next/router';
 import { IconSkip } from '~/components/Icon';
 import useLocale from '~/hooks/useLocale';
 import { useAtom } from 'jotai';
-import { resultsAtom } from '~/atoms/atoms';
+import { regexAtom, resultsAtom } from '~/atoms/atoms';
 
 const Party: FC = () => {
   const router = useRouter();
   const { t } = useLocale();
 
   const [results] = useAtom(resultsAtom);
+  const [regex] = useAtom(regexAtom);
+  localStorage.setItem('regech_last_results', JSON.stringify(results));
+  localStorage.setItem('regech_last_regex', regex);
+
   const timer = results.length;
-  console.log(timer);
 
   const timerId = useRef<NodeJS.Timeout>();
   const clearTimer = useCallback(() => clearInterval(timerId.current), []);

@@ -35,8 +35,15 @@ const Result: FC = () => {
   const [isLoggedIn, isLoading] = useIsLoggedIn();
 
   useEffect(() => {
+    const lastResults = localStorage.getItem('regech_last_results');
+    if (lastResults && lastResults !== '[]') {
+      setResults(JSON.parse(lastResults) as string[]);
+    } else {
+      router.push('/').catch(() => alert('Error!'));
+    }
+
     // if (results.length === 0) router.push('/').catch(() => alert('Error!'));
-  }, [router, results]);
+  }, [setResults, router]);
 
   const handleLogin = async () => {
     const provider = new TwitterAuthProvider();
@@ -88,7 +95,11 @@ const Result: FC = () => {
             block
             onClick={async () => {
               setResults([]);
-              await router.push('/create');
+              if (!post) {
+                await router.push('/create');
+              } else {
+                await router.push(`/post/${post.id}`);
+              }
             }}
           >
             <IconGachaSingle />
