@@ -49,6 +49,10 @@ const PostComponent: FC<{
     <div className="container">
       <Head>
         <title>{post.title}</title>
+        <meta
+          property="og:image"
+          content={`https://regech.app/api/og?title=${post.title}`}
+        />
       </Head>
 
       <CardStack>
