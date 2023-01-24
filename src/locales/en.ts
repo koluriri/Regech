@@ -48,4 +48,5 @@ export default {
   POST_AS: 'Post as ',
   CANT_LOGIN: "Click here if you can't log in",
   SHARE_ON_TWITTER: 'Share on Twitter',
+  PRIVACY_TITLE: 'Privacy Policy',
 };

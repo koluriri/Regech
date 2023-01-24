@@ -98,6 +98,7 @@
     "@storybook/theming": "^6.5.13",
     "@svgr/cli": "^6.5.1",
     "@types/eslint": "^8.4.5",
+    "@types/gtag.js": "^0.0.12",
     "@types/node": "18.8.3",
     "@types/prettier": "^2.6.3",
     "@types/prop-types": "^15.7.5",
