@@ -13,6 +13,8 @@ import { regexAtom, resultsAtom } from '~/atoms/atoms';
 import { useAtom } from 'jotai';
 import useGetResults from '~/hooks/useGetResults';
 import useListenResults from '~/hooks/useListenResults';
+import { getAnalytics, logEvent } from 'firebase/analytics';
+import app from '~/utils/firebase/firebase';
 import CreateGachaHint from './CreateGachaHint';
 
 const CreateGacha: FC = () => {
@@ -25,9 +27,11 @@ const CreateGacha: FC = () => {
   const regexRef = useRef<HTMLTextAreaElement>(null);
 
   const getResults = useGetResults();
+  const analytics = getAnalytics(app);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    logEvent(analytics, 'create_gacha', { regex, mode });
     const resultsTemporary = getResults(regex, mode === 'multiple' ? 10 : 1);
     setResults(resultsTemporary);
   };

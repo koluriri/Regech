@@ -48,4 +48,5 @@ export default {
   POST_AS: '投稿するアカウント：',
   CANT_LOGIN: 'ログインできない場合はこちらをクリック',
   SHARE_ON_TWITTER: 'このガチャをTwitterでシェア',
+  PRIVACY_TITLE: 'プライバシーポリシー',
 };

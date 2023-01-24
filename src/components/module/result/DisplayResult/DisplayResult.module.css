@@ -11,5 +11,5 @@
 }
 
 .displayresult span:nth-child(even) {
-  text-shadow: 2px 2px 0 var(--teal);
+  text-shadow: 2px 2px 0 #8ef1e9;
 }
