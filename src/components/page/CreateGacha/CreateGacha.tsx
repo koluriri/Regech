@@ -27,11 +27,13 @@ const CreateGacha: FC = () => {
   const regexRef = useRef<HTMLTextAreaElement>(null);
 
   const getResults = useGetResults();
-  const analytics = getAnalytics(app);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    logEvent(analytics, 'create_gacha', { regex, mode });
+    if (typeof window !== 'undefined') {
+      const analytics = getAnalytics(app);
+      logEvent(analytics, 'create_gacha', { regex, mode });
+    }
     const resultsTemporary = getResults(regex, mode === 'multiple' ? 10 : 1);
     setResults(resultsTemporary);
   };

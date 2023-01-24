@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Layout from '~/components/layout/Layout';
+import GoTopButton from '~/components/module/create/GoTopButton/GoTopButton';
 import Card from '~/components/ui/Card/Card';
 import CardHeader from '~/components/ui/CardHeader/CardHeader';
 import useLocale from '~/hooks/useLocale';
@@ -111,6 +112,7 @@ const Home: NextPage = () => {
           )}
         </Card>
       </div>
+      <GoTopButton />
     </Layout>
   );
 };
