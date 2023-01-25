@@ -58,7 +58,7 @@ const PostComponent: FC<{
       <CardStack>
         <Card>
           <CardHeader>
-            <span>{post.title}</span>
+            <h1 style={{ fontSize: 'var(--text-xl)' }}>{post.title}</h1>
             <GachaDetail
               center
               created={post.created.toString()}
