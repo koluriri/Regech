@@ -59,8 +59,6 @@ const Layout: FC<PropType> = ({ children }) => {
         <meta name="theme-color" content="#dae1ee" />
 
         <meta name="description" content={t.DESCRIPTION} />
-        <meta property="og:title" content={t.LOGO} />
-        <meta property="og:description" content={t.DESCRIPTION} />
         <meta
           property="og:url"
           content={`https://regech.app${router.pathname}`}

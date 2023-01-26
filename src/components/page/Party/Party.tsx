@@ -37,6 +37,8 @@ const Party: FC = () => {
     <div className="container">
       <Head>
         <title>{t.LOGO}</title>
+        <meta property="og:title" content={t.LOGO} />
+        <meta property="og:description" content={t.DESCRIPTION} />
         <meta property="og:image" content="https://www.regech.app/ogp.jpg" />
       </Head>
 

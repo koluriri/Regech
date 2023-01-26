@@ -44,6 +44,9 @@ const CreateGacha: FC = () => {
     <div className="container">
       <Head>
         <title>{t.CREATE_GACHA_HEADER}</title>
+        <meta property="og:title" content={t.LOGO} />
+        <meta property="og:description" content={t.DESCRIPTION} />
+        <meta property="og:image" content="https://www.regech.app/ogp.jpg" />
       </Head>
 
       <Card hint={<CreateGachaHint />}>

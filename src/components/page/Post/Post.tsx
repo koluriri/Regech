@@ -49,6 +49,8 @@ const PostComponent: FC<{
     <div className="container">
       <Head>
         <title>{post.title}</title>
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.regex} />
         <meta
           property="og:image"
           content={`https://www.regech.app/api/og?title=${post.title}`}
