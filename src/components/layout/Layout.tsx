@@ -85,6 +85,9 @@ const Layout: FC<PropType> = ({ children }) => {
         <span>
           <Link href="/privacy">{t.PRIVACY_POLICY}</Link>
         </span>
+        <span>
+          <Link href="/terms">{t.TERMS}</Link>
+        </span>
       </footer>
     </>
   );

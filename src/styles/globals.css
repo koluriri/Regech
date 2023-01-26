@@ -361,3 +361,8 @@ button#gotop {
     background: #a5a8c5;
   }
 }
+
+ol {
+  padding-left: 25px;
+  line-height: 1.8;
+}

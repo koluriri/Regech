@@ -49,4 +49,5 @@ export default {
   CANT_LOGIN: 'ログインできない場合はこちらをクリック',
   SHARE_ON_TWITTER: 'このガチャをTwitterでシェア',
   PRIVACY_TITLE: 'プライバシーポリシー',
+  TERMS: '利用規約',
 };

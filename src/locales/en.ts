@@ -49,4 +49,5 @@ export default {
   CANT_LOGIN: "Click here if you can't log in",
   SHARE_ON_TWITTER: 'Share on Twitter',
   PRIVACY_TITLE: 'Privacy Policy',
+  TERMS: 'Terms of Use',
 };
