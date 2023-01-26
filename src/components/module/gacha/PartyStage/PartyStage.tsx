@@ -1,6 +1,6 @@
 /* eslint-disable react/require-default-props */
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
-import useEscapeHtml from '~/hooks/useEscapeHtml';
+import useEscapeHtml from '../../../../hooks/useEscapeHtml';
 import PartyStageCapsule from './PartyStageCapsule';
 import PartyStageBg from './PartyStageBg';
 

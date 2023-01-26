@@ -1,9 +1,9 @@
 /* eslint-disable react/require-default-props */
 import { FC } from 'react';
 import clsx from 'clsx';
-import useAgoText from '~/hooks/useAgoText';
-import { IconPlay, IconTime } from '~/components/Icon';
-import Avatar from '~/components/ui/Avatar/Avatar';
+import Avatar from '../../../ui/Avatar/Avatar';
+import useAgoText from '../../../../hooks/useAgoText';
+import { IconPlay, IconTime } from '../../../Icon';
 import styles from './GachaDetail.module.css';
 
 export type PropType = {

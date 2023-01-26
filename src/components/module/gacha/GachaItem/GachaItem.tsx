@@ -2,10 +2,10 @@
 /* eslint-disable react/require-default-props */
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
-import { IconPlay } from '~/components/Icon';
-import Button from '~/components/ui/Button/Button';
 import { useRouter } from 'next/router';
-import useLocale from '~/hooks/useLocale';
+import useLocale from '../../../../hooks/useLocale';
+import { IconPlay } from '../../../Icon';
+import Button from '../../../ui/Button/Button';
 import styles from './GachaItem.module.css';
 import GachaPreview from './GachaPreview/GachaPreview';
 

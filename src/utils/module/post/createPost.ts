@@ -4,6 +4,7 @@ import admin from '~/utils/firebase/firebase-admin';
 import prisma from '~/utils/prisma';
 import zodErrorToString from '~/utils/zodErrorToString';
 import { RequiredBodySchema } from './createPost.schema';
+import NGWords from './NGWords';
 
 const createPost = async (body: unknown) => {
   const parsedBody = RequiredBodySchema.safeParse(body);
@@ -39,7 +40,19 @@ const createPost = async (body: unknown) => {
       );
     if (result.length > 400)
       throw Error('結果が長すぎます。Results are too long.');
+
+    if (NGWords.map((value) => result.includes(value)).includes(true))
+      throw Error('NGワードが含まれています。');
   }
+
+  if (
+    NGWords.map((value) => parsedBody.data.regex.includes(value)).includes(true)
+  )
+    throw Error('NGワードが含まれています。');
+  if (
+    NGWords.map((value) => parsedBody.data.title.includes(value)).includes(true)
+  )
+    throw Error('NGワードが含まれています。');
 
   const existsRegex = await prisma.post.findFirst({
     where: { regex: parsedBody.data.regex },
