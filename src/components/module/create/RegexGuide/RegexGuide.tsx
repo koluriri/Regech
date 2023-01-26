@@ -82,6 +82,7 @@ const RegexGuide: FC<PropType> = ({ insertTextarea }) => {
           </Button>
         ))}
       </div>
+      <p className={styles.caption}>{t.PLEASE_ESCAPE}</p>
       <p className={styles.caption}>{t.OTHER_CAPTURE}</p>
     </div>
   );

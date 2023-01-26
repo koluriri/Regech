@@ -98,6 +98,39 @@ const Result: FC = () => {
             {t.TWEET_RESULT}
           </Button>
           <Button
+            variant="line"
+            block
+            onClick={() =>
+              window.open(
+                `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(
+                  generateTweet(results, post) +
+                    (post
+                      ? `https://www.regech.app/post/${post.id}`
+                      : 'https://www.regech.app'),
+                )}`,
+              )
+            }
+          >
+            {t.LINE_RESULT}
+          </Button>
+          {/* <Button
+            variant="tertiary"
+            block
+            onClick={() =>
+              navigator.clipboard
+                .writeText(
+                  generateTweet(results, post) +
+                    (post
+                      ? `https://www.regech.app/post/${post.id}`
+                      : 'https://www.regech.app'),
+                )
+                .then(() => alert('コピーしました'))
+                .catch(() => alert('コピーに失敗しました'))
+            }
+          >
+            {t.COPY_RESULT}
+          </Button> */}
+          <Button
             variant="primary"
             block
             onClick={async () => {

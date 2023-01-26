@@ -41,6 +41,10 @@
   text-align: center;
 }
 
+.caption + .caption {
+  margin: 0;
+}
+
 .guide {
   margin-top: 25px;
 }

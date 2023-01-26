@@ -19,6 +19,8 @@ export default {
   SKIP: 'Skip',
   RESULTS: 'Result!!',
   TWEET_RESULT: 'Tweet the result',
+  LINE_RESULT: 'Share result on LINE',
+  COPY_RESULT: 'copy the result',
   GACHA_POST_HEADER: 'Post your gacha',
   GACHA_POST_LOGIN: 'Login on Twitter',
   GACHA_CREATE_HEADER: 'Create a new gacha',
@@ -50,4 +52,6 @@ export default {
   SHARE_ON_TWITTER: 'Share on Twitter',
   PRIVACY_TITLE: 'Privacy Policy',
   TERMS: 'Terms of Use',
+  PLEASE_ESCAPE:
+    '^ and . and other meta characters should be escaped with a backslash.',
 };

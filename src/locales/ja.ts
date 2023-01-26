@@ -19,6 +19,8 @@ export default {
   SKIP: 'スキップ',
   RESULTS: '結果発表！',
   TWEET_RESULT: '結果をツイート',
+  LINE_RESULT: '結果をLINEでシェア',
+  COPY_RESULT: '結果をコピー',
   GACHA_POST_HEADER: 'つくったガチャを投稿する',
   GACHA_POST_LOGIN: 'Twitterでログインしてつくったガチャを投稿する',
   GACHA_CREATE_HEADER: 'あたらしくガチャをつくる',
@@ -50,4 +52,6 @@ export default {
   SHARE_ON_TWITTER: 'このガチャをTwitterでシェア',
   PRIVACY_TITLE: 'プライバシーポリシー',
   TERMS: '利用規約',
+  PLEASE_ESCAPE:
+    '^や.などのメタ文字はバックスラッシュでエスケープしてください。',
 };

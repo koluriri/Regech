@@ -12,7 +12,8 @@ export type PropType = ButtonHTMLAttributes<HTMLButtonElement> & {
     | 'sky'
     | 'blue'
     | 'simple'
-    | 'sky-simple';
+    | 'sky-simple'
+    | 'line';
   block?: boolean;
   caption?: string;
   mini?: boolean;

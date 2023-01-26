@@ -61,6 +61,11 @@
   --button-background: var(--blue);
 }
 
+.line {
+  --button-text-color: #fff;
+  --button-background: #06c755;
+}
+
 .simple {
   pointer-events: none;
   user-select: none;
