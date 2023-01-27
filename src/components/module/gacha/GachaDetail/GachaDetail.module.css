@@ -18,3 +18,12 @@
   font-weight: normal;
   color: var(--secondary);
 }
+
+.userlink:hover {
+  text-decoration: none;
+}
+
+.userlink:hover span {
+  color: var(--on-surface);
+  opacity: 0.8;
+}
