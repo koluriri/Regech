@@ -23,14 +23,17 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     },
   });
 
+  const postsCount = await prisma.post.count();
+  const skip = Math.floor(Math.random() * postsCount);
   const recommendeds = await prisma.post.findMany({
+    take: 3,
+    skip,
     orderBy: {
       created: 'desc',
     },
     include: {
       author: true,
     },
-    take: 3,
   });
 
   return {
