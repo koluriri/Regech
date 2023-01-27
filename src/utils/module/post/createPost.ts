@@ -16,7 +16,10 @@ const createPost = async (body: unknown) => {
   if (
     parsedBody.data.regex === '.+' ||
     parsedBody.data.regex === '.' ||
-    parsedBody.data.regex === '.*'
+    parsedBody.data.regex === '.*' ||
+    parsedBody.data.regex === '.+?' ||
+    parsedBody.data.regex === '.*?' ||
+    parsedBody.data.regex === '.+*'
   )
     throw Error('正規表現が簡単すぎます。Regular expressions is too simple.');
 
