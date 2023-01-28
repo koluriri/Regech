@@ -10,7 +10,7 @@ const GetMorePostsResponse = z.array(
     for_ranking_count: z.number(),
     created: z.string().transform((val) => new Date(val)),
     modified: z.string().transform((val) => new Date(val)),
-    deleted: z.boolean().optional().nullable(),
+    deleted: z.boolean().nullable(),
     author: z.object({
       id: z.number(),
       uid: z.string(),
