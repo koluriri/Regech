@@ -51,7 +51,7 @@ const Home: NextPage = () => {
                 をご覧ください。
               </p>
               <p>
-                その他、「投稿を削除したい」「投稿を修正したい」などのご相談、要望や質問などありましたら、お気軽に
+                その他、要望や質問、バグなどありましたら、お気軽に
                 <a
                   href="//twitter.com/koluriri"
                   target="_blank"

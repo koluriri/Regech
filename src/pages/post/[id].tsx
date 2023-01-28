@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   if (Number.isNaN(postId)) postId = 0;
 
   const post = await prisma.post.findFirst({
-    where: { id: postId },
+    where: { id: postId, deleted: false },
     include: {
       author: true,
     },
@@ -28,6 +28,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   const recommendeds = await prisma.post.findMany({
     take: 3,
     skip,
+    where: {
+      deleted: false,
+    },
     orderBy: {
       created: 'desc',
     },

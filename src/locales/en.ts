@@ -54,4 +54,6 @@ export default {
   TERMS: 'Terms of Use',
   PLEASE_ESCAPE:
     '^ and . and other meta characters should be escaped with a backslash.',
+  REALLY_DELETE: 'Do you really want to delete?',
+  DELETE_POST: 'Delete this post',
 };

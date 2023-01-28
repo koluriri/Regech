@@ -15,6 +15,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const recommendeds = await prisma.post.findMany({
     take: 3,
     skip,
+    where: {
+      deleted: false,
+    },
     orderBy: {
       created: 'desc',
     },

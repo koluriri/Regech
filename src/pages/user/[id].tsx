@@ -17,6 +17,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
   const posts = await prisma.post.findMany({
     where: {
+      deleted: false,
       author: {
         userName: String(id),
       },

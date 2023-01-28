@@ -27,3 +27,19 @@
   color: var(--on-surface);
   opacity: 0.8;
 }
+
+.deletebutton {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 3px;
+  font-size: var(--text-sm);
+  opacity: 0.7;
+}
+
+.deletebutton:hover {
+  opacity: 1;
+}
+
+.deletebutton:hover a {
+  text-decoration: none;
+}

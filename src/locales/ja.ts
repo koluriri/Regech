@@ -54,4 +54,6 @@ export default {
   TERMS: '利用規約',
   PLEASE_ESCAPE:
     '^や.などのメタ文字はバックスラッシュでエスケープしてください。',
+  REALLY_DELETE: '本当に削除しますか？',
+  DELETE_POST: '投稿を削除',
 };

@@ -18,6 +18,7 @@ erDiagram
     String regex  
     Int play_count  
     Int for_ranking_count  
+    Boolean deleted  "nullable"
     DateTime created  
     DateTime modified  
     }

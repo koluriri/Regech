@@ -3,6 +3,8 @@
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
+import { useAtom } from 'jotai';
+import { resultsAtom } from '~/atoms/atoms';
 import useLocale from '../../../../hooks/useLocale';
 import { IconPlay } from '../../../Icon';
 import Button from '../../../ui/Button/Button';
@@ -31,6 +33,8 @@ const GachaItem: FC<PropType> = ({
   const router = useRouter();
   const { t } = useLocale();
 
+  const [, setResults] = useAtom(resultsAtom);
+
   return (
     <div
       className={clsx([
@@ -52,7 +56,13 @@ const GachaItem: FC<PropType> = ({
         {detail}
       </div>
       <div className={styles.btn}>
-        <Button variant="default" onClick={() => router.push(`/post/${id}`)}>
+        <Button
+          variant="default"
+          onClick={async () => {
+            setResults([]);
+            await router.push(`/post/${id}`);
+          }}
+        >
           <IconPlay />
           {t.PLAY}
         </Button>

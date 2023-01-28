@@ -21,6 +21,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
     include: {
       author: true,
     },
+    where: {
+      deleted: false,
+    },
     take: postTake,
   });
 

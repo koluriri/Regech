@@ -18,6 +18,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
     orderBy: {
       for_ranking_count: 'desc',
     },
+    where: {
+      deleted: false,
+    },
     include: {
       author: true,
     },

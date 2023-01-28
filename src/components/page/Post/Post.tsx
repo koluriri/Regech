@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Button from '~/components/ui/Button/Button';
 import { IconPlay } from '~/components/Icon';
@@ -18,6 +18,8 @@ import { useAtom } from 'jotai';
 import { postAtom, resultsAtom } from '~/atoms/atoms';
 import useListenResults from '~/hooks/useListenResults';
 import { useREST } from '~/hooks/RESThandler';
+import useIsLoggedInOnDelete from '~/hooks/useIsLoggedInOnDelete';
+import { useRouter } from 'next/router';
 
 const PostComponent: FC<{
   post: Post & { author: User };
@@ -31,6 +33,14 @@ const PostComponent: FC<{
   const [, setPost] = useAtom(postAtom);
 
   const [mode, setMode] = useState('multiple');
+
+  const [, , handleDeleteWithPopup, deleted] = useIsLoggedInOnDelete(post.id);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (deleted) router.push('/').catch(() => alert('error'));
+  }, [deleted, router]);
 
   const handleSubmit = async () => {
     await put(`played/${post.id}`, {}, () => {
@@ -67,6 +77,8 @@ const PostComponent: FC<{
               name={`@${post.author.userName}`}
               playCount={post.play_count}
               src={post.author.icon}
+              deleteButton
+              handleDelete={handleDeleteWithPopup}
             />
           </CardHeader>
           <BigText>{post.regex}</BigText>

@@ -35,6 +35,7 @@ model Post {
   regex       String  @db.VarChar(200)
   play_count  Int @default(0)
   for_ranking_count Int @default(0)
+  deleted Boolean? @default(false)
   created     DateTime @default(now())
   modified     DateTime @updatedAt
 }

@@ -9,6 +9,9 @@ const getMorePosts = async (page: number) =>
     include: {
       author: true,
     },
+    where: {
+      deleted: false,
+    },
     take: postTake,
     skip: (page - 1) * postTake,
   });

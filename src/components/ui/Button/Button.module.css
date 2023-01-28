@@ -56,6 +56,15 @@
   box-shadow: none;
 }
 
+.red-simple {
+  --button-text-color: var(--default-btn-color);
+  --button-background: transparent;
+
+  font-size: var(--text-sm);
+  border: 0;
+  box-shadow: none;
+}
+
 .blue {
   --button-text-color: #fff;
   --button-background: var(--blue);
