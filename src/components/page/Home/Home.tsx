@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Hero from '~/components/module/home/Hero/Hero';
 import Card from '~/components/ui/Card/Card';
@@ -10,6 +10,10 @@ import { useAtom } from 'jotai';
 import { postAtom, resultsAtom } from '~/atoms/atoms';
 import { Post, User } from '@prisma/client';
 import useGetResults from '~/hooks/useGetResults';
+import Button from '~/components/ui/Button/Button';
+import { fetcher } from '~/hooks/RESThandler';
+import GetMorePostsResponse from '~/utils/module/post/getMorePosts.schema';
+import zodErrorToString from '~/utils/zodErrorToString';
 
 const Home: FC<{
   posts: (Post & { author: User })[];
@@ -25,6 +29,29 @@ const Home: FC<{
   }, [setResults, setPost]);
 
   const getResults = useGetResults();
+
+  const [displayPosts, setDisplayPosts] = useState(posts);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const handleMore = () => {
+    setLoading(true);
+    fetcher(`/api/more/${page + 1}`)
+      .then((data) => {
+        const parsedBody = GetMorePostsResponse.safeParse(data);
+        if (!parsedBody.success) {
+          alert(`Error:${zodErrorToString(parsedBody.error)}`);
+        } else {
+          setDisplayPosts((prevPosts) => [...prevPosts, ...parsedBody.data]);
+          setPage((p) => p + 1);
+        }
+      })
+      .catch((error: Error) => {
+        alert(`Error:${error.message}`);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   return (
     <div className="container">
@@ -43,7 +70,7 @@ const Home: FC<{
           items={[t.LATEST, t.RANKING]}
           links={['/', '/ranking']}
         />
-        {posts?.map((post) => (
+        {displayPosts?.map((post) => (
           <GachaItem
             key={post.id}
             detail={
@@ -59,6 +86,17 @@ const Home: FC<{
             title={post.title}
           />
         ))}
+        {!displayPosts.map((post) => post.id === 1).includes(true) && (
+          <Button
+            variant="tertiary"
+            block
+            mini
+            onClick={handleMore}
+            disabled={loading}
+          >
+            もっと見る
+          </Button>
+        )}
       </Card>
     </div>
   );

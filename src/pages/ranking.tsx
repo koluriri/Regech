@@ -3,6 +3,7 @@ import RankingComponent from 'components/page/Ranking/Ranking';
 import Layout from '~/components/layout/Layout';
 import { GetServerSideProps } from 'next';
 import { PrismaClient, Post, User } from '@prisma/client';
+import { postTake } from '~/types/types';
 
 type Props = {
   posts: (Post & { author: User })[];
@@ -20,7 +21,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
     include: {
       author: true,
     },
-    take: 30,
+    take: postTake,
   });
 
   return {
