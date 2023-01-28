@@ -23,8 +23,13 @@ import app from '~/utils/firebase/firebase';
 import CreatePost from '~/components/module/result/CreatePost/CreatePost';
 import useIsLoggedIn from '~/hooks/useIsLoggedIn';
 import Spinner from '~/components/ui/Spinner/Spinner';
+import { Post, User } from '@prisma/client';
+import GachaItem from '~/components/module/gacha/GachaItem/GachaItem';
+import useGetResults from '~/hooks/useGetResults';
 
-const Result: FC = () => {
+const Result: FC<{
+  recommendeds: (Post & { author: User })[];
+}> = ({ recommendeds }) => {
   const router = useRouter();
   const { t } = useLocale();
   const [results, setResults] = useAtom(resultsAtom);
@@ -51,6 +56,8 @@ const Result: FC = () => {
     const auth = getAuth(app);
     await signInWithRedirect(auth, provider);
   };
+
+  const getResults = useGetResults();
 
   return (
     <div className="container">
@@ -175,6 +182,27 @@ const Result: FC = () => {
             </Card>
           </div>
         )}
+
+        <Card transparent>
+          <CardHeader>{t.RECOMMENDED}</CardHeader>
+          {recommendeds?.map((recommended) => (
+            <GachaItem
+              key={recommended.id}
+              animate={false}
+              detail={
+                <GachaDetail
+                  created={recommended.created.toString()}
+                  name={`@${recommended.author.userName}`}
+                  playCount={recommended.play_count}
+                  src={recommended.author.icon}
+                />
+              }
+              id={recommended.id}
+              preview={getResults(recommended.regex, 1)}
+              title={recommended.title}
+            />
+          ))}
+        </Card>
       </CardStack>
 
       <GoTopButton />
