@@ -81,7 +81,7 @@ const PostComponent: FC<{
             onClick={() =>
               window.open(
                 `http://twitter.com/share?text=${encodeURIComponent(
-                  `${post.title} from @${post.author.userName}`,
+                  `${post.title} by @${post.author.userName}\n#正規表現ガチャ`,
                 )}&url=${`https://www.regech.app/post/${post.id}`}&related=${encodeURIComponent(
                   '@koluriri',
                 )}`,
