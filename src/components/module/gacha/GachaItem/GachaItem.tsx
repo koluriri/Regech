@@ -16,6 +16,7 @@ export type PropType = {
   detail: ReactNode;
   id: number;
   animate?: boolean;
+  isTop?: boolean;
 };
 
 const GachaItem: FC<PropType> = ({
@@ -25,15 +26,20 @@ const GachaItem: FC<PropType> = ({
   detail,
   id,
   animate = true,
+  isTop = false,
 }) => {
   const router = useRouter();
   const { t } = useLocale();
 
   return (
     <div
-      className={clsx([styles.gachaitem, icon && styles.gachaitemincludesicon])}
+      className={clsx([
+        styles.gachaitem,
+        icon && styles.gachaitemincludesicon,
+        isTop && styles.top,
+      ])}
     >
-      {!!icon && <div className={styles.icon}>{icon}</div>}
+      {!!icon && <div className={clsx([styles.icon])}>{icon}</div>}
       <div className={styles.body}>
         <div className={styles.title}>{title}</div>
         <div className={styles.preview}>

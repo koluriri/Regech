@@ -56,8 +56,11 @@ const Ranking: FC<{
                 <IconRankingTwo />
               ) : index === 2 ? (
                 <IconRankingThree />
-              ) : undefined
+              ) : (
+                index + 1
+              )
             }
+            isTop={index < 3}
             id={post.id}
             preview={getResults(post.regex, 5)}
             title={post.title}
