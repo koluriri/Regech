@@ -34,7 +34,10 @@ const PostComponent: FC<{
 
   const [mode, setMode] = useState('multiple');
 
-  const [, , handleDeleteWithPopup, deleted] = useIsLoggedInOnDelete(post.id);
+  const [, , handleDeleteWithPopup, deleted] = useIsLoggedInOnDelete(
+    post.id,
+    post.author.uid,
+  );
 
   const router = useRouter();
 

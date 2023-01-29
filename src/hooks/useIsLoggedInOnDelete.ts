@@ -16,6 +16,7 @@ import useLocale from './useLocale';
 
 const useIsLoggedInOnDelete = (
   postId: number,
+  uid: string,
 ): [
   isLoggedIn: boolean | null,
   isLoading: boolean,
@@ -28,6 +29,8 @@ const useIsLoggedInOnDelete = (
   const [deleted, setDeleted] = useState(false);
 
   const { post } = useREST();
+
+  const { t } = useLocale();
 
   const onThen = useCallback(
     (result: UserCredential | null) => {
@@ -51,28 +54,33 @@ const useIsLoggedInOnDelete = (
             icon: user.photoURL,
           },
           () => {
-            const auth = getAuth(app);
-            if (auth.currentUser)
-              auth.currentUser
-                .getIdToken(/* forceRefresh */ true)
-                .then((idToken) => {
-                  setIsLoggedIn(true);
-                  post(
-                    `deletePost`,
-                    {
-                      token: idToken,
-                      id: postId,
-                    },
-                    () => {
-                      setDeleted(true);
-                    },
-                  ).catch((error: Error) => {
+            if(uid !== user.uid) throw Error('あなたの投稿ではありません');
+            // eslint-disable-next-line no-restricted-globals
+            const reallyDelete: boolean = confirm(t.REALLY_DELETE);
+            if (reallyDelete) {
+              const auth = getAuth(app);
+              if (auth.currentUser)
+                auth.currentUser
+                  .getIdToken(/* forceRefresh */ true)
+                  .then((idToken) => {
+                    setIsLoggedIn(true);
+                    post(
+                      `delete`,
+                      {
+                        token: idToken,
+                        id: postId,
+                      },
+                      () => {
+                        setDeleted(true);
+                      },
+                    ).catch((error: Error) => {
+                      alert(`error: ${error.message}`);
+                    });
+                  })
+                  .catch((error: Error) => {
                     alert(`error: ${error.message}`);
                   });
-                })
-                .catch((error: Error) => {
-                  alert(`error: ${error.message}`);
-                });
+            }
           },
         ).catch((error: Error) => {
           alert(`error: ${error.message}`);
@@ -111,26 +119,20 @@ const useIsLoggedInOnDelete = (
       });
   }, [onThen]);
 
-  const { t } = useLocale();
-
   const handleDeleteWithPopup = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    // eslint-disable-next-line no-restricted-globals
-    const reallyDelete: boolean = confirm(t.REALLY_DELETE);
-    if (reallyDelete) {
-      setIsLoggedIn(null);
-      const provider = new TwitterAuthProvider();
-      const auth = getAuth(app);
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          onThen(result);
-        })
-        .catch((error: FirebaseError) => {
-          const errorMessage = error.message;
-          alert(`error: ${errorMessage}`);
-          console.log(error);
-        });
-    }
+    setIsLoggedIn(null);
+    const provider = new TwitterAuthProvider();
+    const auth = getAuth(app);
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        onThen(result);
+      })
+      .catch((error: FirebaseError) => {
+        const errorMessage = error.message;
+        alert(`error: ${errorMessage}`);
+        console.log(error);
+      });
   };
 
   const isLoading = isLoggedIn === null;

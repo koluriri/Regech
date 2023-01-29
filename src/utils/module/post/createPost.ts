@@ -63,7 +63,7 @@ const createPost = async (body: unknown) => {
     throw Error('NGワードが含まれています。');
 
   const existsRegex = await prisma.post.findFirst({
-    where: { regex: parsedBody.data.regex },
+    where: { regex: parsedBody.data.regex, deleted: false },
     select: { id: true },
   });
   if (existsRegex !== null)
@@ -72,7 +72,7 @@ const createPost = async (body: unknown) => {
     );
 
   const existsTitle = await prisma.post.findFirst({
-    where: { title: parsedBody.data.title },
+    where: { title: parsedBody.data.title, deleted: false },
     select: { id: true },
   });
   if (existsTitle !== null)
