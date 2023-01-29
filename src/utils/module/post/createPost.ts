@@ -15,9 +15,6 @@ const createPost = async (body: unknown) => {
   );
   if (tooLongMatched) throw Error('結果が長すぎます。Results are too long.');
 
-  const zeroMatched = /(\{0\})/g.test(parsedBody.data.regex);
-  if (zeroMatched) throw Error('{0}は使えません。');
-
   if (
     parsedBody.data.regex === '.+' ||
     parsedBody.data.regex === '.' ||
