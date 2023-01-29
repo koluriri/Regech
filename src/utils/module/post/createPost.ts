@@ -10,8 +10,13 @@ const createPost = async (body: unknown) => {
   const parsedBody = RequiredBodySchema.safeParse(body);
   if (!parsedBody.success) throw Error(zodErrorToString(parsedBody.error));
 
-  const matched = /(\{[0-9]{3,},|[0-9]{3,}\})/g.test(parsedBody.data.regex);
-  if (matched) throw Error('結果が長すぎます。Results are too long.');
+  const tooLongMatched = /(\{[0-9]{3,},|[0-9]{3,}\})/g.test(
+    parsedBody.data.regex,
+  );
+  if (tooLongMatched) throw Error('結果が長すぎます。Results are too long.');
+
+  const zeroMatched = /(\{0\})/g.test(parsedBody.data.regex);
+  if (zeroMatched) throw Error('{0}は使えません。');
 
   if (
     parsedBody.data.regex === '.+' ||
