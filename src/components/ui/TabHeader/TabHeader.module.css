@@ -1,9 +1,15 @@
 .tabheader {
   display: flex;
-  flex-direction: row;
-  gap: 30px;
+  flex-flow: row wrap;
+  gap: 6px 20px;
   justify-content: center;
   padding: 5px 0;
+}
+
+@media screen and (max-width: 375px) {
+  .tabheader {
+    gap: 6px 8px;
+  }
 }
 
 .item a {

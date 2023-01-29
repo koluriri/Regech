@@ -5,6 +5,7 @@ export default {
   LOGO: 'Regech',
   LATEST: 'New Posts',
   RANKING: 'Ranking',
+  TRENDING: 'Trending',
   PLAY: 'PLAY',
   MULTIPLE: '10  SHOT',
   SINGLE: '1 SHOT',

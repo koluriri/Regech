@@ -67,8 +67,8 @@ const Home: FC<{
       <Card>
         <TabHeader
           active={0}
-          items={[t.LATEST, t.RANKING]}
-          links={['/', '/ranking']}
+          items={[t.LATEST, t.RANKING, t.TRENDING]}
+          links={['/', '/ranking', '/trending']}
         />
         {displayPosts?.map((post) => (
           <GachaItem

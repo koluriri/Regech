@@ -5,6 +5,7 @@ export default {
   LOGO: '正規表現ガチャ',
   LATEST: '新着投稿',
   RANKING: 'ランキング',
+  TRENDING: '急上昇',
   PLAY: 'あそぶ',
   MULTIPLE: '10連',
   SINGLE: '単発',

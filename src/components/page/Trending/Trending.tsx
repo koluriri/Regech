@@ -15,7 +15,7 @@ import useLocale from '~/hooks/useLocale';
 import { Post, User } from '@prisma/client';
 import useGetResults from '~/hooks/useGetResults';
 
-const Ranking: FC<{
+const Trending: FC<{
   posts: (Post & { author: User })[];
 }> = ({ posts }) => {
   const { t } = useLocale();
@@ -34,7 +34,7 @@ const Ranking: FC<{
 
       <Card>
         <TabHeader
-          active={1}
+          active={2}
           items={[t.LATEST, t.RANKING, t.TRENDING]}
           links={['/', '/ranking', '/trending']}
         />
@@ -71,4 +71,4 @@ const Ranking: FC<{
   );
 };
 
-export default Ranking;
+export default Trending;
