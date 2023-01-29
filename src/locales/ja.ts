@@ -49,11 +49,11 @@ export default {
   LOGOUT: 'ログアウト(トップへ)',
   POST_AS: '投稿するアカウント：',
   CANT_LOGIN: 'ログインできない場合はこちらをクリック',
-  SHARE_ON_TWITTER: 'このガチャをTwitterでシェア',
+  SHARE_ON_TWITTER: 'Twitterでシェアする',
   PRIVACY_TITLE: 'プライバシーポリシー',
   TERMS: '利用規約',
   PLEASE_ESCAPE:
     '^や.などのメタ文字はバックスラッシュでエスケープしてください。',
   REALLY_DELETE: '本当に削除しますか？',
-  DELETE_POST: '投稿を削除',
+  DELETE_POST: '投稿を削除する',
 };

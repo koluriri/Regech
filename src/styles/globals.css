@@ -366,3 +366,13 @@ ol {
   padding-left: 25px;
   line-height: 1.8;
 }
+
+.delete-button a {
+  font-size: var(--text-sm);
+  opacity: 0.7;
+}
+
+.delete-button a:hover {
+  text-decoration: none;
+  opacity: 1;
+}

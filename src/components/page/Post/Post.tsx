@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { FC, useEffect, useState } from 'react';
 import Head from 'next/head';
@@ -80,8 +81,6 @@ const PostComponent: FC<{
               name={`@${post.author.userName}`}
               playCount={post.play_count}
               src={post.author.icon}
-              deleteButton
-              handleDelete={handleDeleteWithPopup}
             />
           </CardHeader>
           <BigText>{post.regex}</BigText>
@@ -105,6 +104,12 @@ const PostComponent: FC<{
           >
             {t.SHARE_ON_TWITTER}
           </Button>
+
+          <div className="delete-button">
+            <a href="#" onClick={handleDeleteWithPopup}>
+              {t.DELETE_POST}
+            </a>
+          </div>
         </Card>
 
         <Card transparent>
