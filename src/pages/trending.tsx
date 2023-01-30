@@ -17,9 +17,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
     orderBy: {
       created: 'desc',
     },
-    where: { deleted: false },
+    where: { deleted: false, play_count: { gte: 12 } },
     include: { author: true },
-    take: 60,
+    take: 40,
   });
 
   const now = new Date();
