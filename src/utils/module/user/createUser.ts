@@ -1,13 +1,13 @@
 import prisma from '~/utils/prisma';
 import zodErrorToString from '~/utils/zodErrorToString';
-import Blacklists from './Blacklists';
+// import Blacklists from './Blacklists';
 import { RequiredBodySchema } from './createUser.schema';
 
 const updatePlayed = async (body: unknown) => {
   const parsedBody = RequiredBodySchema.safeParse(body);
   if (!parsedBody.success) throw Error(zodErrorToString(parsedBody.error));
 
-  if(Blacklists.includes(parsedBody.data.userName)) throw Error('ログインできませんでした。');
+  // if(Blacklists.includes(parsedBody.data.userName)) throw Error('ログインできませんでした。');
 
   const user = await prisma.user.findFirst({
     where: {
